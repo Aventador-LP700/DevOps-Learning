@@ -48,5 +48,14 @@
     "generated_at": "2026-11-17T15:05:44.375330+00:00",
     "tested_commit": "d08044f57d3e7b9682b1681dc8855d63f4a642fb",
     "working_tree_dirty": true
+  },
+  "hosted_scenarios": {
+    "passed": 25,
+    "failed": 0,
+    "not_run": 0,
+    "generated_at": "2026-11-17T15:14:45.061537+00:00",
+    "tested_commit": "f44272f957d990fd04cbebf64662aa9521f02c0e",
+    "working_tree_dirty": false,
+    "workflow_url": "https://github.com/Aventador-LP700/DevOps-Learning/actions/runs/44111880580"
   }
 }

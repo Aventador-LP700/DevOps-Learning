@@ -1,0 +1,29 @@
+Source: https://github.com/Aventador-LP700/DevOps-Learning/actions/runs/44111880580
+Tested commit: f44272f957d990fd04cbebf64662aa9521f02c0e
+
+rbac	Audit all 25 with fresh Kubernetes API evidence	2026-11-17T15:14:46.2529663Z 01 PASS pipeline-injection
+rbac	Audit all 25 with fresh Kubernetes API evidence	2026-11-17T15:14:46.2530311Z 02 PASS secret-exposure
+rbac	Audit all 25 with fresh Kubernetes API evidence	2026-11-17T15:14:46.2530814Z 03 PASS artifact-tampering
+rbac	Audit all 25 with fresh Kubernetes API evidence	2026-11-17T15:14:46.2531314Z 04 PASS security-gate-bypass
+rbac	Audit all 25 with fresh Kubernetes API evidence	2026-11-17T15:14:46.2531821Z 05 PASS excessive-permissions
+rbac	Audit all 25 with fresh Kubernetes API evidence	2026-11-17T15:14:46.2532357Z 06 PASS idor-bola
+rbac	Audit all 25 with fresh Kubernetes API evidence	2026-11-17T15:14:46.2532854Z 07 PASS broken-function-level-authorization
+rbac	Audit all 25 with fresh Kubernetes API evidence	2026-11-17T15:14:46.2533451Z 08 PASS mass-assignment
+rbac	Audit all 25 with fresh Kubernetes API evidence	2026-11-17T15:14:46.2533901Z 09 PASS ssrf
+rbac	Audit all 25 with fresh Kubernetes API evidence	2026-11-17T15:14:46.2534606Z 10 PASS cors-misconfiguration
+rbac	Audit all 25 with fresh Kubernetes API evidence	2026-11-17T15:14:46.2535174Z 11 PASS debug-information-disclosure
+rbac	Audit all 25 with fresh Kubernetes API evidence	2026-11-17T15:14:46.2535780Z 12 PASS dependency-confusion
+rbac	Audit all 25 with fresh Kubernetes API evidence	2026-11-17T15:14:46.2536421Z 13 PASS untrusted-build-dependency
+rbac	Audit all 25 with fresh Kubernetes API evidence	2026-11-17T15:14:46.2537182Z 14 PASS weak-password-storage
+rbac	Audit all 25 with fresh Kubernetes API evidence	2026-11-17T15:14:46.2537619Z 15 PASS sql-injection
+rbac	Audit all 25 with fresh Kubernetes API evidence	2026-11-17T15:14:46.2537991Z 16 PASS stored-xss
+rbac	Audit all 25 with fresh Kubernetes API evidence	2026-11-17T15:14:46.2538362Z 17 PASS os-command-injection-rce
+rbac	Audit all 25 with fresh Kubernetes API evidence	2026-11-17T15:14:46.2538795Z 18 PASS path-traversal
+rbac	Audit all 25 with fresh Kubernetes API evidence	2026-11-17T15:14:46.2539209Z 19 PASS business-logic-bypass
+rbac	Audit all 25 with fresh Kubernetes API evidence	2026-11-17T15:14:46.2539675Z 20 PASS missing-login-rate-limiting
+rbac	Audit all 25 with fresh Kubernetes API evidence	2026-11-17T15:14:46.2540149Z 21 PASS session-fixation
+rbac	Audit all 25 with fresh Kubernetes API evidence	2026-11-17T15:14:46.2540556Z 22 PASS unsafe-deserialization
+rbac	Audit all 25 with fresh Kubernetes API evidence	2026-11-17T15:14:46.2541012Z 23 PASS unsigned-artifact-acceptance
+rbac	Audit all 25 with fresh Kubernetes API evidence	2026-11-17T15:14:46.2541505Z 24 PASS missing-security-audit-logs
+rbac	Audit all 25 with fresh Kubernetes API evidence	2026-11-17T15:14:46.2541969Z 25 PASS fail-open-error-handling
+rbac	Audit all 25 with fresh Kubernetes API evidence	2026-11-17T15:14:46.2542397Z PASS=25 FAIL=0 NOT_RUN=0

@@ -2,6 +2,12 @@
 
 Audit baseline: `d08044f`. Date: 17 November 2026.
 
+**Fresh hosted result: 25 PASS, 0 FAIL, 0 NOT_RUN.** The
+[real Kubernetes + combined audit run](https://github.com/Aventador-LP700/DevOps-Learning/actions/runs/44111880580)
+tested code commit `f44272f`. The [unmodified downloaded audit JSON](evidence/audit-all-25.json)
+contains all 25 results, proof observations, mapping provenance and implementation
+hashes. Local-only results below retain their explicit scenario 05 NOT_RUN status.
+
 **No README-only scenarios were found.** Every entry has executable code or real
 Kubernetes manifests, a fixed counterpart and an automated proof. This does not
 mean 25 separate web servers: most are Python module exercises; scenario 03's
@@ -131,8 +137,17 @@ make k8s-down
 
 The report must contain all successful API assertions and be at most 15 minutes
 old. The manual Kubernetes workflow performs this sequence and uploads the result.
-Fresh hosted outcomes will be appended after publication; no unrun result is marked
-PASS here.
+The [fresh hosted run](https://github.com/Aventador-LP700/DevOps-Learning/actions/runs/44111880580)
+executed the real vulnerable Secret read, the hardened Forbidden response and the
+legitimate deployment patch, then ran this combined audit. All 25 scenario proofs
+passed. The report was downloaded from the workflow artifact and committed without
+editing its contents.
+
+[Hosted core CI](https://github.com/Aventador-LP700/DevOps-Learning/actions/runs/44111725046)
+also passed native (106 tests), restricted Docker exercises, real-browser checks
+(two tests), and fixed-code SAST. Gitleaks found no secrets in the staged source
+snapshot or committed history. The current repository contains no promotional
+instructions; only technical operation, evidence and knowledge-check material remains.
 
 ## Limits
 
