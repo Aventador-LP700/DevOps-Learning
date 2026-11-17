@@ -29,9 +29,18 @@ def main():
     for output in ('zap.json', 'zap.html', 'zap.md'):
         (destination/output).unlink(missing_ok=True)
     name = 'pipelineproof-zap-' + uuid.uuid4().hex[:12]
+    volume = name + '-reports'
     try:
+        subprocess.run(['docker', 'volume', 'create', volume], check=True)
+        mount = f'type=volume,source={volume},target=/zap/wrk'
+        # Initialize only this disposable volume; the actual scanner stays non-root.
+        subprocess.run(['docker', 'run', '--rm', '--network', 'none', '--read-only',
+                        '--user', '0:0', '--cap-drop', 'ALL', '--cap-add', 'CHOWN',
+                        '--security-opt', 'no-new-privileges:true', '--mount', mount,
+                        '--entrypoint', 'sh', ZAP_IMAGE, '-c', 'chown zap:zap /zap/wrk'], check=True)
         with serve_lab() as (_, origin):
-            subprocess.run(['docker', 'create', '--name', name, '--network', 'host', '--workdir', '/zap/wrk', ZAP_IMAGE,
+            subprocess.run(['docker', 'create', '--name', name, '--network', 'host', '--cap-drop', 'ALL',
+                            '--security-opt', 'no-new-privileges:true', '--mount', mount, '--workdir', '/zap/wrk', ZAP_IMAGE,
                             'zap-baseline.py', '-t', origin, '-J', 'zap.json', '-r', 'zap.html', '-w', 'zap.md'], check=True)
             process = subprocess.run(['docker', 'start', '--attach', name])
             for file in ('zap.json', 'zap.html', 'zap.md'):
@@ -43,7 +52,8 @@ def main():
         print(f'ZAP quality policy: {len(blocking)} medium/high alerts block; {len(alerts)-len(blocking)} low/info alerts retained for review.')
         return 1 if blocking or process.returncode == 1 else 0
     finally:
-        subprocess.run(['docker', 'rm', '--force', name], check=False)
+        subprocess.run(['docker', 'rm', '--force', '--volumes', name], check=False)
+        subprocess.run(['docker', 'volume', 'rm', volume], check=False)
 
 if __name__ == '__main__':
     sys.exit(main())

@@ -18,8 +18,10 @@ python3 -m unittest discover -s tests -v
 `bash ./setup.sh` additionally starts the original demo API on localhost:8080 after
 24 exercises. Ctrl+C stops it. `--serve-only` retains the original lightweight API
 behavior. The existing native setup, container deployment and scenario IDs still work.
+Preserved 01–05 walkthroughs may refer to the original four local exercises; the
+current default run includes those four plus the 20 new modules.
 
-The assessment contains 24 results, not 25 fabricated passes: scenario 05 uses a
+The assessment contains 24 results, with the external scenario marked not run: scenario 05 uses a
 real Kubernetes API and is operated separately. Local SSRF/registry fixtures bind
 to random 127.0.0.1 ports and are closed by their context managers. Attack files and
 SQLite databases are temporary; exported JSON/Markdown persists until removed.

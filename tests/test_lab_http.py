@@ -40,6 +40,8 @@ class HTTPTests(unittest.TestCase):
         status, body, headers = self.client.request('GET', '/health')
         self.assertEqual(json.loads(body)['mode'], 'secure')
         self.assertIn("default-src 'none'", headers['Content-Security-Policy'])
+        self.assertEqual(headers['Cross-Origin-Embedder-Policy'], 'require-corp')
+        self.assertEqual(headers['Cross-Origin-Opener-Policy'], 'same-origin')
         self.assertEqual(self.client.request('GET', '/api/profile')[0], 403)
     def test_object_and_function_authorization(self):
         self.assertEqual(self.client.login()[0], 200)

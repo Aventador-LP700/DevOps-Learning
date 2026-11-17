@@ -50,7 +50,10 @@ Only the SBOM public key, never its private key, is uploaded as signing evidence
 ZAP baseline can return 2 for warnings. The wrapper retains every alert and applies
 the explicit risk policy above: low/informational alerts are reviewed but do not
 block; medium/high alerts do block. Baseline exit 1 remains a failure, and runtime
-errors do not become a pass. No vulnerable HTTP instance is used as the DAST target.
+errors do not become a pass. The report volume is initialized by a network-disabled helper limited to CHOWN;
+the scanner itself remains non-root, and both its container and generated volume
+are removed after report export. No host path, socket or credentials are mounted.
+No vulnerable HTTP instance is used as the DAST target.
 The scan is passive baseline DAST; it is not a complete authenticated penetration test.
 
 SARIF is produced where the installed tools support it (Semgrep/Trivy) and uploaded
