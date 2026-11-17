@@ -64,6 +64,8 @@ Compare equal weak hashes, salted record differences, wrong-password rejection a
 ## Remediation
 
 Use scrypt with per-record random salt, constant-time verification and bounded work factors.
+The fixed profile is N=16384, r=8, p=5 (a 16 MiB memory / higher-work configuration);
+production values should be benchmarked against current password-storage guidance.
 
 ## Scope and residual risk
 

@@ -32,12 +32,17 @@ def main():
     volume = name + '-reports'
     try:
         subprocess.run(['docker', 'volume', 'create', volume], check=True)
-        mount = f'type=volume,source={volume},target=/zap/wrk'
+        mount = f'type=volume,source={volume},target=/zap/wrk,volume-nocopy'
         # Initialize only this disposable volume; the actual scanner stays non-root.
         subprocess.run(['docker', 'run', '--rm', '--network', 'none', '--read-only',
                         '--user', '0:0', '--cap-drop', 'ALL', '--cap-add', 'CHOWN',
                         '--security-opt', 'no-new-privileges:true', '--mount', mount,
-                        '--entrypoint', 'sh', ZAP_IMAGE, '-c', 'chown zap:zap /zap/wrk'], check=True)
+                        '--entrypoint', 'sh', ZAP_IMAGE, '-c', 'touch /zap/wrk/.initialized && chmod 0750 /zap/wrk && chown zap:zap /zap/wrk'], check=True)
+        # Fail before scanning if the image's non-root user cannot write evidence.
+        subprocess.run(['docker', 'run', '--rm', '--network', 'none', '--read-only',
+                        '--cap-drop', 'ALL', '--security-opt', 'no-new-privileges:true',
+                        '--mount', mount, '--entrypoint', 'sh', ZAP_IMAGE, '-c',
+                        'id && ls -ldn /zap/wrk && touch /zap/wrk/.write-test && rm /zap/wrk/.write-test'], check=True)
         with serve_lab() as (_, origin):
             subprocess.run(['docker', 'create', '--name', name, '--network', 'host', '--cap-drop', 'ALL',
                             '--security-opt', 'no-new-privileges:true', '--mount', mount, '--workdir', '/zap/wrk', ZAP_IMAGE,
