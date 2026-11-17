@@ -59,7 +59,7 @@ expire according to retention policy.
 
 ## Hosted integrations and limitations
 
-Hosted CI/security run links and outcomes will be appended after publication. The
+Hosted results are recorded below. The
 local rootless Docker daemon cannot start kind without systemd delegation; the
 preserved real-cluster workflow is used for that integration. The managed workspace
 also has limited disk space: a Docker rebuild initially exhausted it; generated
@@ -72,3 +72,38 @@ outcomes, not inferred from unit tests. Browser tests use Playwright 1.62.0;
 Semgrep is pinned to 1.185.0. Linux is the tested native platform; macOS/WSL2 need
 independent platform validation. No production key custody, distributed limiter,
 SIEM stack, real package takeover or full authenticated DAST is claimed.
+
+## Final hosted outcomes
+
+- [Core CI, commit 15f4962](https://github.com/Aventador-LP700/DevOps-Learning/actions/runs/44106680770):
+  **passed** native, Docker, browser and SAST jobs. The fixed password KDF now uses
+  scrypt N=16384, r=8, p=5 with a per-record random salt; its regression contract passed.
+- [Real Kubernetes API, expansion commit 35f75db](https://github.com/Aventador-LP700/DevOps-Learning/actions/runs/44105056367):
+  **passed** deployment, vulnerable Secret read, hardened Forbidden response and
+  allowed deployment patch. This preserves the real scenario 05 integration.
+- [Security tools, commit 15f4962](https://github.com/Aventador-LP700/DevOps-Learning/actions/runs/44106863090):
+  **passed** filesystem/dependency/misconfiguration/secret scanning, source/history
+  checks, signed-SBOM original/tamper verification and secure-app ZAP DAST.
+  **Blocked:** actual image release due to HIGH/CRITICAL dependency findings.
+  The overall manual workflow is therefore **failure**, not falsely reported green.
+
+The ZAP integration initially reached the app but failed to write reports. A retry
+showed that assigning volume ownership alone was insufficient. The final wrapper
+uses a no-copy disposable report volume, retains an initialization marker and tests
+write access as the image's non-root user before scanning. It exports the actual
+reports, removes the scanner/volume, and passes the medium/high-alert gate. The
+secure app also gained explicit COOP/COEP/CORP browser-isolation headers; real-browser
+and HTTP regressions passed after that change. No alert was suppressed to obtain success.
+
+[Machine-readable run outcomes](evidence/expanded-hosted.json) and the
+[ZAP policy log excerpt](evidence/expanded-zap.txt) preserve the observed conclusions.
+JSON/HTML/Markdown ZAP reports, Trivy JSON/SARIF, SAST JSON/SARIF, core assessments
+and signed-SBOM evidence are uploaded to the corresponding workflow runs. Private
+signing keys are never uploaded. Gitleaks found no secrets in the staged source
+snapshot or repository history; the hosted history check also passed.
+
+Local evidence files represent snapshots taken during implementation, so older
+records may show the earlier password work factor. Use the commit-linked hosted
+runs above for final-code verification. The original 01–05 walkthroughs remain
+byte-for-byte unchanged. No scenario is labeled implemented solely because it has
+a README; all 20 new packages have executable pairs and passing regression contracts.

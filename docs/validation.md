@@ -67,3 +67,5 @@ invocation from outside the checkout through a path containing spaces, and inval
 options. Docker, Make, pip and sudo are replaced with failing test wrappers during
 these checks, proving that native setup does not invoke them. The Docker workflow
 continues to run separately for regression coverage.
+
+For the subsequent 20-lab expansion, see [the expansion validation record](EXPANSION_VALIDATION.md).

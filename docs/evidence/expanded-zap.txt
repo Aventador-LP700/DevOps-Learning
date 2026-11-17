@@ -1,0 +1,5 @@
+Source: https://github.com/Aventador-LP700/DevOps-Learning/actions/runs/44106863090
+Tested commit: 15f4962e4256ce13504865a352513cec08e2191f
+Actual job log excerpt:
+
+secure-app-dast	Run python3 -m scripts.zap	2026-11-17T14:48:08.0995480Z ZAP quality policy: 0 medium/high alerts block; 1 low/info alerts retained for review.

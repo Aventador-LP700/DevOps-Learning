@@ -1,7 +1,7 @@
 {
   "execution_mode": "native",
   "schema_version": 1,
-  "generated_at": "2026-11-17T14:35:40.687325+00:00",
+  "generated_at": "2026-11-17T14:49:45.954881+00:00",
   "passed": true,
   "results": [
     {
@@ -190,7 +190,7 @@
         },
         "secure_response": {
           "error": "Request could not be completed",
-          "request_id": "ff04c8250c50f782"
+          "request_id": "de3aa3445490fd54"
         },
         "legitimate_operation_allowed": true
       }
@@ -241,7 +241,7 @@
         "weak_hashes_equal": true,
         "tiny_dictionary_recovered_dummy": true,
         "secure_hashes_differ": true,
-        "secure_algorithm": "scrypt n=16384,r=8,p=1 with random 16-byte salt",
+        "secure_algorithm": "scrypt n=16384,r=8,p=5 with random 16-byte salt",
         "limitation": "A weak password remains guessable offline; salted adaptive hashing raises cost, not password entropy",
         "legitimate_operation_allowed": true
       }
@@ -420,16 +420,16 @@
         "vulnerable_audit_exists": false,
         "secure_events": [
           {
-            "timestamp": "2026-11-17T14:35:40.686635+00:00",
-            "request_id": "96b51a056bedc290",
+            "timestamp": "2026-11-17T14:49:45.953789+00:00",
+            "request_id": "f24545a3652a3f88",
             "action": "role_change",
             "actor": "admin",
             "target": "alice",
             "result": "allowed"
           },
           {
-            "timestamp": "2026-11-17T14:35:40.686770+00:00",
-            "request_id": "d89b5f0516f8fa1a",
+            "timestamp": "2026-11-17T14:49:45.953862+00:00",
+            "request_id": "2729b375ffca3fb4",
             "action": "role_change",
             "actor": "bob",
             "target": "admin",
