@@ -1,6 +1,42 @@
 # Deployment and reset
 
-## Prerequisites
+## Native setup (no Docker)
+
+Install Bash and Python 3.10+ using your operating system's normal installer, then
+run `bash ./setup.sh` from a checkout. Git is needed only to clone the repository;
+an extracted ZIP also works. No packages are installed by the script and no virtual
+environment is needed because the core project uses Python's standard library.
+
+The default command runs all four core exercises, writes `reports/assessment.json`
+and `.md` directly, then starts the API in the foreground on localhost. Press Ctrl+C
+to stop. Existing reports in the chosen output directory are replaced on each run.
+Do not use `make report` for native reports; that command exports Docker evidence.
+
+```bash
+bash ./setup.sh --lab-only
+bash ./setup.sh --lab-only --output reports/native
+bash ./setup.sh --serve-only --port 8090
+python3 -m lab.cli run --native --scenario pipeline-injection --output reports/native
+```
+
+Paths passed with `--output` are relative to the repository root, unless absolute.
+The script works when invoked from another directory and from paths containing spaces.
+Missing dependencies produce instructions; the script does not run sudo, change
+system settings, install Docker or silently download software.
+
+Linux native mode is tested in CI. macOS uses the same POSIX/Python interfaces but
+has not been independently tested. On Windows use WSL2; native PowerShell is unsupported.
+
+**Isolation:** native subprocesses receive a minimal environment and use temporary
+working directories, but keep your operating-system privileges and network access.
+This is not a security sandbox. Only the fixed shipped proofs are intended for this
+mode; use a disposable VM for custom attack code. The API binds to `127.0.0.1`.
+
+Native mode covers four teaching exercises and the demo API. It does not create a
+Kubernetes cluster, container images, a registry or a CI runner service. The fifth
+RBAC exercise and image tools remain optional and require the Docker/kind setup below.
+
+## Docker prerequisites
 
 - Linux or WSL2 with Docker Engine; Docker Desktop is suitable for local practice.
 - Docker Compose v2 (`docker compose version`), Git, Make, Python 3.10+.
@@ -13,7 +49,7 @@ Native Windows PowerShell cannot run the Make/bash examples directly: use WSL2.
 macOS Docker Desktop should be compatible, but must be independently tested before
 claiming platform support. Optional binary download examples assume Linux amd64.
 
-## Core lab
+## Docker core lab
 
 `make lab` builds the image and runs four isolated exercises. Results persist in a
 Docker named volume. `make report` copies only the two known report files into

@@ -10,6 +10,21 @@ concurrency:
   group: ci-${{ github.ref }}
   cancel-in-progress: true
 jobs:
+  native:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Test native setup and API without Docker
+        run: python3 -m unittest discover -s tests -v
+      - name: Generate native evidence without Docker
+        run: bash ./setup.sh --lab-only --output reports/native
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: pipelineproof-native-evidence
+          path: reports/native/assessment.*
   lab:
     runs-on: ubuntu-24.04
     timeout-minutes: 15

@@ -55,3 +55,15 @@ These links identify the tested commit. Subsequent documentation-only changes do
 not alter the implementation. Workflow artifacts are retained for a limited time;
 the committed local assessment provides a durable core example.
 
+## Native setup addition
+
+`bash ./setup.sh` adds an explicit Docker-free mode for the four fixed exercises
+and localhost API. Reports identify the execution mode. Native setup performs no
+package installation and requires only Bash, Python 3.10+, sh and printf.
+
+The expanded 12-test suite passed locally, and all four Docker exercise/retest
+pairs passed after the native changes. End-to-end tests check the default exercise-to-server flow, report generation,
+invocation from outside the checkout through a path containing spaces, and invalid
+options. Docker, Make, pip and sudo are replaced with failing test wrappers during
+these checks, proving that native setup does not invoke them. The Docker workflow
+continues to run separately for regression coverage.

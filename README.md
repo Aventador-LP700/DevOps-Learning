@@ -6,7 +6,7 @@
 **Attack a pipeline. Collect evidence. Apply a control. Prove the same attack fails.**
 
 PipelineProof is an open-source, local-first CI/CD penetration-testing lab. Four
-containerized exercises demonstrate pipeline command injection, secret disclosure,
+core exercises demonstrate pipeline command injection, secret disclosure,
 artifact tampering, and security-gate bypass. A fifth exercise uses a real local
 Kubernetes API to demonstrate excessive CI deployment permissions and scoped RBAC.
 
@@ -15,7 +15,34 @@ not just screenshots of installed security tools.
 
 ![PipelineProof architecture](docs/architecture.svg)
 
-## Five-minute start
+## Start without Docker
+
+With Bash and Python 3.10+ installed (Linux, macOS or WSL2):
+
+```bash
+git clone https://github.com/Aventador-LP700/DevOps-Learning.git
+cd DevOps-Learning
+bash ./setup.sh
+```
+
+This runs the four core exercises, writes reports directly into `reports/`, then
+serves the demo API at **http://127.0.0.1:8080**. Stop it with **Ctrl+C**.
+No Docker, Make, pip dependencies, sudo or automatic package downloads are required.
+
+```bash
+bash ./setup.sh --lab-only          # run exercises and exit
+bash ./setup.sh --serve-only        # start just the API
+bash ./setup.sh --port 8090          # use a different localhost port
+bash ./setup.sh --help
+```
+
+Native mode executes fixed teaching payloads as your user in temporary directories;
+it has **no container isolation or network restriction**. Use a disposable VM when
+modifying attack code. Reports record `execution_mode: native`. The Kubernetes,
+container-image scanning and image-based SBOM extensions still need their own tools
+and a container runtime. See [deployment options](docs/deployment.md).
+
+## Five-minute start with Docker
 
 Requirements: Docker Engine or Docker Desktop with Compose v2, Git, Python 3.10+,
 and Make. Start Docker before running these commands. Linux and WSL2 are the
@@ -98,7 +125,7 @@ tests/                  Control edge cases and HTTP tests
 
 ## Engineering decisions
 
-- The attack container runs as a non-root user with no network, dropped
+- Docker mode: the attack container runs as a non-root user with no network, dropped
   capabilities, a read-only root filesystem, and bounded resources.
 - No Docker socket, host checkout, or cloud credentials enter the attack container.
 - Attacks write temporary files; only generated assessment evidence persists.
@@ -114,8 +141,8 @@ Read the [threat model](docs/threat-model.md), [architecture](docs/architecture.
 
 ## Safety and scope
 
-Intentionally vulnerable steps are teaching material. Run them through `make lab`,
-not directly on a workstation. Use synthetic data and your own disposable lab.
+Intentionally vulnerable steps are teaching material. Use `make lab` for container isolation, or `bash ./setup.sh` for the fixed native
+exercises. Native mode has no sandbox; use a disposable VM for modified attacks. Use synthetic data and your own disposable lab.
 The project is not a production deployment template or a certification of security.
 See [SECURITY.md](SECURITY.md) and [CONTRIBUTING.md](CONTRIBUTING.md).
 

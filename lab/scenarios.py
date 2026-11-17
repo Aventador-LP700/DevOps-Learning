@@ -1,4 +1,4 @@
-"""Teaching attacks run only inside the disposable lab container."""
+"""Fixed teaching attacks for isolated containers or explicitly selected native practice."""
 import hashlib
 import json
 import os

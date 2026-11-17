@@ -1,7 +1,8 @@
-"""Container-only exercise runner and machine-readable evidence exporter."""
+"""Container and opt-in native exercise runner and machine-readable evidence exporter."""
 import argparse
 from datetime import datetime, timezone
 import json
+import os
 from pathlib import Path
 import sys
 import traceback
@@ -10,7 +11,8 @@ from .scenarios import SCENARIOS, run_scenario
 
 def render_markdown(report):
     lines = ["# PipelineProof assessment", "", f"Generated: {report['generated_at']}", "",
-             "Scope: disposable local teaching lab; synthetic secrets and findings.", "",
+             "Scope: local teaching lab; synthetic secrets and findings.",
+             f"Execution mode: {report.get('execution_mode', 'container')}", "",
              "| Scenario | Vulnerable exploit observed | Hardened control blocked attack | Result |",
              "|---|---|---|---|"]
     for result in report["results"]:
@@ -29,14 +31,22 @@ def main():
     sub.add_parser("list")
     run = sub.add_parser("run")
     run.add_argument("--scenario", choices=SCENARIOS)
-    run.add_argument("--output", type=Path, default=Path("/reports"))
+    run.add_argument("--output", type=Path)
+    run.add_argument("--native", action="store_true",
+                     help="Run fixed teaching exercises on the host without container isolation")
     args = parser.parse_args()
     if args.command == "list":
         for name, (_, description, _) in SCENARIOS.items():
             print(f"{name}: {description}")
         return 0
-    if not Path("/lab/.pipelineproof-container").is_file():
-        parser.error("Attacks require the disposable lab container. Use: make lab")
+    if args.native:
+        if os.name != "posix":
+            parser.error("Native exercises require Linux, macOS or WSL2")
+        print("Native mode: fixed teaching payloads run as your user; no container isolation.")
+    elif not Path("/lab/.pipelineproof-container").is_file():
+        parser.error("Use make lab for isolation, or bash ./setup.sh for native practice")
+    if args.output is None:
+        args.output = Path("reports") if args.native else Path("/reports")
     results = []
     for name in ([args.scenario] if args.scenario else SCENARIOS):
         try:
@@ -46,7 +56,7 @@ def main():
                       "hardened_blocked": False, "evidence": {"error": traceback.format_exc()}}
         results.append(result)
         print(f"{'PASS' if result['passed'] else 'FAIL'} {name}")
-    report = {"schema_version": 1, "generated_at": datetime.now(timezone.utc).isoformat(),
+    report = {"execution_mode": "native" if args.native else "container", "schema_version": 1, "generated_at": datetime.now(timezone.utc).isoformat(),
               "passed": all(r["passed"] for r in results), "results": results}
     args.output.mkdir(parents=True, exist_ok=True)
     # Each execution replaces previous evidence, preventing mixed/stale run results.

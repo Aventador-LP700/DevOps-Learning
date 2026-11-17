@@ -13,7 +13,14 @@ flowchart LR
     T --> E
 ```
 
-## Implemented execution model
+## Native execution option
+
+`bash ./setup.sh` runs the same four fixed exercises using host Python and writes
+reports directly to disk, then serves the API on loopback. Native mode is explicit
+(`--native`) and recorded in the assessment. Temporary storage and a minimal child
+environment do not provide the container security boundary described below.
+
+## Implemented execution model (Docker)
 
 The local runner invokes small vulnerable/hardened pipeline steps with identical
 untrusted inputs. These subprocesses execute inside a disposable, non-root container.

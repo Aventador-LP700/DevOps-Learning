@@ -14,6 +14,10 @@ docker compose run --rm lab run --scenario pipeline-injection --output /reports
 make report
 ```
 
+Without Docker, run `bash ./setup.sh --lab-only` for all four exercises, or
+`python3 -m lab.cli run --native --scenario pipeline-injection --output reports/native`
+for this one. Native mode has no container isolation; reports are written directly.
+
 ## Vulnerable observation
 
 The payload creates `injected.txt` in disposable scenario storage.

@@ -14,6 +14,10 @@ docker compose run --rm lab run --scenario artifact-tampering --output /reports
 make report
 ```
 
+Without Docker, run `bash ./setup.sh --lab-only` for all four exercises, or
+`python3 -m lab.cli run --native --scenario artifact-tampering --output reports/native`
+for this one. Native mode has no container isolation; reports are written directly.
+
 ## Vulnerable observation
 
 A modified JSON release is accepted by the unchecked teaching deployment.
