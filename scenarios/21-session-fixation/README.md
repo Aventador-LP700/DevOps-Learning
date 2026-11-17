@@ -69,7 +69,7 @@ Issue a fresh random session identifier after authentication and invalidate the 
 
 The low-level login function assumes credential verification already succeeded. The HTTP adapter validates a synthetic credential before calling it.
 
-## Interview questions and answers
+## Knowledge checks
 
 **When should session identifiers rotate?**  
 At authentication and privilege changes, with the prior identifier invalidated and appropriate cookie protections.

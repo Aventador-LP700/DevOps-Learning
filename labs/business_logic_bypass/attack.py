@@ -4,7 +4,7 @@ from labs.support import outcome, rejected
 
 def database():
     db = sqlite3.connect(":memory:")
-    db.execute("CREATE TABLE redemptions (user TEXT, coupon TEXT, PRIMARY KEY(user,coupon))")
+    db.execute("CREATE TABLE redemptions (user TEXT NOT NULL, coupon TEXT NOT NULL, PRIMARY KEY(user,coupon))")
     return db
 
 def demonstrate(work):

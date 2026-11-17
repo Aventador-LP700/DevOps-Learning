@@ -69,7 +69,7 @@ Check object ownership at the data access boundary and return the same denial fo
 
 IDs are references, not authorization. Production systems also need tenant constraints, listing filters and consistent error responses.
 
-## Interview questions and answers
+## Knowledge checks
 
 **Would UUIDs fix IDOR?**  
 No. Hard-to-guess identifiers reduce enumeration but do not enforce ownership.

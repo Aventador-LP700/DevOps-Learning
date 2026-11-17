@@ -69,7 +69,7 @@ Avoid the shell, pass argument arrays and validate the allowed diagnostic-label 
 
 This is application command execution, while scenario 01 targets a CI metadata boundary. No network, reverse shell or persistence is used.
 
-## Interview questions and answers
+## Knowledge checks
 
 **Does shell escaping solve every command-injection problem?**  
 No. Prefer avoiding the shell; argument injection and option handling still need validation even with argument arrays.

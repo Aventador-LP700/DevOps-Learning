@@ -69,7 +69,7 @@ Authorize the administrative capability server-side before any state mutation.
 
 A hidden UI button is not a control. Roles must come from trusted server-side identity, not request fields.
 
-## Interview questions and answers
+## Knowledge checks
 
 **How does BFLA differ from BOLA?**  
 BOLA checks access to a particular object; BFLA checks permission to invoke a privileged operation.

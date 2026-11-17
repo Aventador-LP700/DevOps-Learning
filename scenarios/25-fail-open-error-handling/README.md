@@ -69,7 +69,7 @@ Deny on exceptions and require an explicit boolean True before granting access.
 
 Failing closed can affect availability. Design explicit degradation rules without silently granting protected access.
 
-## Interview questions and answers
+## Knowledge checks
 
 **Why is retrying an authorization error not enough?**  
 Retries can fail too. The terminal decision must still deny when policy cannot be established.

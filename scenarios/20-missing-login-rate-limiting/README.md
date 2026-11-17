@@ -69,7 +69,7 @@ Use an account-scoped limiter with normalized identifiers, expiry and bounded re
 
 The implementation is in-process. Production services need shared state, distributed abuse detection and lockout/availability tradeoffs.
 
-## Interview questions and answers
+## Knowledge checks
 
 **Is per-IP throttling sufficient?**  
 No. Distributed clients can rotate addresses, so combine account, network and risk-based signals.

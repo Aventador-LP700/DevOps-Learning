@@ -69,7 +69,7 @@ Use a non-executable format such as JSON with size limits and explicit schema va
 
 Only the shipped marker-writing proof is run. The vulnerable restore function is never exposed as an HTTP endpoint.
 
-## Interview questions and answers
+## Knowledge checks
 
 **Can a pickle be made safe simply by hiding its class names?**  
 No. Pickle is a Python object execution format; do not accept it from untrusted producers.

@@ -1,0 +1,1528 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-11-17T15:11:17.857663+00:00",
+  "tested_commit": "d08044f57d3e7b9682b1681dc8855d63f4a642fb",
+  "working_tree_dirty": true,
+  "passed": 24,
+  "failed": 0,
+  "not_run": 1,
+  "results": [
+    {
+      "number": 1,
+      "id": "pipeline-injection",
+      "cwe": "CWE-78",
+      "owasp_primary": "A05",
+      "owasp_related": [],
+      "mapping_basis": "official-cwe-list",
+      "mapping_note": "Official CWE assignment; related categories are contextual only.",
+      "vulnerable_files": [
+        "pipelines/vulnerable/metadata.py"
+      ],
+      "fixed_files": [
+        "pipelines/hardened/metadata.py"
+      ],
+      "proof_files": [
+        "lab/scenarios.py"
+      ],
+      "proof_entrypoint": "injection",
+      "test_files": [
+        "tests/test_audit_regressions.py"
+      ],
+      "runtime": "local-python",
+      "file_sha256": [
+        {
+          "path": "lab/scenarios.py",
+          "sha256": "3a1a46294ddec5bebe2b0483c7ff5310a3c63adcfdfad43f976564b87d68304e"
+        },
+        {
+          "path": "pipelines/hardened/metadata.py",
+          "sha256": "087e853d4b325b28fff79f3dd6791bf337a288ae414ba4d6cedea4f48ff0c2e7"
+        },
+        {
+          "path": "pipelines/vulnerable/metadata.py",
+          "sha256": "effba918d182d02c9889acec536c5b222954557a6ff55f9186eafc9861c46ace"
+        },
+        {
+          "path": "tests/test_audit_regressions.py",
+          "sha256": "015678af847aabf1e2e211dec083e9354cebf4318343ed5ebffc8f1cec6a9ee4"
+        }
+      ],
+      "status": "PASS",
+      "evidence": {
+        "id": "pipeline-injection",
+        "description": "Untrusted change metadata becomes a shell command",
+        "cwe": "CWE-78",
+        "vulnerable_exploited": true,
+        "hardened_blocked": true,
+        "passed": true,
+        "evidence": {
+          "payload": "release; printf compromised > injected.txt; #",
+          "vulnerable": {
+            "exit_code": 0,
+            "stdout": "release\n",
+            "stderr": ""
+          },
+          "hardened": {
+            "exit_code": 0,
+            "stdout": "release; printf compromised > injected.txt; #\n",
+            "stderr": ""
+          }
+        }
+      }
+    },
+    {
+      "number": 2,
+      "id": "secret-exposure",
+      "cwe": "CWE-532",
+      "owasp_primary": "A09",
+      "owasp_related": [
+        "A02"
+      ],
+      "mapping_basis": "official-cwe-list",
+      "mapping_note": "Official CWE assignment; related categories are contextual only.",
+      "vulnerable_files": [
+        "pipelines/vulnerable/secrets.py"
+      ],
+      "fixed_files": [
+        "pipelines/hardened/secrets.py"
+      ],
+      "proof_files": [
+        "lab/scenarios.py"
+      ],
+      "proof_entrypoint": "secrets",
+      "test_files": [
+        "tests/test_audit_regressions.py"
+      ],
+      "runtime": "local-python",
+      "file_sha256": [
+        {
+          "path": "lab/scenarios.py",
+          "sha256": "3a1a46294ddec5bebe2b0483c7ff5310a3c63adcfdfad43f976564b87d68304e"
+        },
+        {
+          "path": "pipelines/hardened/secrets.py",
+          "sha256": "81dccb24de150fec927d55cda61dace661d1f3cabfddc3c9cebcdf74c0561536"
+        },
+        {
+          "path": "pipelines/vulnerable/secrets.py",
+          "sha256": "3d7bc03fef63e39273201d0da87b8094dd515be6c169497c660ef6b0ca509874"
+        },
+        {
+          "path": "tests/test_audit_regressions.py",
+          "sha256": "015678af847aabf1e2e211dec083e9354cebf4318343ed5ebffc8f1cec6a9ee4"
+        }
+      ],
+      "status": "PASS",
+      "evidence": {
+        "id": "secret-exposure",
+        "description": "Build logging discloses a synthetic CI credential",
+        "cwe": "CWE-532",
+        "vulnerable_exploited": true,
+        "hardened_blocked": true,
+        "passed": true,
+        "evidence": {
+          "synthetic_only": true,
+          "detection": "Exact synthetic-token match in captured logs",
+          "vulnerable": {
+            "exit_code": 0,
+            "stdout": "Connecting with token=PP_SYNTHETIC_TOKEN_NOT_A_REAL_CREDENTIAL\n",
+            "stderr": ""
+          },
+          "hardened": {
+            "exit_code": 0,
+            "stdout": "Credential supplied; authentication step configured\n",
+            "stderr": ""
+          }
+        }
+      }
+    },
+    {
+      "number": 3,
+      "id": "artifact-tampering",
+      "cwe": "CWE-353",
+      "owasp_primary": "A08",
+      "owasp_related": [],
+      "mapping_basis": "official-cwe-list",
+      "mapping_note": "Official CWE assignment; related categories are contextual only.",
+      "vulnerable_files": [
+        "lab/scenarios.py"
+      ],
+      "fixed_files": [
+        "lab/controls.py"
+      ],
+      "proof_files": [
+        "lab/scenarios.py"
+      ],
+      "proof_entrypoint": "artifact",
+      "test_files": [
+        "tests/test_audit_regressions.py"
+      ],
+      "runtime": "local-python",
+      "file_sha256": [
+        {
+          "path": "lab/controls.py",
+          "sha256": "618ae77bcbd5a6722eb396b074fb8d184a5a5c8ca521d0a04fef588d80ce6f2b"
+        },
+        {
+          "path": "lab/scenarios.py",
+          "sha256": "3a1a46294ddec5bebe2b0483c7ff5310a3c63adcfdfad43f976564b87d68304e"
+        },
+        {
+          "path": "tests/test_audit_regressions.py",
+          "sha256": "015678af847aabf1e2e211dec083e9354cebf4318343ed5ebffc8f1cec6a9ee4"
+        }
+      ],
+      "status": "PASS",
+      "evidence": {
+        "id": "artifact-tampering",
+        "description": "Mutable artifact storage changes deployment contents",
+        "cwe": "CWE-353",
+        "vulnerable_exploited": true,
+        "hardened_blocked": true,
+        "passed": true,
+        "evidence": {
+          "trusted_digest": "70d1cf5744ec0f5e2244bd87c312d5adaff608af759ea9538603ae472083cd9f",
+          "received_digest": "fc77b6f38417cca6446a70bc4ccc6c6f3c148cbc599bc7c54b8545402734d01a",
+          "vulnerable": "Deployed modified JSON without integrity verification",
+          "hardened": "Artifact integrity verification failed",
+          "benign_artifact_accepted": true,
+          "trust_assumption": "Expected digest comes from trusted build state, not the mutable artifact store"
+        }
+      }
+    },
+    {
+      "number": 4,
+      "id": "security-gate-bypass",
+      "cwe": "CWE-693",
+      "owasp_primary": "A06",
+      "owasp_related": [
+        "A02"
+      ],
+      "mapping_basis": "official-cwe-list",
+      "mapping_note": "Official CWE assignment; related categories are contextual only.",
+      "vulnerable_files": [
+        "pipelines/vulnerable/gate.py"
+      ],
+      "fixed_files": [
+        "pipelines/hardened/gate.py",
+        "lab/controls.py"
+      ],
+      "proof_files": [
+        "lab/scenarios.py"
+      ],
+      "proof_entrypoint": "gate",
+      "test_files": [
+        "tests/test_audit_regressions.py"
+      ],
+      "runtime": "local-python",
+      "file_sha256": [
+        {
+          "path": "lab/controls.py",
+          "sha256": "618ae77bcbd5a6722eb396b074fb8d184a5a5c8ca521d0a04fef588d80ce6f2b"
+        },
+        {
+          "path": "lab/scenarios.py",
+          "sha256": "3a1a46294ddec5bebe2b0483c7ff5310a3c63adcfdfad43f976564b87d68304e"
+        },
+        {
+          "path": "pipelines/hardened/gate.py",
+          "sha256": "f00a77266dbe542f8153fe00ab757f5077bfdfa9849517db67cdecc202edd026"
+        },
+        {
+          "path": "pipelines/vulnerable/gate.py",
+          "sha256": "4bb85eda966693257d0ca3278d7393bc5a363e4f78265e94182502288d36bdff"
+        },
+        {
+          "path": "tests/test_audit_regressions.py",
+          "sha256": "015678af847aabf1e2e211dec083e9354cebf4318343ed5ebffc8f1cec6a9ee4"
+        }
+      ],
+      "status": "PASS",
+      "evidence": {
+        "id": "security-gate-bypass",
+        "description": "Advisory-only vulnerability scanning permits a release",
+        "cwe": "CWE-693",
+        "vulnerable_exploited": true,
+        "hardened_blocked": true,
+        "passed": true,
+        "evidence": {
+          "source": "Synthetic Trivy-format fixture; no scanner was executed in this exercise",
+          "vulnerable": {
+            "exit_code": 0,
+            "stdout": "{\"SchemaVersion\": 2, \"ArtifactName\": \"pipelineproof-teaching-fixture\", \"Results\": [{\"Target\": \"synthetic-package\", \"Vulnerabilities\": [{\"VulnerabilityID\": \"LAB-EXAMPLE-001\", \"PkgName\": \"synthetic-library\", \"InstalledVersion\": \"0.0.1\", \"FixedVersion\": \"0.0.2\", \"Severity\": \"CRITICAL\", \"Title\": \"Synthetic finding for policy testing; not a real CVE\"}]}]}\nAdvisory scan completed. Release allowed regardless of findings.\n",
+            "stderr": ""
+          },
+          "hardened": {
+            "allowed": false,
+            "blocked_findings": [
+              "LAB-EXAMPLE-001"
+            ]
+          },
+          "clean_report_accepted": true
+        }
+      }
+    },
+    {
+      "number": 5,
+      "id": "excessive-permissions",
+      "cwe": "CWE-250",
+      "owasp_primary": "A01",
+      "owasp_related": [],
+      "mapping_basis": "contextual",
+      "mapping_note": "Excessive execution privileges violate least privilege in A01; CWE-250 itself is not in OWASP\u2019s enumerated list.",
+      "vulnerable_files": [
+        "infra/kubernetes/vulnerable-rbac.yaml"
+      ],
+      "fixed_files": [
+        "infra/kubernetes/hardened-rbac.yaml"
+      ],
+      "proof_files": [
+        "scripts/k8s.sh"
+      ],
+      "proof_entrypoint": "scripts/k8s.sh",
+      "test_files": [
+        ".github/workflows/kubernetes.yml"
+      ],
+      "runtime": "kubernetes-api",
+      "file_sha256": [
+        {
+          "path": ".github/workflows/kubernetes.yml",
+          "sha256": "69dee3a54b0bda8428ec7c4e6eb1cd9986e8718dd8d432b2602aafce1cf3bb4c"
+        },
+        {
+          "path": "infra/kubernetes/hardened-rbac.yaml",
+          "sha256": "414a602765e048a449edd7054918a1efcc2f6321e4e7b8db28e5f533a0f7f5ba"
+        },
+        {
+          "path": "infra/kubernetes/vulnerable-rbac.yaml",
+          "sha256": "0712ec4b54fb085cf16494fb6b2b367f402597b4a141f45f7a93231a07fad634"
+        },
+        {
+          "path": "scripts/k8s.sh",
+          "sha256": "31b391f2f1295f15afb98fc3636faee5272551da5cc3f3890f606d4d4b58b44b"
+        }
+      ],
+      "status": "NOT_RUN",
+      "evidence": {
+        "reason": "Requires a fresh real Kubernetes API test; run make k8s-up k8s-test"
+      }
+    },
+    {
+      "number": 6,
+      "id": "idor-bola",
+      "cwe": "CWE-639",
+      "owasp_primary": "A01",
+      "owasp_related": [],
+      "mapping_basis": "official-cwe-list",
+      "mapping_note": "Official CWE assignment; related categories are contextual only.",
+      "vulnerable_files": [
+        "labs/idor_bola/vulnerable.py"
+      ],
+      "fixed_files": [
+        "labs/idor_bola/secure.py"
+      ],
+      "proof_files": [
+        "labs/idor_bola/attack.py"
+      ],
+      "proof_entrypoint": "demonstrate",
+      "test_files": [
+        "labs/idor_bola/test_lab.py"
+      ],
+      "runtime": "local-python",
+      "file_sha256": [
+        {
+          "path": "labs/idor_bola/attack.py",
+          "sha256": "1b1319ffc9ed900ced024ebcfca1590880b97f58b1328465e6fb214c4bc02527"
+        },
+        {
+          "path": "labs/idor_bola/secure.py",
+          "sha256": "51ef0bc0761d2d5096a45f6a2f60704ba4c090e14e7d04f468676aa9f8274c4a"
+        },
+        {
+          "path": "labs/idor_bola/test_lab.py",
+          "sha256": "008a5e7a50f5756fccec4f4de3d4bc1accc6c714f5d321fb75b2587b2de1f409"
+        },
+        {
+          "path": "labs/idor_bola/vulnerable.py",
+          "sha256": "acf6159f6290b81ecfd7b2bcd21fb5d2d1310ec30e376a4ae0082b378420d5b6"
+        }
+      ],
+      "status": "PASS",
+      "evidence": {
+        "id": "idor-bola",
+        "description": "Broken Object Level Authorization",
+        "cwe": "CWE-639",
+        "vulnerable_exploited": true,
+        "hardened_blocked": true,
+        "passed": true,
+        "evidence": {
+          "requested_object": "200",
+          "attacker": "alice",
+          "vulnerable_owner": "bob",
+          "secure": "Ownership enforced",
+          "legitimate_operation_allowed": true
+        }
+      }
+    },
+    {
+      "number": 7,
+      "id": "broken-function-level-authorization",
+      "cwe": "CWE-862",
+      "owasp_primary": "A01",
+      "owasp_related": [],
+      "mapping_basis": "official-cwe-list",
+      "mapping_note": "Official CWE assignment; related categories are contextual only.",
+      "vulnerable_files": [
+        "labs/broken_function_level_authorization/vulnerable.py"
+      ],
+      "fixed_files": [
+        "labs/broken_function_level_authorization/secure.py"
+      ],
+      "proof_files": [
+        "labs/broken_function_level_authorization/attack.py"
+      ],
+      "proof_entrypoint": "demonstrate",
+      "test_files": [
+        "labs/broken_function_level_authorization/test_lab.py"
+      ],
+      "runtime": "local-python",
+      "file_sha256": [
+        {
+          "path": "labs/broken_function_level_authorization/attack.py",
+          "sha256": "0d622969a92457873272f9729d41a20c10d98199327db16e5a855f3228bec56b"
+        },
+        {
+          "path": "labs/broken_function_level_authorization/secure.py",
+          "sha256": "7754fb838abbc14db413e5c2d6dd1c77242e48cf3cc9851ee8ce4d272d4e5254"
+        },
+        {
+          "path": "labs/broken_function_level_authorization/test_lab.py",
+          "sha256": "008a5e7a50f5756fccec4f4de3d4bc1accc6c714f5d321fb75b2587b2de1f409"
+        },
+        {
+          "path": "labs/broken_function_level_authorization/vulnerable.py",
+          "sha256": "85bb434f8aa65ebabdf5a39d502f09c8d64fdeece2ab8e9f5be52378ffbeba51"
+        }
+      ],
+      "status": "PASS",
+      "evidence": {
+        "id": "broken-function-level-authorization",
+        "description": "Broken Function Level Authorization",
+        "cwe": "CWE-862",
+        "vulnerable_exploited": true,
+        "hardened_blocked": true,
+        "passed": true,
+        "evidence": {
+          "vulnerable_target_active": false,
+          "secure_target_active": true,
+          "admin_action_allowed": true,
+          "legitimate_operation_allowed": true
+        }
+      }
+    },
+    {
+      "number": 8,
+      "id": "mass-assignment",
+      "cwe": "CWE-915",
+      "owasp_primary": "A08",
+      "owasp_related": [
+        "A01"
+      ],
+      "mapping_basis": "official-cwe-list",
+      "mapping_note": "Official CWE assignment; related categories are contextual only.",
+      "vulnerable_files": [
+        "labs/mass_assignment/vulnerable.py"
+      ],
+      "fixed_files": [
+        "labs/mass_assignment/secure.py"
+      ],
+      "proof_files": [
+        "labs/mass_assignment/attack.py"
+      ],
+      "proof_entrypoint": "demonstrate",
+      "test_files": [
+        "labs/mass_assignment/test_lab.py"
+      ],
+      "runtime": "local-python",
+      "file_sha256": [
+        {
+          "path": "labs/mass_assignment/attack.py",
+          "sha256": "cdec7a1447e8c4f5e3fdb1d1a62524717e2629cd2beae3cab741a554526fb2f6"
+        },
+        {
+          "path": "labs/mass_assignment/secure.py",
+          "sha256": "8c9df3dedddfae16967e1b1cb812bc7a27be9e2b07e9c9819ce0a48260e2f1a6"
+        },
+        {
+          "path": "labs/mass_assignment/test_lab.py",
+          "sha256": "008a5e7a50f5756fccec4f4de3d4bc1accc6c714f5d321fb75b2587b2de1f409"
+        },
+        {
+          "path": "labs/mass_assignment/vulnerable.py",
+          "sha256": "3f4bcb9054f88d31d84ace9029e8528e5f51e31c39e675a705c836d7c6bb9246"
+        }
+      ],
+      "status": "PASS",
+      "evidence": {
+        "id": "mass-assignment",
+        "description": "Mass Assignment",
+        "cwe": "CWE-915",
+        "vulnerable_exploited": true,
+        "hardened_blocked": true,
+        "passed": true,
+        "evidence": {
+          "attack_payload": {
+            "role": "admin"
+          },
+          "vulnerable_role": "admin",
+          "secure_role": "user",
+          "legitimate_operation_allowed": true
+        }
+      }
+    },
+    {
+      "number": 9,
+      "id": "ssrf",
+      "cwe": "CWE-918",
+      "owasp_primary": "A01",
+      "owasp_related": [],
+      "mapping_basis": "official-cwe-list",
+      "mapping_note": "Official CWE assignment; related categories are contextual only.",
+      "vulnerable_files": [
+        "labs/ssrf/vulnerable.py"
+      ],
+      "fixed_files": [
+        "labs/ssrf/secure.py"
+      ],
+      "proof_files": [
+        "labs/ssrf/attack.py"
+      ],
+      "proof_entrypoint": "demonstrate",
+      "test_files": [
+        "labs/ssrf/test_lab.py"
+      ],
+      "runtime": "local-python",
+      "file_sha256": [
+        {
+          "path": "labs/ssrf/attack.py",
+          "sha256": "47f8a5108d61be4bcca490c3bc4a07e5942df60f02cdbd29fecf501d7bf432c5"
+        },
+        {
+          "path": "labs/ssrf/secure.py",
+          "sha256": "433a154dd56c5acf0342549d9aaaf093c34f3c062a0ecc1fd3112693fe1f4139"
+        },
+        {
+          "path": "labs/ssrf/test_lab.py",
+          "sha256": "008a5e7a50f5756fccec4f4de3d4bc1accc6c714f5d321fb75b2587b2de1f409"
+        },
+        {
+          "path": "labs/ssrf/vulnerable.py",
+          "sha256": "4e91a490767b2da77f685cfc3176df1bc36416468530eaf22d9e062ad5f86ce3"
+        }
+      ],
+      "status": "PASS",
+      "evidence": {
+        "id": "ssrf",
+        "description": "Server-Side Request Forgery",
+        "cwe": "CWE-918",
+        "vulnerable_exploited": true,
+        "hardened_blocked": true,
+        "passed": true,
+        "evidence": {
+          "vulnerable_response": {
+            "dummy_metadata": "LAB_INTERNAL_ONLY"
+          },
+          "internal_mock_requests": [
+            "/internal/metadata"
+          ],
+          "public_mock_requests": [
+            "/public/info"
+          ],
+          "external_traffic": false,
+          "legitimate_operation_allowed": true
+        }
+      }
+    },
+    {
+      "number": 10,
+      "id": "cors-misconfiguration",
+      "cwe": "CWE-942",
+      "owasp_primary": "A02",
+      "owasp_related": [],
+      "mapping_basis": "official-cwe-list",
+      "mapping_note": "Official CWE assignment; related categories are contextual only.",
+      "vulnerable_files": [
+        "labs/cors_misconfiguration/vulnerable.py"
+      ],
+      "fixed_files": [
+        "labs/cors_misconfiguration/secure.py"
+      ],
+      "proof_files": [
+        "labs/cors_misconfiguration/attack.py"
+      ],
+      "proof_entrypoint": "demonstrate",
+      "test_files": [
+        "labs/cors_misconfiguration/test_lab.py"
+      ],
+      "runtime": "local-python",
+      "file_sha256": [
+        {
+          "path": "labs/cors_misconfiguration/attack.py",
+          "sha256": "012820f056bc9bcb21da5e49ae5b89678b9c05c714bed23181448a3375b7223d"
+        },
+        {
+          "path": "labs/cors_misconfiguration/secure.py",
+          "sha256": "e12de0efa9648ab3e627cc541cc38704c2dc555affce4c75fac7117962af594c"
+        },
+        {
+          "path": "labs/cors_misconfiguration/test_lab.py",
+          "sha256": "008a5e7a50f5756fccec4f4de3d4bc1accc6c714f5d321fb75b2587b2de1f409"
+        },
+        {
+          "path": "labs/cors_misconfiguration/vulnerable.py",
+          "sha256": "0dac9278b27720637a79eea36e1eadbd5c49a6ed620cd8ee9ad472e5ddd86da8"
+        }
+      ],
+      "status": "PASS",
+      "evidence": {
+        "id": "cors-misconfiguration",
+        "description": "CORS Misconfiguration",
+        "cwe": "CWE-942",
+        "vulnerable_exploited": true,
+        "hardened_blocked": true,
+        "passed": true,
+        "evidence": {
+          "untrusted_origin": "http://127.0.0.1:9999",
+          "vulnerable_headers": {
+            "Access-Control-Allow-Origin": "http://127.0.0.1:9999",
+            "Access-Control-Allow-Credentials": "true",
+            "Vary": "Origin"
+          },
+          "secure_headers": {
+            "Vary": "Origin"
+          },
+          "browser_validation": "See tests/browser_labs.py for real browser enforcement",
+          "legitimate_operation_allowed": true
+        }
+      }
+    },
+    {
+      "number": 11,
+      "id": "debug-information-disclosure",
+      "cwe": "CWE-209",
+      "owasp_primary": "A10",
+      "owasp_related": [
+        "A02"
+      ],
+      "mapping_basis": "official-cwe-list",
+      "mapping_note": "Official CWE assignment; related categories are contextual only.",
+      "vulnerable_files": [
+        "labs/debug_information_disclosure/vulnerable.py"
+      ],
+      "fixed_files": [
+        "labs/debug_information_disclosure/secure.py"
+      ],
+      "proof_files": [
+        "labs/debug_information_disclosure/attack.py"
+      ],
+      "proof_entrypoint": "demonstrate",
+      "test_files": [
+        "labs/debug_information_disclosure/test_lab.py"
+      ],
+      "runtime": "local-python",
+      "file_sha256": [
+        {
+          "path": "labs/debug_information_disclosure/attack.py",
+          "sha256": "111622f66ca4d679286fcd37f6634ea23f3f9bfa96cbe4e51e5bce36383f0216"
+        },
+        {
+          "path": "labs/debug_information_disclosure/secure.py",
+          "sha256": "283c8e9716028c3cff2a73b348c3f5c6a2b264c1fa9147edb5aaef03f929aede"
+        },
+        {
+          "path": "labs/debug_information_disclosure/test_lab.py",
+          "sha256": "2e751d117b5c68be82756db324e1496a5107170710fd2cc80d55bb1bd86cc7eb"
+        },
+        {
+          "path": "labs/debug_information_disclosure/vulnerable.py",
+          "sha256": "64e2ea01f888b460ca5fe7fea8071ec773eb24c4bd37ecc53e4cb12fadc0584f"
+        }
+      ],
+      "status": "PASS",
+      "evidence": {
+        "id": "debug-information-disclosure",
+        "description": "Debug Information Disclosure",
+        "cwe": "CWE-209",
+        "vulnerable_exploited": true,
+        "hardened_blocked": true,
+        "passed": true,
+        "evidence": {
+          "vulnerable_response": {
+            "debug": "Traceback (most recent call last):\n  File \"/workspace/work/repository/labs/debug_information_disclosure/vulnerable.py\", line 5, in handle\n    return 200, {\"result\": operation()}\n                           ^^^^^^^^^^^\n  File \"/workspace/work/repository/labs/debug_information_disclosure/attack.py\", line 6, in fail\n    raise RuntimeError(\"Synthetic backend detail\")\nRuntimeError: Synthetic backend detail\n",
+            "config": {
+              "database": "synthetic-db",
+              "password": "lab-only"
+            }
+          },
+          "secure_response": {
+            "error": "Request could not be completed",
+            "request_id": "b94bc63595fe1e3b"
+          },
+          "legitimate_operation_allowed": true
+        }
+      }
+    },
+    {
+      "number": 12,
+      "id": "dependency-confusion",
+      "cwe": "CWE-427",
+      "owasp_primary": "A08",
+      "owasp_related": [
+        "A03"
+      ],
+      "mapping_basis": "official-cwe-list",
+      "mapping_note": "Official CWE assignment; related categories are contextual only.",
+      "vulnerable_files": [
+        "labs/dependency_confusion/vulnerable.py"
+      ],
+      "fixed_files": [
+        "labs/dependency_confusion/secure.py"
+      ],
+      "proof_files": [
+        "labs/dependency_confusion/attack.py"
+      ],
+      "proof_entrypoint": "demonstrate",
+      "test_files": [
+        "labs/dependency_confusion/test_lab.py"
+      ],
+      "runtime": "local-python",
+      "file_sha256": [
+        {
+          "path": "labs/dependency_confusion/attack.py",
+          "sha256": "09fb3f8d2d844385542569a43c1cf5039752d7d2d094ff650a4eb31066b75444"
+        },
+        {
+          "path": "labs/dependency_confusion/secure.py",
+          "sha256": "c7ae8d0a8a989f5c3e929c6c814e30d48b78eb51c017abf75c53e3a85d053f52"
+        },
+        {
+          "path": "labs/dependency_confusion/test_lab.py",
+          "sha256": "2e751d117b5c68be82756db324e1496a5107170710fd2cc80d55bb1bd86cc7eb"
+        },
+        {
+          "path": "labs/dependency_confusion/vulnerable.py",
+          "sha256": "2c1942459411c932e7ebcaacb68e3f83453e4b7dc8a9738f1710016c7cd6f3c7"
+        }
+      ],
+      "status": "PASS",
+      "evidence": {
+        "id": "dependency-confusion",
+        "description": "Local Dependency Confusion",
+        "cwe": "CWE-427",
+        "vulnerable_exploited": true,
+        "hardened_blocked": true,
+        "passed": true,
+        "evidence": {
+          "vulnerable_source": "public",
+          "vulnerable_version": "99.0.0",
+          "secure_source": "private",
+          "registry_requests": [
+            "/private/secureforge-utils",
+            "/public/secureforge-utils",
+            "/private/secureforge-utils"
+          ],
+          "simulation": "Real loopback JSON index; no PyPI traffic or package installation",
+          "legitimate_operation_allowed": true
+        }
+      }
+    },
+    {
+      "number": 13,
+      "id": "untrusted-build-dependency",
+      "cwe": "CWE-829",
+      "owasp_primary": "A08",
+      "owasp_related": [
+        "A03"
+      ],
+      "mapping_basis": "official-cwe-list",
+      "mapping_note": "Official CWE assignment; related categories are contextual only.",
+      "vulnerable_files": [
+        "labs/untrusted_build_dependency/vulnerable.py"
+      ],
+      "fixed_files": [
+        "labs/untrusted_build_dependency/secure.py"
+      ],
+      "proof_files": [
+        "labs/untrusted_build_dependency/attack.py"
+      ],
+      "proof_entrypoint": "demonstrate",
+      "test_files": [
+        "labs/untrusted_build_dependency/test_lab.py"
+      ],
+      "runtime": "local-python",
+      "file_sha256": [
+        {
+          "path": "labs/untrusted_build_dependency/attack.py",
+          "sha256": "9d5389d7b89f80e46ca4de2dde5e191ff81d8e956e60abe09028894e0051698d"
+        },
+        {
+          "path": "labs/untrusted_build_dependency/secure.py",
+          "sha256": "a334c0fd9e31a80849c801e429c24d5bae937040d92802f396ad8698349dcc64"
+        },
+        {
+          "path": "labs/untrusted_build_dependency/test_lab.py",
+          "sha256": "2e751d117b5c68be82756db324e1496a5107170710fd2cc80d55bb1bd86cc7eb"
+        },
+        {
+          "path": "labs/untrusted_build_dependency/vulnerable.py",
+          "sha256": "6dd1c4ca0ac826aee55603e1d5ffd95cc087074e1ea6e94e93638e1437d8873b"
+        }
+      ],
+      "status": "PASS",
+      "evidence": {
+        "id": "untrusted-build-dependency",
+        "description": "Untrusted Build Dependency",
+        "cwe": "CWE-829",
+        "vulnerable_exploited": true,
+        "hardened_blocked": true,
+        "passed": true,
+        "evidence": {
+          "vulnerable_hook_executed": true,
+          "secure_marker_exists": false,
+          "secure": "Source hooks rejected; trusted metadata consumed as data",
+          "scope": "Simulation of build-hook execution, not a general Python package installer",
+          "legitimate_operation_allowed": true
+        }
+      }
+    },
+    {
+      "number": 14,
+      "id": "weak-password-storage",
+      "cwe": "CWE-916",
+      "owasp_primary": "A04",
+      "owasp_related": [],
+      "mapping_basis": "official-cwe-list",
+      "mapping_note": "Official CWE assignment; related categories are contextual only.",
+      "vulnerable_files": [
+        "labs/weak_password_storage/vulnerable.py"
+      ],
+      "fixed_files": [
+        "labs/weak_password_storage/secure.py"
+      ],
+      "proof_files": [
+        "labs/weak_password_storage/attack.py"
+      ],
+      "proof_entrypoint": "demonstrate",
+      "test_files": [
+        "labs/weak_password_storage/test_lab.py"
+      ],
+      "runtime": "local-python",
+      "file_sha256": [
+        {
+          "path": "labs/weak_password_storage/attack.py",
+          "sha256": "167968ad3df359e59b37291e6b7a00b2c5298cee5811b6a6436779032e3ac6ee"
+        },
+        {
+          "path": "labs/weak_password_storage/secure.py",
+          "sha256": "c85bcf2c73734054f8b86fee0a8c562071f74c94cc4c2f5cd81c332e1c59714f"
+        },
+        {
+          "path": "labs/weak_password_storage/test_lab.py",
+          "sha256": "2e751d117b5c68be82756db324e1496a5107170710fd2cc80d55bb1bd86cc7eb"
+        },
+        {
+          "path": "labs/weak_password_storage/vulnerable.py",
+          "sha256": "152e7d0d58a064d899596e97ec37491397c059786cd0074d306ce445a21183b0"
+        }
+      ],
+      "status": "PASS",
+      "evidence": {
+        "id": "weak-password-storage",
+        "description": "Weak Password Storage",
+        "cwe": "CWE-916",
+        "vulnerable_exploited": true,
+        "hardened_blocked": true,
+        "passed": true,
+        "evidence": {
+          "weak_hashes_equal": true,
+          "tiny_dictionary_recovered_dummy": true,
+          "secure_hashes_differ": true,
+          "secure_algorithm": "scrypt n=16384,r=8,p=5 with random 16-byte salt",
+          "limitation": "A weak password remains guessable offline; salted adaptive hashing raises cost, not password entropy",
+          "legitimate_operation_allowed": true
+        }
+      }
+    },
+    {
+      "number": 15,
+      "id": "sql-injection",
+      "cwe": "CWE-89",
+      "owasp_primary": "A05",
+      "owasp_related": [],
+      "mapping_basis": "official-cwe-list",
+      "mapping_note": "Official CWE assignment; related categories are contextual only.",
+      "vulnerable_files": [
+        "labs/sql_injection/vulnerable.py"
+      ],
+      "fixed_files": [
+        "labs/sql_injection/secure.py"
+      ],
+      "proof_files": [
+        "labs/sql_injection/attack.py"
+      ],
+      "proof_entrypoint": "demonstrate",
+      "test_files": [
+        "labs/sql_injection/test_lab.py"
+      ],
+      "runtime": "local-python",
+      "file_sha256": [
+        {
+          "path": "labs/sql_injection/attack.py",
+          "sha256": "523011a8b50e98327f98c89c4347a204df5dc97fe95697c5383d777c40cb4dc4"
+        },
+        {
+          "path": "labs/sql_injection/secure.py",
+          "sha256": "1b9181d048237c75f05fcfd74ddcb86d741c4cb0a840c1e55b3f68df18f2e64b"
+        },
+        {
+          "path": "labs/sql_injection/test_lab.py",
+          "sha256": "2e751d117b5c68be82756db324e1496a5107170710fd2cc80d55bb1bd86cc7eb"
+        },
+        {
+          "path": "labs/sql_injection/vulnerable.py",
+          "sha256": "8fedd6d9b93a51db54e25bc6c248ddec74d186f0d8cb834a99f8adfd25fa6643"
+        }
+      ],
+      "status": "PASS",
+      "evidence": {
+        "id": "sql-injection",
+        "description": "SQL Injection",
+        "cwe": "CWE-89",
+        "vulnerable_exploited": true,
+        "hardened_blocked": true,
+        "passed": true,
+        "evidence": {
+          "payload": "alice' OR '1'='1",
+          "vulnerable_rows": [
+            [
+              "alice",
+              "notebook"
+            ],
+            [
+              "bob",
+              "private synthetic item"
+            ]
+          ],
+          "secure_rows": [],
+          "normal_rows": [
+            [
+              "alice",
+              "notebook"
+            ]
+          ],
+          "legitimate_operation_allowed": true
+        }
+      }
+    },
+    {
+      "number": 16,
+      "id": "stored-xss",
+      "cwe": "CWE-79",
+      "owasp_primary": "A05",
+      "owasp_related": [],
+      "mapping_basis": "official-cwe-list",
+      "mapping_note": "Official CWE assignment; related categories are contextual only.",
+      "vulnerable_files": [
+        "labs/stored_xss/vulnerable.py"
+      ],
+      "fixed_files": [
+        "labs/stored_xss/secure.py"
+      ],
+      "proof_files": [
+        "labs/stored_xss/attack.py"
+      ],
+      "proof_entrypoint": "demonstrate",
+      "test_files": [
+        "labs/stored_xss/test_lab.py"
+      ],
+      "runtime": "local-python",
+      "file_sha256": [
+        {
+          "path": "labs/stored_xss/attack.py",
+          "sha256": "d741b8e355c89a449f8f02a167cc7d4fccacdc15ac3273793919fbcf1c8ecb3a"
+        },
+        {
+          "path": "labs/stored_xss/secure.py",
+          "sha256": "11c766d6e6757516b113743206194f39906d81b0d386a1d80d21270be9fef7fd"
+        },
+        {
+          "path": "labs/stored_xss/test_lab.py",
+          "sha256": "2e751d117b5c68be82756db324e1496a5107170710fd2cc80d55bb1bd86cc7eb"
+        },
+        {
+          "path": "labs/stored_xss/vulnerable.py",
+          "sha256": "6a73cec80b69fc4e1afcf94395e76632b416ecd09b853338045794596e21cf13"
+        }
+      ],
+      "status": "PASS",
+      "evidence": {
+        "id": "stored-xss",
+        "description": "Stored Cross-Site Scripting",
+        "cwe": "CWE-79",
+        "vulnerable_exploited": true,
+        "hardened_blocked": true,
+        "passed": true,
+        "evidence": {
+          "stored_payload": "<script>window.__pipelineproof_xss=1</script>",
+          "vulnerable_script_elements": 1,
+          "secure_script_elements": 0,
+          "browser_execution": "Tested separately with tests/browser_labs.py",
+          "legitimate_operation_allowed": true
+        }
+      }
+    },
+    {
+      "number": 17,
+      "id": "os-command-injection-rce",
+      "cwe": "CWE-78",
+      "owasp_primary": "A05",
+      "owasp_related": [],
+      "mapping_basis": "official-cwe-list",
+      "mapping_note": "Official CWE assignment; related categories are contextual only.",
+      "vulnerable_files": [
+        "labs/os_command_injection_rce/vulnerable.py"
+      ],
+      "fixed_files": [
+        "labs/os_command_injection_rce/secure.py"
+      ],
+      "proof_files": [
+        "labs/os_command_injection_rce/attack.py"
+      ],
+      "proof_entrypoint": "demonstrate",
+      "test_files": [
+        "labs/os_command_injection_rce/test_lab.py"
+      ],
+      "runtime": "local-python",
+      "file_sha256": [
+        {
+          "path": "labs/os_command_injection_rce/attack.py",
+          "sha256": "dd46ddb6c4d7d0be8833c10d83898b13b3fc5910a04add2a100a7d9606babca8"
+        },
+        {
+          "path": "labs/os_command_injection_rce/secure.py",
+          "sha256": "c77f13c35f73754d5028609a299c10dd8741c932d4ead23aaf4e9b488d21c709"
+        },
+        {
+          "path": "labs/os_command_injection_rce/test_lab.py",
+          "sha256": "2e751d117b5c68be82756db324e1496a5107170710fd2cc80d55bb1bd86cc7eb"
+        },
+        {
+          "path": "labs/os_command_injection_rce/vulnerable.py",
+          "sha256": "8897ffa0fa5de531f6e65bb0932ae0dfb7c11ce3e75a504010462cf0056989e6"
+        }
+      ],
+      "status": "PASS",
+      "evidence": {
+        "id": "os-command-injection-rce",
+        "description": "OS Command Injection",
+        "cwe": "CWE-78",
+        "vulnerable_exploited": true,
+        "hardened_blocked": true,
+        "passed": true,
+        "evidence": {
+          "payload": "demo; printf LAB_RCE > rce-proof; #",
+          "vulnerable_command_marker": true,
+          "secure_marker_exists": false,
+          "effect": "Temporary local file only; no network or persistence",
+          "legitimate_operation_allowed": true
+        }
+      }
+    },
+    {
+      "number": 18,
+      "id": "path-traversal",
+      "cwe": "CWE-22",
+      "owasp_primary": "A01",
+      "owasp_related": [],
+      "mapping_basis": "official-cwe-list",
+      "mapping_note": "Official CWE assignment; related categories are contextual only.",
+      "vulnerable_files": [
+        "labs/path_traversal/vulnerable.py"
+      ],
+      "fixed_files": [
+        "labs/path_traversal/secure.py"
+      ],
+      "proof_files": [
+        "labs/path_traversal/attack.py"
+      ],
+      "proof_entrypoint": "demonstrate",
+      "test_files": [
+        "labs/path_traversal/test_lab.py"
+      ],
+      "runtime": "local-python",
+      "file_sha256": [
+        {
+          "path": "labs/path_traversal/attack.py",
+          "sha256": "7ff58d2d869ca734de07b4eaeaebed9aa5053db1d561d3d4c10bf7edad4d2b2f"
+        },
+        {
+          "path": "labs/path_traversal/secure.py",
+          "sha256": "c1b915223d26683a7850907d57dd877ad4e504c2bc3ffdbfccb04905a4a51e9a"
+        },
+        {
+          "path": "labs/path_traversal/test_lab.py",
+          "sha256": "2e751d117b5c68be82756db324e1496a5107170710fd2cc80d55bb1bd86cc7eb"
+        },
+        {
+          "path": "labs/path_traversal/vulnerable.py",
+          "sha256": "e0b4dbd1b35b176648c872fc56981a983d6c91be63d1dfe02051ed4ba0f2ea08"
+        }
+      ],
+      "status": "PASS",
+      "evidence": {
+        "id": "path-traversal",
+        "description": "Path Traversal",
+        "cwe": "CWE-22",
+        "vulnerable_exploited": true,
+        "hardened_blocked": true,
+        "passed": true,
+        "evidence": {
+          "requested_path": "../private/payroll.txt",
+          "vulnerable_data": "SYNTHETIC_PRIVATE_PAYROLL",
+          "secure": "Resolved path constrained to public root",
+          "host_file_access": false,
+          "legitimate_operation_allowed": true
+        }
+      }
+    },
+    {
+      "number": 19,
+      "id": "business-logic-bypass",
+      "cwe": "CWE-841",
+      "owasp_primary": "A06",
+      "owasp_related": [],
+      "mapping_basis": "official-cwe-list",
+      "mapping_note": "Official CWE assignment; related categories are contextual only.",
+      "vulnerable_files": [
+        "labs/business_logic_bypass/vulnerable.py"
+      ],
+      "fixed_files": [
+        "labs/business_logic_bypass/secure.py"
+      ],
+      "proof_files": [
+        "labs/business_logic_bypass/attack.py"
+      ],
+      "proof_entrypoint": "demonstrate",
+      "test_files": [
+        "labs/business_logic_bypass/test_lab.py"
+      ],
+      "runtime": "local-python",
+      "file_sha256": [
+        {
+          "path": "labs/business_logic_bypass/attack.py",
+          "sha256": "5bbe04079ecc07a6e3fb828695641939d7c55fbf852e36be349f541ee0c9d845"
+        },
+        {
+          "path": "labs/business_logic_bypass/secure.py",
+          "sha256": "f5846cadeb4e2e2d9eb8c1b52d09fb0a5627bc832290b8296adbb95fcacac3f1"
+        },
+        {
+          "path": "labs/business_logic_bypass/test_lab.py",
+          "sha256": "2e751d117b5c68be82756db324e1496a5107170710fd2cc80d55bb1bd86cc7eb"
+        },
+        {
+          "path": "labs/business_logic_bypass/vulnerable.py",
+          "sha256": "cb573b9edf2b68140cf2f906801ec28b8085bc47ed4a3f79f32ad92225c39871"
+        }
+      ],
+      "status": "PASS",
+      "evidence": {
+        "id": "business-logic-bypass",
+        "description": "Coupon Reuse / Business Logic Bypass",
+        "cwe": "CWE-841",
+        "vulnerable_exploited": true,
+        "hardened_blocked": true,
+        "passed": true,
+        "evidence": {
+          "vulnerable_repeat_price_cents": 1500,
+          "secure_first_price_cents": 1500,
+          "secure_repeat_denied": true,
+          "redemption_rows": 2,
+          "legitimate_operation_allowed": true
+        }
+      }
+    },
+    {
+      "number": 20,
+      "id": "missing-login-rate-limiting",
+      "cwe": "CWE-307",
+      "owasp_primary": "A07",
+      "owasp_related": [],
+      "mapping_basis": "official-cwe-list",
+      "mapping_note": "Official CWE assignment; related categories are contextual only.",
+      "vulnerable_files": [
+        "labs/missing_login_rate_limiting/vulnerable.py"
+      ],
+      "fixed_files": [
+        "labs/missing_login_rate_limiting/secure.py"
+      ],
+      "proof_files": [
+        "labs/missing_login_rate_limiting/attack.py"
+      ],
+      "proof_entrypoint": "demonstrate",
+      "test_files": [
+        "labs/missing_login_rate_limiting/test_lab.py"
+      ],
+      "runtime": "local-python",
+      "file_sha256": [
+        {
+          "path": "labs/missing_login_rate_limiting/attack.py",
+          "sha256": "a2ee20293bd7a694cc76f3e1ac3011b4f10f214ec3826893ff5ba941260b95dd"
+        },
+        {
+          "path": "labs/missing_login_rate_limiting/secure.py",
+          "sha256": "9df4608235248dac50b1de59f3c475be4bce9ea91b5d2a82ec7a463ff4ed53fb"
+        },
+        {
+          "path": "labs/missing_login_rate_limiting/test_lab.py",
+          "sha256": "2e751d117b5c68be82756db324e1496a5107170710fd2cc80d55bb1bd86cc7eb"
+        },
+        {
+          "path": "labs/missing_login_rate_limiting/vulnerable.py",
+          "sha256": "8ac3646ea9f74a20d2cd671761ba8ffe034f9f34318d7527cfeaa1832c95280d"
+        }
+      ],
+      "status": "PASS",
+      "evidence": {
+        "id": "missing-login-rate-limiting",
+        "description": "Missing Login Rate Limiting",
+        "cwe": "CWE-307",
+        "vulnerable_exploited": true,
+        "hardened_blocked": true,
+        "passed": true,
+        "evidence": {
+          "attempt_count": 6,
+          "vulnerable_statuses": [
+            401,
+            401,
+            401,
+            401,
+            401,
+            401
+          ],
+          "secure_statuses": [
+            401,
+            401,
+            401,
+            429,
+            429,
+            429
+          ],
+          "scope": "In-process per-account limiter; production requires distributed state and broader abuse controls",
+          "legitimate_operation_allowed": true
+        }
+      }
+    },
+    {
+      "number": 21,
+      "id": "session-fixation",
+      "cwe": "CWE-384",
+      "owasp_primary": "A07",
+      "owasp_related": [],
+      "mapping_basis": "official-cwe-list",
+      "mapping_note": "Official CWE assignment; related categories are contextual only.",
+      "vulnerable_files": [
+        "labs/session_fixation/vulnerable.py"
+      ],
+      "fixed_files": [
+        "labs/session_fixation/secure.py"
+      ],
+      "proof_files": [
+        "labs/session_fixation/attack.py"
+      ],
+      "proof_entrypoint": "demonstrate",
+      "test_files": [
+        "labs/session_fixation/test_lab.py"
+      ],
+      "runtime": "local-python",
+      "file_sha256": [
+        {
+          "path": "labs/session_fixation/attack.py",
+          "sha256": "e0a8f7e21d6ad46f8b1dc11e514a80442e4ceca103673ea2ec91d8b256d57226"
+        },
+        {
+          "path": "labs/session_fixation/secure.py",
+          "sha256": "b4267f871949c010ccababe673d8961048e032ca42c9194b7705e06a584c4be6"
+        },
+        {
+          "path": "labs/session_fixation/test_lab.py",
+          "sha256": "2e751d117b5c68be82756db324e1496a5107170710fd2cc80d55bb1bd86cc7eb"
+        },
+        {
+          "path": "labs/session_fixation/vulnerable.py",
+          "sha256": "7dd9a39851d9107c1f954f19ffd5539d2cc4392b1feb158ea89c32ffae91234f"
+        }
+      ],
+      "status": "PASS",
+      "evidence": {
+        "id": "session-fixation",
+        "description": "Session Fixation",
+        "cwe": "CWE-384",
+        "vulnerable_exploited": true,
+        "hardened_blocked": true,
+        "passed": true,
+        "evidence": {
+          "vulnerable_identifier_retained": true,
+          "secure_identifier_rotated": true,
+          "secure_old_session_invalidated": true,
+          "legitimate_operation_allowed": true
+        }
+      }
+    },
+    {
+      "number": 22,
+      "id": "unsafe-deserialization",
+      "cwe": "CWE-502",
+      "owasp_primary": "A08",
+      "owasp_related": [],
+      "mapping_basis": "official-cwe-list",
+      "mapping_note": "Official CWE assignment; related categories are contextual only.",
+      "vulnerable_files": [
+        "labs/unsafe_deserialization/vulnerable.py"
+      ],
+      "fixed_files": [
+        "labs/unsafe_deserialization/secure.py"
+      ],
+      "proof_files": [
+        "labs/unsafe_deserialization/attack.py"
+      ],
+      "proof_entrypoint": "demonstrate",
+      "test_files": [
+        "labs/unsafe_deserialization/test_lab.py"
+      ],
+      "runtime": "local-python",
+      "file_sha256": [
+        {
+          "path": "labs/unsafe_deserialization/attack.py",
+          "sha256": "2b9322454c82e5cc8d9e06d6266f1a1c126d352e61112ed3da5388566bb704dc"
+        },
+        {
+          "path": "labs/unsafe_deserialization/secure.py",
+          "sha256": "6ebcf0c05a53044b4f3786f8a27e907782b303859038603d2b1ca50cb2a4da6c"
+        },
+        {
+          "path": "labs/unsafe_deserialization/test_lab.py",
+          "sha256": "2e751d117b5c68be82756db324e1496a5107170710fd2cc80d55bb1bd86cc7eb"
+        },
+        {
+          "path": "labs/unsafe_deserialization/vulnerable.py",
+          "sha256": "5d22b0a926903136f448614906a7396830d63e968891382641242813d2701cf6"
+        }
+      ],
+      "status": "PASS",
+      "evidence": {
+        "id": "unsafe-deserialization",
+        "description": "Unsafe Deserialization",
+        "cwe": "CWE-502",
+        "vulnerable_exploited": true,
+        "hardened_blocked": true,
+        "passed": true,
+        "evidence": {
+          "vulnerable_callable_executed": true,
+          "secure_marker_exists": false,
+          "secure_format": "Schema-validated JSON; no pickle execution",
+          "payload_bytes": 117,
+          "legitimate_operation_allowed": true
+        }
+      }
+    },
+    {
+      "number": 23,
+      "id": "unsigned-artifact-acceptance",
+      "cwe": "CWE-345",
+      "owasp_primary": "A08",
+      "owasp_related": [],
+      "mapping_basis": "official-cwe-list",
+      "mapping_note": "Official CWE assignment; related categories are contextual only.",
+      "vulnerable_files": [
+        "labs/unsigned_artifact_acceptance/vulnerable.py"
+      ],
+      "fixed_files": [
+        "labs/unsigned_artifact_acceptance/secure.py"
+      ],
+      "proof_files": [
+        "labs/unsigned_artifact_acceptance/attack.py"
+      ],
+      "proof_entrypoint": "demonstrate",
+      "test_files": [
+        "labs/unsigned_artifact_acceptance/test_lab.py"
+      ],
+      "runtime": "local-python",
+      "file_sha256": [
+        {
+          "path": "labs/unsigned_artifact_acceptance/attack.py",
+          "sha256": "b314c0fdae8e1a1ea93374a18f4bd6bc786442e1472a0c1046d364b37a854aa2"
+        },
+        {
+          "path": "labs/unsigned_artifact_acceptance/secure.py",
+          "sha256": "7df02d68a3bb110c4f357a4a5894d182b906122ba505e6c71b1436c70945ae19"
+        },
+        {
+          "path": "labs/unsigned_artifact_acceptance/test_lab.py",
+          "sha256": "2e751d117b5c68be82756db324e1496a5107170710fd2cc80d55bb1bd86cc7eb"
+        },
+        {
+          "path": "labs/unsigned_artifact_acceptance/vulnerable.py",
+          "sha256": "ac37a9b0949699dc5939e47e7f8c22ec7a0f14ac0bee0c8c9cb7ece5d005bbf1"
+        }
+      ],
+      "status": "PASS",
+      "evidence": {
+        "id": "unsigned-artifact-acceptance",
+        "description": "Unauthenticated Artifact Acceptance",
+        "cwe": "CWE-345",
+        "vulnerable_exploited": true,
+        "hardened_blocked": true,
+        "passed": true,
+        "evidence": {
+          "vulnerable_sender_checksum_accepted": true,
+          "secure_unsigned_denied": true,
+          "secure_modified_envelope_denied": true,
+          "authenticator": "HMAC-SHA256 with an ephemeral shared key; this is a MAC, not a public-key digital signature",
+          "difference_from_03": "Attacker supplies both artifact and matching checksum; trusted producer authentication is missing",
+          "legitimate_operation_allowed": true
+        }
+      }
+    },
+    {
+      "number": 24,
+      "id": "missing-security-audit-logs",
+      "cwe": "CWE-778",
+      "owasp_primary": "A09",
+      "owasp_related": [],
+      "mapping_basis": "official-cwe-list",
+      "mapping_note": "Official CWE assignment; related categories are contextual only.",
+      "vulnerable_files": [
+        "labs/missing_security_audit_logs/vulnerable.py"
+      ],
+      "fixed_files": [
+        "labs/missing_security_audit_logs/secure.py"
+      ],
+      "proof_files": [
+        "labs/missing_security_audit_logs/attack.py"
+      ],
+      "proof_entrypoint": "demonstrate",
+      "test_files": [
+        "labs/missing_security_audit_logs/test_lab.py"
+      ],
+      "runtime": "local-python",
+      "file_sha256": [
+        {
+          "path": "labs/missing_security_audit_logs/attack.py",
+          "sha256": "06d394d5589c21a15968551707383d29c89d409c2eb9ae465e95d01656172522"
+        },
+        {
+          "path": "labs/missing_security_audit_logs/secure.py",
+          "sha256": "845b35cb78485f31ea1852d5e0cce6c6f32e8ec40afcfb9867c8aabc8757a7b6"
+        },
+        {
+          "path": "labs/missing_security_audit_logs/test_lab.py",
+          "sha256": "2e751d117b5c68be82756db324e1496a5107170710fd2cc80d55bb1bd86cc7eb"
+        },
+        {
+          "path": "labs/missing_security_audit_logs/vulnerable.py",
+          "sha256": "fa1cb029cb3016d8f142d95ea7901c02a7c2ae8cbd0ab4190030ff89ff1226a4"
+        }
+      ],
+      "status": "PASS",
+      "evidence": {
+        "id": "missing-security-audit-logs",
+        "description": "Missing Security Audit Logs",
+        "cwe": "CWE-778",
+        "vulnerable_exploited": true,
+        "hardened_blocked": true,
+        "passed": true,
+        "evidence": {
+          "vulnerable_audit_exists": false,
+          "secure_events": [
+            {
+              "timestamp": "2026-11-17T15:11:18.954454+00:00",
+              "request_id": "62477d8ca7c96697",
+              "action": "role_change",
+              "actor": "admin",
+              "target": "alice",
+              "result": "allowed"
+            },
+            {
+              "timestamp": "2026-11-17T15:11:18.954573+00:00",
+              "request_id": "61f98427b3cd9fe4",
+              "action": "role_change",
+              "actor": "bob",
+              "target": "admin",
+              "result": "denied"
+            }
+          ],
+          "scope": "Local JSONL evidence, not a deployed SIEM or tamper-resistant log store",
+          "legitimate_operation_allowed": true
+        }
+      }
+    },
+    {
+      "number": 25,
+      "id": "fail-open-error-handling",
+      "cwe": "CWE-636",
+      "owasp_primary": "A10",
+      "owasp_related": [],
+      "mapping_basis": "official-cwe-list",
+      "mapping_note": "Official CWE assignment; related categories are contextual only.",
+      "vulnerable_files": [
+        "labs/fail_open_error_handling/vulnerable.py"
+      ],
+      "fixed_files": [
+        "labs/fail_open_error_handling/secure.py"
+      ],
+      "proof_files": [
+        "labs/fail_open_error_handling/attack.py"
+      ],
+      "proof_entrypoint": "demonstrate",
+      "test_files": [
+        "labs/fail_open_error_handling/test_lab.py"
+      ],
+      "runtime": "local-python",
+      "file_sha256": [
+        {
+          "path": "labs/fail_open_error_handling/attack.py",
+          "sha256": "a7e8ae06657d6a1c5aeb1b67cb01c48a6139358b94acaa0fed0994862e9faf93"
+        },
+        {
+          "path": "labs/fail_open_error_handling/secure.py",
+          "sha256": "7d5921307b8bc80433e4ecb23d61a082779dd8a72aa8f33caa6327b1ee5c6ed4"
+        },
+        {
+          "path": "labs/fail_open_error_handling/test_lab.py",
+          "sha256": "2e751d117b5c68be82756db324e1496a5107170710fd2cc80d55bb1bd86cc7eb"
+        },
+        {
+          "path": "labs/fail_open_error_handling/vulnerable.py",
+          "sha256": "e5921bea945eca6b2316a02d46af30384faa542a521b9cd7c7c7dbcb52529e88"
+        }
+      ],
+      "status": "PASS",
+      "evidence": {
+        "id": "fail-open-error-handling",
+        "description": "Fail-Open Error Handling",
+        "cwe": "CWE-636",
+        "vulnerable_exploited": true,
+        "hardened_blocked": true,
+        "passed": true,
+        "evidence": {
+          "injected_fault": "TimeoutError",
+          "vulnerable_allowed": true,
+          "secure_allowed": false,
+          "healthy_allow_and_deny_preserved": true,
+          "legitimate_operation_allowed": true
+        }
+      }
+    }
+  ]
+}

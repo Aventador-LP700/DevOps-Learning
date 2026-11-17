@@ -1,0 +1,87 @@
+[
+  {
+    "path": "scenarios/04-security-gate-bypass/README.md",
+    "sha256": "4b85aafce319553b45ca7ca4a5309237b49cb775ae4faa89ae2b914fa3ca1f1a",
+    "unchanged": true
+  },
+  {
+    "path": "scenarios/02-secret-exposure/README.md",
+    "sha256": "a63b8b1469b977ed82ea5a9ac3bdf4e3d5a8c90db848554546e706f76a72d4c9",
+    "unchanged": true
+  },
+  {
+    "path": "scenarios/01-pipeline-injection/README.md",
+    "sha256": "6c64fae70948411884250bc68219bb102491822c8474dea73dddecda0ef31fed",
+    "unchanged": true
+  },
+  {
+    "path": "scenarios/03-artifact-tampering/README.md",
+    "sha256": "b818fb6afad2f49e6706814124c63cb718ad9beafee73d8beeeafcf5ab25a334",
+    "unchanged": true
+  },
+  {
+    "path": "scenarios/05-excessive-permissions/README.md",
+    "sha256": "72cf13d496bfbc9990ed95e0a56eb47e4e5394f78d0dac75f8ec8e444f08687c",
+    "unchanged": true
+  },
+  {
+    "path": "pipelines/vulnerable/secrets.py",
+    "sha256": "3d7bc03fef63e39273201d0da87b8094dd515be6c169497c660ef6b0ca509874",
+    "unchanged": true
+  },
+  {
+    "path": "pipelines/vulnerable/gate.py",
+    "sha256": "4bb85eda966693257d0ca3278d7393bc5a363e4f78265e94182502288d36bdff",
+    "unchanged": true
+  },
+  {
+    "path": "pipelines/vulnerable/metadata.py",
+    "sha256": "effba918d182d02c9889acec536c5b222954557a6ff55f9186eafc9861c46ace",
+    "unchanged": true
+  },
+  {
+    "path": "pipelines/hardened/secrets.py",
+    "sha256": "81dccb24de150fec927d55cda61dace661d1f3cabfddc3c9cebcdf74c0561536",
+    "unchanged": true
+  },
+  {
+    "path": "pipelines/hardened/gate.py",
+    "sha256": "f00a77266dbe542f8153fe00ab757f5077bfdfa9849517db67cdecc202edd026",
+    "unchanged": true
+  },
+  {
+    "path": "pipelines/hardened/metadata.py",
+    "sha256": "087e853d4b325b28fff79f3dd6791bf337a288ae414ba4d6cedea4f48ff0c2e7",
+    "unchanged": true
+  },
+  {
+    "path": "lab/scenarios.py",
+    "sha256": "3a1a46294ddec5bebe2b0483c7ff5310a3c63adcfdfad43f976564b87d68304e",
+    "unchanged": true
+  },
+  {
+    "path": "lab/controls.py",
+    "sha256": "618ae77bcbd5a6722eb396b074fb8d184a5a5c8ca521d0a04fef588d80ce6f2b",
+    "unchanged": true
+  },
+  {
+    "path": "scripts/k8s.sh",
+    "sha256": "31b391f2f1295f15afb98fc3636faee5272551da5cc3f3890f606d4d4b58b44b",
+    "unchanged": true
+  },
+  {
+    "path": "infra/kubernetes/vulnerable-rbac.yaml",
+    "sha256": "0712ec4b54fb085cf16494fb6b2b367f402597b4a141f45f7a93231a07fad634",
+    "unchanged": true
+  },
+  {
+    "path": "infra/kubernetes/hardened-rbac.yaml",
+    "sha256": "414a602765e048a449edd7054918a1efcc2f6321e4e7b8db28e5f533a0f7f5ba",
+    "unchanged": true
+  },
+  {
+    "path": "infra/kubernetes/base.yaml",
+    "sha256": "14d4eb0dd88a0aa9a97959c4e226b5df169329616b87b7fc9fb67251db041772",
+    "unchanged": true
+  }
+]

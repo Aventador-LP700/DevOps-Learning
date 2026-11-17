@@ -1,6 +1,9 @@
 # 11 — Debug Information Disclosure
 
-**Difficulty:** Beginner · **CWE:** CWE-209 · **OWASP Top 10:2025:** A02/A10
+**Difficulty:** Beginner · **CWE:** CWE-209 · **OWASP Top 10:2025:** A10/A02
+
+The first category is the official OWASP 2025 mapping for the selected CWE;
+subsequent categories describe related application or supply-chain context.
 
 ## Learning objectives
 
@@ -69,7 +72,7 @@ Return a generic error with a correlation ID; restrict detailed diagnostics to p
 
 The lab does not ship a production log collector. The dummy configuration is intentionally synthetic.
 
-## Interview questions and answers
+## Knowledge checks
 
 **Should an error return HTTP 200 to hide the failure?**  
 No. Keep accurate failure status while removing sensitive detail from the public body.

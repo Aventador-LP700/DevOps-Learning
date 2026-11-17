@@ -1,0 +1,7 @@
+test_credentialed_cors_read_only_in_vulnerable_application (browser_labs.BrowserTests.test_credentialed_cors_read_only_in_vulnerable_application) ... ok
+test_stored_xss_executes_only_in_vulnerable_application (browser_labs.BrowserTests.test_stored_xss_executes_only_in_vulnerable_application) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 2.869s
+
+OK

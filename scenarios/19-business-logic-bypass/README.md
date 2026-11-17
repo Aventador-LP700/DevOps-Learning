@@ -65,11 +65,13 @@ Compare repeated discounted purchases and the fixed database redemption ledger.
 
 Enforce the workflow invariant atomically with a UNIQUE(user,coupon) constraint and a transaction.
 
+The fixed function rejects missing/empty principals before any SQL, including against a legacy nullable ledger. The example schema also uses NOT NULL columns; concurrent redemption is regression-tested.
+
 ## Scope and residual risk
 
 The subtotal is a trusted integer fixture, not a client-controlled production price. Real checkout also needs inventory, payment and idempotency controls.
 
-## Interview questions and answers
+## Knowledge checks
 
 **Why is a check-then-insert pattern risky?**  
 Concurrent requests can both observe no redemption. A database uniqueness constraint makes the invariant atomic.

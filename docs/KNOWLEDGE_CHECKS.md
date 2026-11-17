@@ -1,4 +1,4 @@
-# Interview guide
+# Knowledge checks
 
 Use observations and residual risk, not a claim that installing a tool proves security.
 

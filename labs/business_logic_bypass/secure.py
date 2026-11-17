@@ -2,6 +2,8 @@ import sqlite3
 from labs.support import Denied
 
 def checkout(db, user, coupon, subtotal_cents=2500):
+    if not isinstance(user, str) or not user.strip() or len(user) > 128:
+        raise Denied("Authenticated principal required")
     if coupon != "ONCE10" or not isinstance(subtotal_cents, int) or subtotal_cents < 1000:
         raise Denied("Invalid coupon or subtotal")
     try:

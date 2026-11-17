@@ -69,7 +69,7 @@ HTML-escape comment text and add a restrictive CSP in the fixed HTTP application
 
 This covers HTML text context. Attribute, URL and JavaScript contexts require their own encoding or safe DOM APIs.
 
-## Interview questions and answers
+## Knowledge checks
 
 **Why is CSP not a substitute for output encoding?**  
 CSP is defense in depth and can be weakened or bypassed by application changes; correct data-to-DOM handling removes the injection primitive.

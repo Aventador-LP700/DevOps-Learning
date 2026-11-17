@@ -69,7 +69,7 @@ Return credentialed CORS headers only for exact trusted origins; otherwise omit 
 
 CORS governs browser reads, not authentication or server-to-server access. The trusted UI origin in this lab is the explicit localhost:8082 example.
 
-## Interview questions and answers
+## Knowledge checks
 
 **Can wildcard origins be used with credentials?**  
 Browsers reject that combination. Reflecting arbitrary origins with credentials is the dangerous working pattern shown here.

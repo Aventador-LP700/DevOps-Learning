@@ -69,7 +69,7 @@ Record action, actor, target, outcome, timestamp and correlation ID; fail the cr
 
 Local JSONL is not a tamper-resistant audit store or a SIEM. Production collection, access control and alerting remain separate.
 
-## Interview questions and answers
+## Knowledge checks
 
 **Should audit logs record only successful actions?**  
 No. Denied privileged actions are useful attack signals; avoid logging credentials or unnecessary personal data.

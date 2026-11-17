@@ -69,7 +69,7 @@ Use parameterized queries for values, and separate allowlists for dynamic identi
 
 Parameterization does not implement object authorization. The query operates only on a synthetic in-memory database.
 
-## Interview questions and answers
+## Knowledge checks
 
 **Can placeholders bind a table name?**  
 Usually not. Bind data values; map dynamic identifiers to an explicit allowlist instead of interpolating user input.

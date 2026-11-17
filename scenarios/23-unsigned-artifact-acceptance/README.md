@@ -69,7 +69,7 @@ Verify an HMAC-SHA256 authenticator using a randomly generated protected key bef
 
 This uses a shared-key MAC, not a public-key digital signature. Scenario 03 protects a trusted digest; this lab demonstrates missing producer authentication.
 
-## Interview questions and answers
+## Knowledge checks
 
 **How does authenticity differ from a plain checksum?**  
 An attacker can recompute an unkeyed checksum. A protected-key authenticator requires access to the trusted producer key.

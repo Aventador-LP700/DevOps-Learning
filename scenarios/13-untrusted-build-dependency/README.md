@@ -1,6 +1,9 @@
 # 13 — Untrusted Build Dependency
 
-**Difficulty:** Intermediate · **CWE:** CWE-829 · **OWASP Top 10:2025:** A03
+**Difficulty:** Intermediate · **CWE:** CWE-829 · **OWASP Top 10:2025:** A08/A03
+
+The first category is the official OWASP 2025 mapping for the selected CWE;
+subsequent categories describe related application or supply-chain context.
 
 ## Learning objectives
 
@@ -65,11 +68,13 @@ A temporary marker proves the local dependency hook actually executed; compare i
 
 Do not execute untrusted source hooks in the protected build. This lab consumes pinned prebuilt metadata as data.
 
+The fixed builder validates nonempty string name/version fields and bounds the JSON metadata size; a trusted digest alone does not establish a valid schema.
+
 ## Scope and residual risk
 
 The fixed alternative models a prebuilt dependency workflow, not a complete wheel installer. Production builders still need isolation and provenance.
 
-## Interview questions and answers
+## Knowledge checks
 
 **Why can installing a development dependency compromise a pipeline?**  
 Package build/install hooks can execute before the application runs and may inherit the runner’s privileges and secrets.

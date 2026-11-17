@@ -1,6 +1,9 @@
 # 08 — Mass Assignment
 
-**Difficulty:** Beginner · **CWE:** CWE-915 · **OWASP Top 10:2025:** A01
+**Difficulty:** Beginner · **CWE:** CWE-915 · **OWASP Top 10:2025:** A08/A01
+
+The first category is the official OWASP 2025 mapping for the selected CWE;
+subsequent categories describe related application or supply-chain context.
 
 ## Learning objectives
 
@@ -69,7 +72,7 @@ Accept an explicit schema of editable fields and validate their types and length
 
 A denylist can miss newly added privileged fields; explicit writable-field schemas are easier to review.
 
-## Interview questions and answers
+## Knowledge checks
 
 **Why is binding a request directly to a model dangerous?**  
 The model often contains internal fields, such as roles, that should never be client-writable.

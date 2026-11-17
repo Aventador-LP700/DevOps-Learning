@@ -22,7 +22,7 @@
     "id": "mass-assignment",
     "title": "Mass Assignment",
     "cwe": "CWE-915",
-    "owasp_2025": "A01",
+    "owasp_2025": "A08/A01",
     "difficulty": "Beginner",
     "module": "mass_assignment"
   },
@@ -49,7 +49,7 @@
     "id": "debug-information-disclosure",
     "title": "Debug Information Disclosure",
     "cwe": "CWE-209",
-    "owasp_2025": "A02/A10",
+    "owasp_2025": "A10/A02",
     "difficulty": "Beginner",
     "module": "debug_information_disclosure"
   },
@@ -58,7 +58,7 @@
     "id": "dependency-confusion",
     "title": "Local Dependency Confusion",
     "cwe": "CWE-427",
-    "owasp_2025": "A03",
+    "owasp_2025": "A08/A03",
     "difficulty": "Intermediate",
     "module": "dependency_confusion"
   },
@@ -67,7 +67,7 @@
     "id": "untrusted-build-dependency",
     "title": "Untrusted Build Dependency",
     "cwe": "CWE-829",
-    "owasp_2025": "A03",
+    "owasp_2025": "A08/A03",
     "difficulty": "Intermediate",
     "module": "untrusted_build_dependency"
   },

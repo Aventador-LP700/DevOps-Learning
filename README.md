@@ -23,7 +23,7 @@ covering OWASP Top 10:2025. Native/Docker assessment runs execute 24 local scena
 pipeline implementations are preserved.
 
 Each new lab includes executable vulnerable and fixed modules, a harmless proof,
-vulnerability/remediation/positive tests, detection guidance and interview answers.
+vulnerability/remediation/positive tests, detection guidance and knowledge checks.
 Two additional browser tests verify actual stored-XSS execution and credentialed
 CORS reads. The secure-default HTTP adapter exposes selected application labs:
 
@@ -41,8 +41,9 @@ pickle restoration, arbitrary SSRF targets or package installation.
 - [Startup, tests and cleanup](docs/OPERATING_LABS.md)
 - [Expanded architecture](docs/ARCHITECTURE.md) and [threat model](docs/THREAT_MODEL.md)
 - [Security gates and intentional findings](docs/SECURITY_GATES.md)
-- [Actual expansion validation](docs/EXPANSION_VALIDATION.md)
-- [Interview guide](docs/INTERVIEW_GUIDE.md) and [portfolio review](PORTFOLIO.md)
+- [Current scenario audit and exact results](docs/SCENARIO_AUDIT.md)
+- [Recorded expansion validation](docs/EXPANSION_VALIDATION.md)
+- [Knowledge checks](docs/KNOWLEDGE_CHECKS.md) and [technical demonstration](docs/DEMO_GUIDE.md)
 
 ## Start without Docker
 
@@ -168,7 +169,7 @@ tests/                  Control edge cases and HTTP tests
 - Evidence distinguishes reproducible teaching fixtures from real infrastructure tests.
 
 Read the [threat model](docs/threat-model.md), [architecture](docs/architecture.md),
-[assessment template](docs/assessment-template.md), and [portfolio demo guide](docs/portfolio.md).
+[assessment template](docs/assessment-template.md), and [technical demonstration guide](docs/DEMO_GUIDE.md).
 
 ## Safety and scope
 

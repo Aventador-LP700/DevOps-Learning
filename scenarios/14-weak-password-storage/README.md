@@ -71,7 +71,7 @@ production values should be benchmarked against current password-storage guidanc
 
 Salting and adaptive cost do not make weak passwords unguessable. Production parameters must be benchmarked and authentication needs abuse controls.
 
-## Interview questions and answers
+## Knowledge checks
 
 **What does a salt protect against?**  
 It prevents identical-password hash equality and cross-account precomputation reuse; it does not add entropy to the password.

@@ -1,6 +1,9 @@
 # 12 — Local Dependency Confusion
 
-**Difficulty:** Intermediate · **CWE:** CWE-427 · **OWASP Top 10:2025:** A03
+**Difficulty:** Intermediate · **CWE:** CWE-427 · **OWASP Top 10:2025:** A08/A03
+
+The first category is the official OWASP 2025 mapping for the selected CWE;
+subsequent categories describe related application or supply-chain context.
 
 ## Learning objectives
 
@@ -69,7 +72,7 @@ Resolve exclusively from the approved private namespace and pin version and trus
 
 This is a real local JSON index simulation, not a PyPI-compatible registry or internet package takeover. No package is installed.
 
-## Interview questions and answers
+## Knowledge checks
 
 **Why does a version lock alone not establish publisher trust?**  
 A lock needs an authenticated source and trusted content identity; an attacker may control a competing source or mutable metadata.

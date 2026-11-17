@@ -41,4 +41,4 @@ make k8s-up k8s-test                   # separate real Kubernetes exercise 05
 Start with the [operating guide](../docs/OPERATING_LABS.md), then compare the
 [vulnerability matrix](../docs/VULNERABILITY_MATRIX.md) and
 [actual validation](../docs/EXPANSION_VALIDATION.md). Every new lab supplies a
-vulnerable implementation, fixed implementation, proof, tests and interview answers.
+vulnerable implementation, fixed implementation, proof, tests and knowledge checks.

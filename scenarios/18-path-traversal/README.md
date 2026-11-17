@@ -69,7 +69,7 @@ Reject absolute paths and require the resolved target to remain under the public
 
 An outer safety envelope prevents real host-file reads. Production designs must consider races and filesystem-level no-follow/openat controls.
 
-## Interview questions and answers
+## Knowledge checks
 
 **Why check the resolved path rather than a ../ substring?**  
 Encoding and symlinks can escape lexical checks; canonical resolution checks where the file actually points.

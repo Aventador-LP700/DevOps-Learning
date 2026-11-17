@@ -69,7 +69,7 @@ Allow only the configured public endpoint, validate canonical destinations and d
 
 Both versions have a separate safety envelope allowing only allocated loopback mocks. Production controls must address DNS rebinding, redirects, IPv6 and network egress.
 
-## Interview questions and answers
+## Knowledge checks
 
 **Why is URL string filtering insufficient in production?**  
 Parsing ambiguities, redirects and DNS changes can make a permitted-looking URL reach a different destination.

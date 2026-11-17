@@ -1,0 +1,52 @@
+{
+  "baseline_unit": {
+    "run": 89,
+    "passed": 89,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "baseline_browser": {
+    "run": 2,
+    "passed": 2,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "pre_fix_regressions": {
+    "run": 11,
+    "passed": 9,
+    "failed": 2,
+    "errors": 0,
+    "skipped": 0
+  },
+  "post_fix_regressions": {
+    "run": 11,
+    "passed": 11,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "final_unit": {
+    "run": 106,
+    "passed": 106,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "final_browser": {
+    "run": 2,
+    "passed": 2,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "local_scenarios": {
+    "passed": 24,
+    "failed": 0,
+    "not_run": 1,
+    "generated_at": "2026-11-17T15:05:44.375330+00:00",
+    "tested_commit": "d08044f57d3e7b9682b1681dc8855d63f4a642fb",
+    "working_tree_dirty": true
+  }
+}
