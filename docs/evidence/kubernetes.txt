@@ -1,0 +1,5 @@
+Source: https://github.com/Aventador-LP700/DevOps-Learning/actions/runs/44097428862
+Tested commit: c15ac61742b38736b7b5cc92573d6e5c7c1d3fd7
+Excerpt from the completed GitHub job log:
+
+rbac	Run make k8s-up k8s-test	2026-11-17T13:55:39.3989603Z PASS: secret stolen under vulnerable Role; forbidden after hardening; deployment patch allowed

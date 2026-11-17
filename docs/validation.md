@@ -11,6 +11,7 @@ Date: 17 November 2026. Environment: managed Linux amd64 workspace with Docker
 | JSON/Markdown report export | Passed |
 | Local demo deployment and health request | Passed |
 | Semgrep 1.185.0, one local shell-execution rule on hardened paths | 0 findings; narrow rule coverage only |
+| Gitleaks 8.30.1 repository history | No secrets found |
 | Syft 1.57.2 + Cosign 2.5.3 | SBOM generated; original signature verified; modified SBOM rejected |
 | Trivy 0.76.2 real image scan | Scan completed; release gate correctly blocked HIGH/CRITICAL findings |
 | Local kind 0.30.0 startup | Blocked: rootless Docker lacks systemd Delegate=yes |
@@ -32,6 +33,25 @@ The image identifier and base digest are recorded in the live scan summary.
 Generated timestamps use UTC. This is an implementation snapshot, not a claim that
 all platforms, every scanner rule or optional integration has passed.
 
-GitHub workflow results will provide commit-specific validation after publication.
-The manual Kubernetes workflow runs on a hosted runner with a supported Docker
-setup; its outcome must be checked before claiming a successful real-cluster retest.
+## GitHub-hosted verification
+
+The following runs tested implementation commit
+`c15ac61742b38736b7b5cc92573d6e5c7c1d3fd7`:
+
+- [Core CI: passed](https://github.com/Aventador-LP700/DevOps-Learning/actions/runs/44097426375).
+  Unit checks, four attack/defense retests, report export, deployment smoke test and
+  evidence upload succeeded.
+- [Kubernetes integration: passed](https://github.com/Aventador-LP700/DevOps-Learning/actions/runs/44097428862).
+  A real kind cluster deployed successfully. The excessive Role permitted the
+  synthetic Secret read; scoped RBAC denied that read and allowed the intended
+  Deployment patch. Cleanup succeeded. This resolves the local workspace limitation
+  for the hosted test, without claiming the workspace itself supports kind.
+- [Live tools](https://github.com/Aventador-LP700/DevOps-Learning/actions/runs/44097439806):
+  source/secret checks and signed-SBOM retests passed. The image-release-gate job
+  failed because actual HIGH/CRITICAL findings were blocked, as designed. The
+  Trivy report was uploaded; the workflow is intentionally not reported as green.
+
+These links identify the tested commit. Subsequent documentation-only changes do
+not alter the implementation. Workflow artifacts are retained for a limited time;
+the committed local assessment provides a durable core example.
+
