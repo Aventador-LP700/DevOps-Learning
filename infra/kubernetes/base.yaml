@@ -1,0 +1,58 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: pipelineproof
+  labels:
+    pod-security.kubernetes.io/enforce: restricted
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: ci-deployer
+  namespace: pipelineproof
+automountServiceAccountToken: false
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo
+  namespace: pipelineproof
+spec:
+  replicas: 1
+  selector:
+    matchLabels: {app: pipelineproof}
+  template:
+    metadata:
+      labels: {app: pipelineproof}
+    spec:
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 10001
+        seccompProfile: {type: RuntimeDefault}
+      containers:
+        - name: app
+          image: pipelineproof:local
+          imagePullPolicy: Never
+          command: [python, -m, app.server]
+          ports: [{containerPort: 8080}]
+          securityContext:
+            readOnlyRootFilesystem: true
+            allowPrivilegeEscalation: false
+            capabilities: {drop: [ALL]}
+          resources:
+            requests: {cpu: 50m, memory: 32Mi}
+            limits: {cpu: 250m, memory: 128Mi}
+          readinessProbe:
+            httpGet: {path: /health, port: 8080}
+          livenessProbe:
+            httpGet: {path: /health, port: 8080}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: demo
+  namespace: pipelineproof
+spec:
+  selector: {app: pipelineproof}
+  ports: [{port: 8080, targetPort: 8080}]

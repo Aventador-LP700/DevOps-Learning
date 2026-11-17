@@ -1,0 +1,47 @@
+name: Live security tools
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  image-release-gate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - run: bash scripts/install_tools.sh trivy
+      - name: Scan actual image and enforce release policy
+        run: PATH="$PWD/.work/bin:$PATH" make scan
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        if: always()
+        with:
+          name: live-trivy-report
+          path: reports/trivy.json
+  signed-sbom:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - run: bash scripts/install_tools.sh syft cosign
+      - run: make build
+      - run: PATH="$PWD/.work/bin:$PATH" bash scripts/supply_chain.sh
+  source-and-secrets:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - run: bash scripts/install_tools.sh gitleaks
+      - run: pipx install semgrep==1.185.0
+      - name: Check hardened source paths
+        run: semgrep scan --config policies/semgrep.yml app lab pipelines/hardened --error --metrics off --disable-version-check
+      - name: Check repository history for real secrets
+        run: |
+          mkdir -p reports
+          .work/bin/gitleaks git . --redact --report-format json --report-path reports/gitleaks.json

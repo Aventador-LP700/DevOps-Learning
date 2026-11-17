@@ -1,0 +1,10 @@
+__pycache__/
+*.py[cod]
+.venv/
+.env
+reports/*
+!reports/.gitkeep
+!reports/README.md
+.work/
+*.pem
+*.key

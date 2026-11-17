@@ -1,0 +1,4 @@
+{
+  "blocked_severities": ["HIGH", "CRITICAL"],
+  "require_scan_results": true
+}

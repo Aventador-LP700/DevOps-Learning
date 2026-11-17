@@ -1,0 +1,6 @@
+rules:
+  - id: pipeline-shell-true
+    languages: [python]
+    severity: ERROR
+    message: Avoid shell=True when processing untrusted pipeline inputs.
+    pattern: subprocess.run(..., shell=True, ...)

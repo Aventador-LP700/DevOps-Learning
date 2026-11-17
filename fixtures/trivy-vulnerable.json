@@ -1,0 +1,15 @@
+{
+  "SchemaVersion": 2,
+  "ArtifactName": "pipelineproof-teaching-fixture",
+  "Results": [{
+    "Target": "synthetic-package",
+    "Vulnerabilities": [{
+      "VulnerabilityID": "LAB-EXAMPLE-001",
+      "PkgName": "synthetic-library",
+      "InstalledVersion": "0.0.1",
+      "FixedVersion": "0.0.2",
+      "Severity": "CRITICAL",
+      "Title": "Synthetic finding for policy testing; not a real CVE"
+    }]
+  }]
+}
