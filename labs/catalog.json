@@ -1,0 +1,182 @@
+[
+  {
+    "number": 6,
+    "id": "idor-bola",
+    "title": "Broken Object Level Authorization",
+    "cwe": "CWE-639",
+    "owasp_2025": "A01",
+    "difficulty": "Beginner",
+    "module": "idor_bola"
+  },
+  {
+    "number": 7,
+    "id": "broken-function-level-authorization",
+    "title": "Broken Function Level Authorization",
+    "cwe": "CWE-862",
+    "owasp_2025": "A01",
+    "difficulty": "Beginner",
+    "module": "broken_function_level_authorization"
+  },
+  {
+    "number": 8,
+    "id": "mass-assignment",
+    "title": "Mass Assignment",
+    "cwe": "CWE-915",
+    "owasp_2025": "A01",
+    "difficulty": "Beginner",
+    "module": "mass_assignment"
+  },
+  {
+    "number": 9,
+    "id": "ssrf",
+    "title": "Server-Side Request Forgery",
+    "cwe": "CWE-918",
+    "owasp_2025": "A01",
+    "difficulty": "Intermediate",
+    "module": "ssrf"
+  },
+  {
+    "number": 10,
+    "id": "cors-misconfiguration",
+    "title": "CORS Misconfiguration",
+    "cwe": "CWE-942",
+    "owasp_2025": "A02",
+    "difficulty": "Intermediate",
+    "module": "cors_misconfiguration"
+  },
+  {
+    "number": 11,
+    "id": "debug-information-disclosure",
+    "title": "Debug Information Disclosure",
+    "cwe": "CWE-209",
+    "owasp_2025": "A02/A10",
+    "difficulty": "Beginner",
+    "module": "debug_information_disclosure"
+  },
+  {
+    "number": 12,
+    "id": "dependency-confusion",
+    "title": "Local Dependency Confusion",
+    "cwe": "CWE-427",
+    "owasp_2025": "A03",
+    "difficulty": "Intermediate",
+    "module": "dependency_confusion"
+  },
+  {
+    "number": 13,
+    "id": "untrusted-build-dependency",
+    "title": "Untrusted Build Dependency",
+    "cwe": "CWE-829",
+    "owasp_2025": "A03",
+    "difficulty": "Intermediate",
+    "module": "untrusted_build_dependency"
+  },
+  {
+    "number": 14,
+    "id": "weak-password-storage",
+    "title": "Weak Password Storage",
+    "cwe": "CWE-916",
+    "owasp_2025": "A04",
+    "difficulty": "Intermediate",
+    "module": "weak_password_storage"
+  },
+  {
+    "number": 15,
+    "id": "sql-injection",
+    "title": "SQL Injection",
+    "cwe": "CWE-89",
+    "owasp_2025": "A05",
+    "difficulty": "Beginner",
+    "module": "sql_injection"
+  },
+  {
+    "number": 16,
+    "id": "stored-xss",
+    "title": "Stored Cross-Site Scripting",
+    "cwe": "CWE-79",
+    "owasp_2025": "A05",
+    "difficulty": "Intermediate",
+    "module": "stored_xss"
+  },
+  {
+    "number": 17,
+    "id": "os-command-injection-rce",
+    "title": "OS Command Injection",
+    "cwe": "CWE-78",
+    "owasp_2025": "A05",
+    "difficulty": "Intermediate",
+    "module": "os_command_injection_rce"
+  },
+  {
+    "number": 18,
+    "id": "path-traversal",
+    "title": "Path Traversal",
+    "cwe": "CWE-22",
+    "owasp_2025": "A01",
+    "difficulty": "Beginner",
+    "module": "path_traversal"
+  },
+  {
+    "number": 19,
+    "id": "business-logic-bypass",
+    "title": "Coupon Reuse / Business Logic Bypass",
+    "cwe": "CWE-841",
+    "owasp_2025": "A06",
+    "difficulty": "Intermediate",
+    "module": "business_logic_bypass"
+  },
+  {
+    "number": 20,
+    "id": "missing-login-rate-limiting",
+    "title": "Missing Login Rate Limiting",
+    "cwe": "CWE-307",
+    "owasp_2025": "A07",
+    "difficulty": "Intermediate",
+    "module": "missing_login_rate_limiting"
+  },
+  {
+    "number": 21,
+    "id": "session-fixation",
+    "title": "Session Fixation",
+    "cwe": "CWE-384",
+    "owasp_2025": "A07",
+    "difficulty": "Intermediate",
+    "module": "session_fixation"
+  },
+  {
+    "number": 22,
+    "id": "unsafe-deserialization",
+    "title": "Unsafe Deserialization",
+    "cwe": "CWE-502",
+    "owasp_2025": "A08",
+    "difficulty": "Advanced",
+    "module": "unsafe_deserialization"
+  },
+  {
+    "number": 23,
+    "id": "unsigned-artifact-acceptance",
+    "title": "Unauthenticated Artifact Acceptance",
+    "cwe": "CWE-345",
+    "owasp_2025": "A08",
+    "difficulty": "Intermediate",
+    "module": "unsigned_artifact_acceptance"
+  },
+  {
+    "number": 24,
+    "id": "missing-security-audit-logs",
+    "title": "Missing Security Audit Logs",
+    "cwe": "CWE-778",
+    "owasp_2025": "A09",
+    "difficulty": "Beginner",
+    "module": "missing_security_audit_logs"
+  },
+  {
+    "number": 25,
+    "id": "fail-open-error-handling",
+    "title": "Fail-Open Error Handling",
+    "cwe": "CWE-636",
+    "owasp_2025": "A10",
+    "difficulty": "Intermediate",
+    "module": "fail_open_error_handling"
+  }
+]

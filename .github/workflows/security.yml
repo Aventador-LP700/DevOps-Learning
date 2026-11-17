@@ -18,7 +18,9 @@ jobs:
         if: always()
         with:
           name: live-trivy-report
-          path: reports/trivy.json
+          path: |
+            reports/trivy.json
+            reports/trivy-image.sarif
   signed-sbom:
     runs-on: ubuntu-24.04
     timeout-minutes: 15
@@ -29,6 +31,14 @@ jobs:
       - run: bash scripts/install_tools.sh syft cosign
       - run: make build
       - run: PATH="$PWD/.work/bin:$PATH" bash scripts/supply_chain.sh
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: signed-sbom-evidence
+          path: |
+            reports/sbom.spdx.json
+            reports/sbom.sig
+            .work/signing/cosign.pub
+          include-hidden-files: true
   source-and-secrets:
     runs-on: ubuntu-24.04
     timeout-minutes: 15
@@ -40,8 +50,36 @@ jobs:
       - run: bash scripts/install_tools.sh gitleaks
       - run: pipx install semgrep==1.185.0
       - name: Check hardened source paths
-        run: semgrep scan --config policies/semgrep.yml app lab pipelines/hardened --error --metrics off --disable-version-check
+        run: python3 -m scripts.sast
       - name: Check repository history for real secrets
         run: |
           mkdir -p reports
           .work/bin/gitleaks git . --redact --report-format json --report-path reports/gitleaks.json
+
+  filesystem-and-dependencies:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - run: bash scripts/install_tools.sh trivy
+      - run: PATH="$PWD/.work/bin:$PATH" python3 -m scripts.fs_scan
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: filesystem-dependency-evidence
+          path: reports/trivy-fs.*
+  secure-app-dast:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - run: python3 -m scripts.zap
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: secure-app-zap-evidence
+          path: reports/zap.*

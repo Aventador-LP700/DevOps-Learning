@@ -3,6 +3,7 @@ ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
 WORKDIR /lab
 RUN useradd --uid 10001 --create-home learner && mkdir /reports && chown learner:learner /reports
 COPY --chown=learner:learner lab/ lab/
+COPY --chown=learner:learner labs/ labs/
 COPY --chown=learner:learner app/ app/
 COPY --chown=learner:learner policies/ policies/
 COPY --chown=learner:learner fixtures/ fixtures/

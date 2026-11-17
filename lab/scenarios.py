@@ -91,3 +91,7 @@ def run_scenario(name):
     return {"id": name, "description": description, "cwe": cwe,
             "vulnerable_exploited": bool(vulnerable), "hardened_blocked": bool(hardened),
             "passed": bool(vulnerable and hardened), "evidence": evidence}
+
+# Additive registry extension. Existing scenario functions and identifiers are preserved.
+from labs.catalog import CATALOG, adapter
+SCENARIOS.update({entry["id"]: (adapter(entry["id"]), entry["title"], entry["cwe"]) for entry in CATALOG})

@@ -18,3 +18,13 @@ reporting if enabled. Otherwise open an issue with a minimal description and ask
 a private reporting channel; do not post credentials or a working exploit against live systems.
 
 Supported version: current main branch. Exercise findings are expected behavior.
+
+## Expanded application labs
+
+Scenarios 06–25 include intentionally vulnerable modules under `labs/*/vulnerable.py`.
+The new HTTP adapter binds only to 127.0.0.1 and defaults to fixed modules. Starting
+its vulnerable mode requires both `--vulnerable` and `--enable-vulnerable-labs`.
+SSRF and package-registry demonstrations contact allocated loopback mocks only.
+High-risk shell, build-hook and pickle proofs remain CLI-only and use temporary
+marker files. No real accounts, cloud keys, reverse shells or public targets belong
+in these exercises. See [security gates](docs/SECURITY_GATES.md) for scanner scope.

@@ -5,15 +5,44 @@
 
 **Attack a pipeline. Collect evidence. Apply a control. Prove the same attack fails.**
 
-PipelineProof is an open-source, local-first CI/CD penetration-testing lab. Four
-core exercises demonstrate pipeline command injection, secret disclosure,
-artifact tampering, and security-gate bypass. A fifth exercise uses a real local
-Kubernetes API to demonstrate excessive CI deployment permissions and scoped RBAC.
+PipelineProof is an open-source, local-first CI/CD and application penetration-testing
+lab with 25 implemented scenarios. Twenty-four local exercises cover pipeline and
+application trust boundaries; scenario 05 uses a real local Kubernetes API to
+demonstrate excessive CI deployment permissions and scoped RBAC.
 
 Built for learners and reviewers who want reproducible evidence of CI/CD VAPT,
 not just screenshots of installed security tools.
 
 ![PipelineProof architecture](docs/architecture.svg)
+
+## Expanded application-security labs
+
+**25 implemented scenarios:** the original 01–05 plus 20 new vulnerable/fixed labs
+covering OWASP Top 10:2025. Native/Docker assessment runs execute 24 local scenarios;
+05 remains a separate real Kubernetes integration. Existing 01–05 walkthroughs and
+pipeline implementations are preserved.
+
+Each new lab includes executable vulnerable and fixed modules, a harmless proof,
+vulnerability/remediation/positive tests, detection guidance and interview answers.
+Two additional browser tests verify actual stored-XSS execution and credentialed
+CORS reads. The secure-default HTTP adapter exposes selected application labs:
+
+```bash
+python3 -m labs.web --port 8081
+# Vulnerable services require explicit opt-in:
+python3 -m labs.web --port 8083 --vulnerable --enable-vulnerable-labs
+```
+
+All new services bind to loopback. No HTTP endpoint exposes shell execution,
+pickle restoration, arbitrary SSRF targets or package installation.
+
+- [All 25 walkthroughs](scenarios/README.md)
+- [Vulnerability/CWE/OWASP matrix](docs/VULNERABILITY_MATRIX.md)
+- [Startup, tests and cleanup](docs/OPERATING_LABS.md)
+- [Expanded architecture](docs/ARCHITECTURE.md) and [threat model](docs/THREAT_MODEL.md)
+- [Security gates and intentional findings](docs/SECURITY_GATES.md)
+- [Actual expansion validation](docs/EXPANSION_VALIDATION.md)
+- [Interview guide](docs/INTERVIEW_GUIDE.md) and [portfolio review](PORTFOLIO.md)
 
 ## Start without Docker
 
@@ -25,7 +54,7 @@ cd DevOps-Learning
 bash ./setup.sh
 ```
 
-This runs the four core exercises, writes reports directly into `reports/`, then
+This runs the 24 local exercises, writes reports directly into `reports/`, then
 serves the demo API at **http://127.0.0.1:8080**. Stop it with **Ctrl+C**.
 No Docker, Make, pip dependencies, sudo or automatic package downloads are required.
 
@@ -68,6 +97,8 @@ PASS pipeline-injection
 PASS secret-exposure
 PASS artifact-tampering
 PASS security-gate-bypass
+# ...20 new scenarios follow...
+PASS fail-open-error-handling
 ```
 
 A PASS means the exploit succeeded against the vulnerable step **and** the

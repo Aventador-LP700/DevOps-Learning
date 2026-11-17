@@ -1,0 +1,459 @@
+{
+  "execution_mode": "container",
+  "schema_version": 1,
+  "generated_at": "2026-11-17T14:23:45.007532+00:00",
+  "passed": true,
+  "results": [
+    {
+      "id": "pipeline-injection",
+      "description": "Untrusted change metadata becomes a shell command",
+      "cwe": "CWE-78",
+      "vulnerable_exploited": true,
+      "hardened_blocked": true,
+      "passed": true,
+      "evidence": {
+        "payload": "release; printf compromised > injected.txt; #",
+        "vulnerable": {
+          "exit_code": 0,
+          "stdout": "release\n",
+          "stderr": ""
+        },
+        "hardened": {
+          "exit_code": 0,
+          "stdout": "release; printf compromised > injected.txt; #\n",
+          "stderr": ""
+        }
+      }
+    },
+    {
+      "id": "secret-exposure",
+      "description": "Build logging discloses a synthetic CI credential",
+      "cwe": "CWE-532",
+      "vulnerable_exploited": true,
+      "hardened_blocked": true,
+      "passed": true,
+      "evidence": {
+        "synthetic_only": true,
+        "detection": "Exact synthetic-token match in captured logs",
+        "vulnerable": {
+          "exit_code": 0,
+          "stdout": "Connecting with token=PP_SYNTHETIC_TOKEN_NOT_A_REAL_CREDENTIAL\n",
+          "stderr": ""
+        },
+        "hardened": {
+          "exit_code": 0,
+          "stdout": "Credential supplied; authentication step configured\n",
+          "stderr": ""
+        }
+      }
+    },
+    {
+      "id": "artifact-tampering",
+      "description": "Mutable artifact storage changes deployment contents",
+      "cwe": "CWE-353",
+      "vulnerable_exploited": true,
+      "hardened_blocked": true,
+      "passed": true,
+      "evidence": {
+        "trusted_digest": "70d1cf5744ec0f5e2244bd87c312d5adaff608af759ea9538603ae472083cd9f",
+        "received_digest": "fc77b6f38417cca6446a70bc4ccc6c6f3c148cbc599bc7c54b8545402734d01a",
+        "vulnerable": "Deployed modified JSON without integrity verification",
+        "hardened": "Artifact integrity verification failed",
+        "benign_artifact_accepted": true,
+        "trust_assumption": "Expected digest comes from trusted build state, not the mutable artifact store"
+      }
+    },
+    {
+      "id": "security-gate-bypass",
+      "description": "Advisory-only vulnerability scanning permits a release",
+      "cwe": "CWE-693",
+      "vulnerable_exploited": true,
+      "hardened_blocked": true,
+      "passed": true,
+      "evidence": {
+        "source": "Synthetic Trivy-format fixture; no scanner was executed in this exercise",
+        "vulnerable": {
+          "exit_code": 0,
+          "stdout": "{\"SchemaVersion\": 2, \"ArtifactName\": \"pipelineproof-teaching-fixture\", \"Results\": [{\"Target\": \"synthetic-package\", \"Vulnerabilities\": [{\"VulnerabilityID\": \"LAB-EXAMPLE-001\", \"PkgName\": \"synthetic-library\", \"InstalledVersion\": \"0.0.1\", \"FixedVersion\": \"0.0.2\", \"Severity\": \"CRITICAL\", \"Title\": \"Synthetic finding for policy testing; not a real CVE\"}]}]}\nAdvisory scan completed. Release allowed regardless of findings.\n",
+          "stderr": ""
+        },
+        "hardened": {
+          "allowed": false,
+          "blocked_findings": [
+            "LAB-EXAMPLE-001"
+          ]
+        },
+        "clean_report_accepted": true
+      }
+    },
+    {
+      "id": "idor-bola",
+      "description": "Broken Object Level Authorization",
+      "cwe": "CWE-639",
+      "vulnerable_exploited": true,
+      "hardened_blocked": true,
+      "passed": true,
+      "evidence": {
+        "requested_object": "200",
+        "attacker": "alice",
+        "vulnerable_owner": "bob",
+        "secure": "Ownership enforced",
+        "legitimate_operation_allowed": true
+      }
+    },
+    {
+      "id": "broken-function-level-authorization",
+      "description": "Broken Function Level Authorization",
+      "cwe": "CWE-862",
+      "vulnerable_exploited": true,
+      "hardened_blocked": true,
+      "passed": true,
+      "evidence": {
+        "vulnerable_target_active": false,
+        "secure_target_active": true,
+        "admin_action_allowed": true,
+        "legitimate_operation_allowed": true
+      }
+    },
+    {
+      "id": "mass-assignment",
+      "description": "Mass Assignment",
+      "cwe": "CWE-915",
+      "vulnerable_exploited": true,
+      "hardened_blocked": true,
+      "passed": true,
+      "evidence": {
+        "attack_payload": {
+          "role": "admin"
+        },
+        "vulnerable_role": "admin",
+        "secure_role": "user",
+        "legitimate_operation_allowed": true
+      }
+    },
+    {
+      "id": "ssrf",
+      "description": "Server-Side Request Forgery",
+      "cwe": "CWE-918",
+      "vulnerable_exploited": true,
+      "hardened_blocked": true,
+      "passed": true,
+      "evidence": {
+        "vulnerable_response": {
+          "dummy_metadata": "LAB_INTERNAL_ONLY"
+        },
+        "internal_mock_requests": [
+          "/internal/metadata"
+        ],
+        "public_mock_requests": [
+          "/public/info"
+        ],
+        "external_traffic": false,
+        "legitimate_operation_allowed": true
+      }
+    },
+    {
+      "id": "cors-misconfiguration",
+      "description": "CORS Misconfiguration",
+      "cwe": "CWE-942",
+      "vulnerable_exploited": true,
+      "hardened_blocked": true,
+      "passed": true,
+      "evidence": {
+        "untrusted_origin": "http://127.0.0.1:9999",
+        "vulnerable_headers": {
+          "Access-Control-Allow-Origin": "http://127.0.0.1:9999",
+          "Access-Control-Allow-Credentials": "true",
+          "Vary": "Origin"
+        },
+        "secure_headers": {
+          "Vary": "Origin"
+        },
+        "browser_validation": "See tests/browser_labs.py for real browser enforcement",
+        "legitimate_operation_allowed": true
+      }
+    },
+    {
+      "id": "debug-information-disclosure",
+      "description": "Debug Information Disclosure",
+      "cwe": "CWE-209",
+      "vulnerable_exploited": true,
+      "hardened_blocked": true,
+      "passed": true,
+      "evidence": {
+        "vulnerable_response": {
+          "debug": "Traceback (most recent call last):\n  File \"/lab/labs/debug_information_disclosure/vulnerable.py\", line 5, in handle\n    return 200, {\"result\": operation()}\n                           ^^^^^^^^^^^\n  File \"/lab/labs/debug_information_disclosure/attack.py\", line 6, in fail\n    raise RuntimeError(\"Synthetic backend detail\")\nRuntimeError: Synthetic backend detail\n",
+          "config": {
+            "database": "synthetic-db",
+            "password": "lab-only"
+          }
+        },
+        "secure_response": {
+          "error": "Request could not be completed",
+          "request_id": "7fb4c5ea436bd97b"
+        },
+        "legitimate_operation_allowed": true
+      }
+    },
+    {
+      "id": "dependency-confusion",
+      "description": "Local Dependency Confusion",
+      "cwe": "CWE-427",
+      "vulnerable_exploited": true,
+      "hardened_blocked": true,
+      "passed": true,
+      "evidence": {
+        "vulnerable_source": "public",
+        "vulnerable_version": "99.0.0",
+        "secure_source": "private",
+        "registry_requests": [
+          "/private/secureforge-utils",
+          "/public/secureforge-utils",
+          "/private/secureforge-utils"
+        ],
+        "simulation": "Real loopback JSON index; no PyPI traffic or package installation",
+        "legitimate_operation_allowed": true
+      }
+    },
+    {
+      "id": "untrusted-build-dependency",
+      "description": "Untrusted Build Dependency",
+      "cwe": "CWE-829",
+      "vulnerable_exploited": true,
+      "hardened_blocked": true,
+      "passed": true,
+      "evidence": {
+        "vulnerable_hook_executed": true,
+        "secure_marker_exists": false,
+        "secure": "Source hooks rejected; trusted metadata consumed as data",
+        "scope": "Simulation of build-hook execution, not a general Python package installer",
+        "legitimate_operation_allowed": true
+      }
+    },
+    {
+      "id": "weak-password-storage",
+      "description": "Weak Password Storage",
+      "cwe": "CWE-916",
+      "vulnerable_exploited": true,
+      "hardened_blocked": true,
+      "passed": true,
+      "evidence": {
+        "weak_hashes_equal": true,
+        "tiny_dictionary_recovered_dummy": true,
+        "secure_hashes_differ": true,
+        "secure_algorithm": "scrypt n=16384,r=8,p=1 with random 16-byte salt",
+        "limitation": "A weak password remains guessable offline; salted adaptive hashing raises cost, not password entropy",
+        "legitimate_operation_allowed": true
+      }
+    },
+    {
+      "id": "sql-injection",
+      "description": "SQL Injection",
+      "cwe": "CWE-89",
+      "vulnerable_exploited": true,
+      "hardened_blocked": true,
+      "passed": true,
+      "evidence": {
+        "payload": "alice' OR '1'='1",
+        "vulnerable_rows": [
+          [
+            "alice",
+            "notebook"
+          ],
+          [
+            "bob",
+            "private synthetic item"
+          ]
+        ],
+        "secure_rows": [],
+        "normal_rows": [
+          [
+            "alice",
+            "notebook"
+          ]
+        ],
+        "legitimate_operation_allowed": true
+      }
+    },
+    {
+      "id": "stored-xss",
+      "description": "Stored Cross-Site Scripting",
+      "cwe": "CWE-79",
+      "vulnerable_exploited": true,
+      "hardened_blocked": true,
+      "passed": true,
+      "evidence": {
+        "stored_payload": "<script>window.__pipelineproof_xss=1</script>",
+        "vulnerable_script_elements": 1,
+        "secure_script_elements": 0,
+        "browser_execution": "Tested separately with tests/browser_labs.py",
+        "legitimate_operation_allowed": true
+      }
+    },
+    {
+      "id": "os-command-injection-rce",
+      "description": "OS Command Injection",
+      "cwe": "CWE-78",
+      "vulnerable_exploited": true,
+      "hardened_blocked": true,
+      "passed": true,
+      "evidence": {
+        "payload": "demo; printf LAB_RCE > rce-proof; #",
+        "vulnerable_command_marker": true,
+        "secure_marker_exists": false,
+        "effect": "Temporary local file only; no network or persistence",
+        "legitimate_operation_allowed": true
+      }
+    },
+    {
+      "id": "path-traversal",
+      "description": "Path Traversal",
+      "cwe": "CWE-22",
+      "vulnerable_exploited": true,
+      "hardened_blocked": true,
+      "passed": true,
+      "evidence": {
+        "requested_path": "../private/payroll.txt",
+        "vulnerable_data": "SYNTHETIC_PRIVATE_PAYROLL",
+        "secure": "Resolved path constrained to public root",
+        "host_file_access": false,
+        "legitimate_operation_allowed": true
+      }
+    },
+    {
+      "id": "business-logic-bypass",
+      "description": "Coupon Reuse / Business Logic Bypass",
+      "cwe": "CWE-840",
+      "vulnerable_exploited": true,
+      "hardened_blocked": true,
+      "passed": true,
+      "evidence": {
+        "vulnerable_repeat_price_cents": 1500,
+        "secure_first_price_cents": 1500,
+        "secure_repeat_denied": true,
+        "redemption_rows": 2,
+        "legitimate_operation_allowed": true
+      }
+    },
+    {
+      "id": "missing-login-rate-limiting",
+      "description": "Missing Login Rate Limiting",
+      "cwe": "CWE-307",
+      "vulnerable_exploited": true,
+      "hardened_blocked": true,
+      "passed": true,
+      "evidence": {
+        "attempt_count": 6,
+        "vulnerable_statuses": [
+          401,
+          401,
+          401,
+          401,
+          401,
+          401
+        ],
+        "secure_statuses": [
+          401,
+          401,
+          401,
+          429,
+          429,
+          429
+        ],
+        "scope": "In-process per-account limiter; production requires distributed state and broader abuse controls",
+        "legitimate_operation_allowed": true
+      }
+    },
+    {
+      "id": "session-fixation",
+      "description": "Session Fixation",
+      "cwe": "CWE-384",
+      "vulnerable_exploited": true,
+      "hardened_blocked": true,
+      "passed": true,
+      "evidence": {
+        "vulnerable_identifier_retained": true,
+        "secure_identifier_rotated": true,
+        "secure_old_session_invalidated": true,
+        "legitimate_operation_allowed": true
+      }
+    },
+    {
+      "id": "unsafe-deserialization",
+      "description": "Unsafe Deserialization",
+      "cwe": "CWE-502",
+      "vulnerable_exploited": true,
+      "hardened_blocked": true,
+      "passed": true,
+      "evidence": {
+        "vulnerable_callable_executed": true,
+        "secure_marker_exists": false,
+        "secure_format": "Schema-validated JSON; no pickle execution",
+        "payload_bytes": 117,
+        "legitimate_operation_allowed": true
+      }
+    },
+    {
+      "id": "unsigned-artifact-acceptance",
+      "description": "Unauthenticated Artifact Acceptance",
+      "cwe": "CWE-345",
+      "vulnerable_exploited": true,
+      "hardened_blocked": true,
+      "passed": true,
+      "evidence": {
+        "vulnerable_sender_checksum_accepted": true,
+        "secure_unsigned_denied": true,
+        "secure_modified_envelope_denied": true,
+        "authenticator": "HMAC-SHA256 with an ephemeral shared key; this is a MAC, not a public-key digital signature",
+        "difference_from_03": "Attacker supplies both artifact and matching checksum; trusted producer authentication is missing",
+        "legitimate_operation_allowed": true
+      }
+    },
+    {
+      "id": "missing-security-audit-logs",
+      "description": "Missing Security Audit Logs",
+      "cwe": "CWE-778",
+      "vulnerable_exploited": true,
+      "hardened_blocked": true,
+      "passed": true,
+      "evidence": {
+        "vulnerable_audit_exists": false,
+        "secure_events": [
+          {
+            "timestamp": "2026-11-17T14:23:45.006604+00:00",
+            "request_id": "03fcb76514dc80aa",
+            "action": "role_change",
+            "actor": "admin",
+            "target": "alice",
+            "result": "allowed"
+          },
+          {
+            "timestamp": "2026-11-17T14:23:45.006671+00:00",
+            "request_id": "19ef5924c6a9de5a",
+            "action": "role_change",
+            "actor": "bob",
+            "target": "admin",
+            "result": "denied"
+          }
+        ],
+        "scope": "Local JSONL evidence, not a deployed SIEM or tamper-resistant log store",
+        "legitimate_operation_allowed": true
+      }
+    },
+    {
+      "id": "fail-open-error-handling",
+      "description": "Fail-Open Error Handling",
+      "cwe": "CWE-636",
+      "vulnerable_exploited": true,
+      "hardened_blocked": true,
+      "passed": true,
+      "evidence": {
+        "injected_fault": "TimeoutError",
+        "vulnerable_allowed": true,
+        "secure_allowed": false,
+        "healthy_allow_and_deny_preserved": true,
+        "legitimate_operation_allowed": true
+      }
+    }
+  ]
+}

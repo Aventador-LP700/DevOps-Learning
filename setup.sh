@@ -6,7 +6,7 @@ usage() {
   cat <<'HELP'
 Usage: bash ./setup.sh [--lab-only | --serve-only] [--port PORT] [--output DIRECTORY]
 
-Default: run the four native exercises, save reports, then serve the API on localhost.
+Default: run the 24 native exercises, save reports, then serve the API on localhost.
   --lab-only       Run exercises and exit (suitable for CI).
   --serve-only     Serve the demo API without running exercises.
   --port PORT      Local API port (default: 8080).

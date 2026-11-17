@@ -38,6 +38,7 @@ def main():
     if args.command == "list":
         for name, (_, description, _) in SCENARIOS.items():
             print(f"{name}: {description}")
+        print("excessive-permissions: external kind API exercise; run make k8s-up k8s-test")
         return 0
     if args.native:
         if os.name != "posix":
@@ -57,7 +58,8 @@ def main():
         results.append(result)
         print(f"{'PASS' if result['passed'] else 'FAIL'} {name}")
     report = {"execution_mode": "native" if args.native else "container", "schema_version": 1, "generated_at": datetime.now(timezone.utc).isoformat(),
-              "passed": all(r["passed"] for r in results), "results": results}
+              "passed": all(r["passed"] for r in results), "results": results,
+              "external_scenarios": [{"id": "excessive-permissions", "status": "not_run", "command": "make k8s-up k8s-test"}]}
     args.output.mkdir(parents=True, exist_ok=True)
     # Each execution replaces previous evidence, preventing mixed/stale run results.
     (args.output / "assessment.json").write_text(json.dumps(report, indent=2) + "\n")

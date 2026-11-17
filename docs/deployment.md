@@ -7,7 +7,7 @@ run `bash ./setup.sh` from a checkout. Git is needed only to clone the repositor
 an extracted ZIP also works. No packages are installed by the script and no virtual
 environment is needed because the core project uses Python's standard library.
 
-The default command runs all four core exercises, writes `reports/assessment.json`
+The default command runs all 24 local exercises, writes `reports/assessment.json`
 and `.md` directly, then starts the API in the foreground on localhost. Press Ctrl+C
 to stop. Existing reports in the chosen output directory are replaced on each run.
 Do not use `make report` for native reports; that command exports Docker evidence.
@@ -32,7 +32,7 @@ working directories, but keep your operating-system privileges and network acces
 This is not a security sandbox. Only the fixed shipped proofs are intended for this
 mode; use a disposable VM for custom attack code. The API binds to `127.0.0.1`.
 
-Native mode covers four teaching exercises and the demo API. It does not create a
+Native mode covers 24 teaching exercises and the demo API. It does not create a
 Kubernetes cluster, container images, a registry or a CI runner service. The fifth
 RBAC exercise and image tools remain optional and require the Docker/kind setup below.
 
@@ -51,7 +51,7 @@ claiming platform support. Optional binary download examples assume Linux amd64.
 
 ## Docker core lab
 
-`make lab` builds the image and runs four isolated exercises. Results persist in a
+`make lab` builds the image and runs 24 isolated exercises. Results persist in a
 Docker named volume. `make report` copies only the two known report files into
 `reports/` without mounting the host into the attack container. It replaces previous
 exports. An export before a successful run fails rather than inventing results.
@@ -125,3 +125,6 @@ unrelated Docker images, volumes, or clusters.
   Docker daemon; inspect `kind export logs --name pipelineproof`.
 - Scan gate fails: inspect actual findings and update/rebuild the base image. Do not
   silently ignore scan failures to obtain a green badge.
+
+For the 20 new module walkthroughs, secure/vulnerable HTTP modes and optional browser
+tests, see [the expanded operating guide](OPERATING_LABS.md).

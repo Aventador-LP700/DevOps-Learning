@@ -4,3 +4,37 @@ rules:
     severity: ERROR
     message: Avoid shell=True when processing untrusted pipeline inputs.
     pattern: subprocess.run(..., shell=True, ...)
+
+  - id: unsafe-python-deserialization
+    languages: [python]
+    severity: ERROR
+    message: Do not deserialize untrusted Python pickle data.
+    pattern-either:
+      - pattern: pickle.loads(...)
+      - pattern: pickle.load(...)
+  - id: weak-password-md5
+    languages: [python]
+    severity: ERROR
+    message: MD5 is unsuitable for password storage; use an adaptive salted KDF.
+    pattern: hashlib.md5(...)
+  - id: concatenated-sql-query
+    languages: [python]
+    severity: ERROR
+    message: Bind user data as query parameters instead of SQL source.
+    mode: taint
+    pattern-sources:
+      - pattern: $A + $B
+        exact: true
+    pattern-sinks:
+      - patterns:
+          - pattern: $DB.execute($QUERY, ...)
+          - focus-metavariable: $QUERY
+  - id: fail-open-exception
+    languages: [python]
+    severity: ERROR
+    message: Exceptions must not grant authorization.
+    pattern: |
+      try:
+          ...
+      except Exception:
+          return True

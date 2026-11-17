@@ -1,0 +1,39 @@
+{
+  "tool": "Semgrep 1.185.0",
+  "rule_count": 5,
+  "fixed_path_finding_count": 0,
+  "intentional_finding_count": 6,
+  "intentional_findings": [
+    {
+      "rule": "policies.fail-open-exception",
+      "path": "labs/fail_open_error_handling/vulnerable.py",
+      "line": 2
+    },
+    {
+      "rule": "policies.pipeline-shell-true",
+      "path": "labs/os_command_injection_rce/vulnerable.py",
+      "line": 5
+    },
+    {
+      "rule": "policies.concatenated-sql-query",
+      "path": "labs/sql_injection/vulnerable.py",
+      "line": 3
+    },
+    {
+      "rule": "policies.unsafe-python-deserialization",
+      "path": "labs/unsafe_deserialization/vulnerable.py",
+      "line": 9
+    },
+    {
+      "rule": "policies.weak-password-md5",
+      "path": "labs/weak_password_storage/vulnerable.py",
+      "line": 4
+    },
+    {
+      "rule": "policies.pipeline-shell-true",
+      "path": "pipelines/vulnerable/metadata.py",
+      "line": 4
+    }
+  ],
+  "note": "Separate scans; teaching detections are expected, fixed-code findings remain blocking. Focused rules do not prove complete OWASP coverage."
+}

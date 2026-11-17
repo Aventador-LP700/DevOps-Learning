@@ -14,7 +14,7 @@ down:
 test:
 	python3 -m unittest discover -s tests -v
 check: test
-	python3 -m compileall -q app lab scripts tests
+	python3 -m compileall -q app lab labs scripts tests
 	docker compose config --quiet
 clean:
 	docker compose down --volumes --remove-orphans
@@ -26,3 +26,19 @@ k8s-down:
 	bash scripts/k8s.sh down
 scan: build
 	bash scripts/scan.sh
+
+.PHONY: test-new browser http http-vulnerable sast fs-scan zap
+test-new:
+	python3 -m unittest discover -s tests -p test_extended_labs.py -v
+browser:
+	python3 -m unittest discover -s tests -p browser_labs.py -v
+http:
+	python3 -m labs.web --port 8081
+http-vulnerable:
+	python3 -m labs.web --port 8081 --vulnerable --enable-vulnerable-labs
+sast:
+	python3 -m scripts.sast
+fs-scan:
+	python3 -m scripts.fs_scan
+zap:
+	python3 -m scripts.zap

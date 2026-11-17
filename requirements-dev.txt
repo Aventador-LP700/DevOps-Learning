@@ -1,0 +1,4 @@
+# Optional browser integration tooling; native labs need no pip dependencies.
+playwright==1.62.0
+greenlet==3.5.5
+pyee==13.0.1

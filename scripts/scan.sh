@@ -9,4 +9,5 @@ rm -f reports/trivy.json
 docker save pipelineproof:local -o reports/image.tar
 trap 'rm -f reports/image.tar' EXIT
 trivy image --scanners vuln --format json --output reports/trivy.json --input reports/image.tar
+trivy convert --format sarif --output reports/trivy-image.sarif reports/trivy.json
 python3 -m pipelines.hardened.gate reports/trivy.json

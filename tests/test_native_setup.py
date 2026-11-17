@@ -41,7 +41,7 @@ class NativeSetupTests(unittest.TestCase):
         report = json.loads((self.reports / 'assessment.json').read_text())
         self.assertTrue(report['passed'])
         self.assertEqual(report['execution_mode'], 'native')
-        self.assertEqual(len(report['results']), 4)
+        self.assertEqual(len(report['results']), 24)
         self.assertIn('Execution mode: native', (self.reports / 'assessment.md').read_text())
         self.assertFalse(self.called.exists())
 
