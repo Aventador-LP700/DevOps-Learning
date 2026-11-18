@@ -5,6 +5,15 @@ implements the requested SecureForge-style learning scope without renaming or
 replacing the original project. It retains standard-library Python, the existing
 CLI/report shape, native Bash setup, Docker controls and kind deployment.
 
+## Architecture images
+
+[![Architecture overview](diagrams/pipelineproof-overview.svg)](diagrams/pipelineproof-attack-map.svg)
+
+The [complete attack map](diagrams/pipelineproof-attack-map.svg) shows all 25 scenarios,
+their code locations and fixed controls. [Download its vector PDF](diagrams/pipelineproof-attack-map.pdf)
+for zooming or printing. See the [diagram guide](diagrams/README.md) for formats,
+legend, scope and regeneration commands.
+
 ```mermaid
 flowchart LR
   U[Learner: explicit run] --> N[Native setup or restricted Docker lab]

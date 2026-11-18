@@ -13,7 +13,15 @@ demonstrate excessive CI deployment permissions and scoped RBAC.
 Built for learners and reviewers who want reproducible evidence of CI/CD VAPT,
 not just screenshots of installed security tools.
 
-![PipelineProof architecture](docs/architecture.svg)
+[![PipelineProof architecture and attack overview](docs/diagrams/pipelineproof-overview.svg)](docs/diagrams/pipelineproof-attack-map.svg)
+
+[Full 25-scenario attack map — vector SVG](docs/diagrams/pipelineproof-attack-map.svg)
+· [Vector PDF](docs/diagrams/pipelineproof-attack-map.pdf)
+· [High-resolution PNG](docs/diagrams/pipelineproof-attack-map.png)
+· [Diagram guide and downloads](docs/diagrams/README.md)
+
+The SVG and PDF versions stay sharp when zoomed. Click the overview to open the
+complete map of attacks, fixed controls, code locations, runtime boundaries and evidence.
 
 ## Expanded application-security labs
 

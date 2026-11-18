@@ -1,0 +1,596 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="3000" height="2800" viewBox="0 0 3000 2800" role="img" aria-labelledby="title description">
+<title id="title">PipelineProof — full 25-scenario attack and architecture map</title>
+<desc id="description">All 25 documented attack scenarios, exact code locations, fixed controls, local fixture boundaries, separate real Kubernetes lab, security gates and evidence storage.</desc>
+<defs><marker id="arrow-red" markerWidth="9" markerHeight="9" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0 0 L8 4 L0 8 Z" fill="#ff7888"/></marker><marker id="arrow-teal" markerWidth="9" markerHeight="9" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0 0 L8 4 L0 8 Z" fill="#5ee4be"/></marker><marker id="arrow-cyan" markerWidth="9" markerHeight="9" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0 0 L8 4 L0 8 Z" fill="#55d7f0"/></marker><marker id="arrow-gold" markerWidth="9" markerHeight="9" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0 0 L8 4 L0 8 Z" fill="#f2c476"/></marker></defs>
+<rect width="3000" height="2800" rx="24" fill="#0a1322"/>
+<path d="M35 0 V2800" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M105 0 V2800" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M175 0 V2800" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M245 0 V2800" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M315 0 V2800" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M385 0 V2800" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M455 0 V2800" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M525 0 V2800" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M595 0 V2800" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M665 0 V2800" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M735 0 V2800" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M805 0 V2800" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M875 0 V2800" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M945 0 V2800" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M1015 0 V2800" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M1085 0 V2800" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M1155 0 V2800" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M1225 0 V2800" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M1295 0 V2800" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M1365 0 V2800" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M1435 0 V2800" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M1505 0 V2800" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M1575 0 V2800" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M1645 0 V2800" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M1715 0 V2800" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M1785 0 V2800" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M1855 0 V2800" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M1925 0 V2800" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M1995 0 V2800" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M2065 0 V2800" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M2135 0 V2800" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M2205 0 V2800" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M2275 0 V2800" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M2345 0 V2800" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M2415 0 V2800" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M2485 0 V2800" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M2555 0 V2800" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M2625 0 V2800" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M2695 0 V2800" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M2765 0 V2800" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M2835 0 V2800" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M2905 0 V2800" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M2975 0 V2800" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M0 35 H3000" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M0 105 H3000" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M0 175 H3000" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M0 245 H3000" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M0 315 H3000" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M0 385 H3000" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M0 455 H3000" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M0 525 H3000" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M0 595 H3000" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M0 665 H3000" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M0 735 H3000" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M0 805 H3000" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M0 875 H3000" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M0 945 H3000" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M0 1015 H3000" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M0 1085 H3000" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M0 1155 H3000" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M0 1225 H3000" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M0 1295 H3000" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M0 1365 H3000" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M0 1435 H3000" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M0 1505 H3000" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M0 1575 H3000" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M0 1645 H3000" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M0 1715 H3000" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M0 1785 H3000" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M0 1855 H3000" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M0 1925 H3000" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M0 1995 H3000" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M0 2065 H3000" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M0 2135 H3000" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M0 2205 H3000" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M0 2275 H3000" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M0 2345 H3000" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M0 2415 H3000" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M0 2485 H3000" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M0 2555 H3000" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M0 2625 H3000" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M0 2695 H3000" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M0 2765 H3000" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<g transform="translate(95 99) scale(0.72)" aria-hidden="true">
+<path d="M-64 25 L5 -2 L90 25 L20 55 Z" fill="#12374e" stroke="#55d7f0" stroke-width="1.7"/>
+<path d="M-64 25 L20 55 L20 63 L-64 33 Z" fill="#10293e"/><path d="M20 55 L90 25 L90 33 L20 63 Z" fill="#0c2032"/>
+<path d="M-23 -44 L19 -62 L60 -43 L18 -25 Z" fill="#2b6d7f" stroke="#74ead7" stroke-width="2"/><path d="M-23 -44 L18 -25 V21 L-23 2 Z" fill="#19485d" stroke="#74ead7" stroke-width="2"/><path d="M18 -25 L60 -43 V2 L18 21 Z" fill="#133248" stroke="#74ead7" stroke-width="2"/>
+<path d="M-5 -20 L-5 0 M28 -21 L49 -30" stroke="#9bf4dd" stroke-width="4"/>
+</g>
+<text x="210" y="98" font-family="DejaVu Sans, Arial, sans-serif" font-size="60" font-weight="750" fill="#eef5ff" text-anchor="start">PipelineProof</text>
+<text x="210" y="145" font-family="DejaVu Sans, Arial, sans-serif" font-size="28" font-weight="400" fill="#a2b6cf" text-anchor="start">Attack paths, runtime boundaries and lab structure</text>
+<text x="210" y="182" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="600" fill="#5ee4be" text-anchor="start">ATTACK  /  OBSERVE  /  HARDEN  /  RETEST</text>
+<rect x="2490" y="54" width="420" height="105" rx="16" fill="#0d1a2d" stroke="#55d7f0" stroke-width="2"/>
+<text x="2700" y="99" font-family="DejaVu Sans, Arial, sans-serif" font-size="32" font-weight="700" fill="#55d7f0" text-anchor="middle">25 SCENARIOS</text>
+<text x="2700" y="134" font-family="DejaVu Sans, Arial, sans-serif" font-size="21" font-weight="400" fill="#a2b6cf" text-anchor="middle">24 local  +  1 real kind API</text>
+<rect x="110" y="235" width="880" height="225" rx="16" fill="#102036" stroke="#29435e" stroke-width="2"/>
+<rect x="1070" y="235" width="880" height="225" rx="16" fill="#102036" stroke="#29435e" stroke-width="2"/>
+<rect x="2030" y="235" width="880" height="225" rx="16" fill="#102036" stroke="#29435e" stroke-width="2"/>
+<text x="140" y="279" font-family="DejaVu Sans, Arial, sans-serif" font-size="20" font-weight="650" fill="#55d7f0" text-anchor="start">LEARNER WORKSTATION</text>
+<g transform="translate(890 355) scale(0.75)" aria-hidden="true">
+<path d="M-64 25 L5 -2 L90 25 L20 55 Z" fill="#12374e" stroke="#55d7f0" stroke-width="1.7"/>
+<path d="M-64 25 L20 55 L20 63 L-64 33 Z" fill="#10293e"/><path d="M20 55 L90 25 L90 33 L20 63 Z" fill="#0c2032"/>
+<path d="M-27 -77 L54 -49 V28 L-27 0 Z" fill="#194569" stroke="#68e7f5" stroke-width="2"/><path d="M54 -49 L67 -57 V20 L54 28 Z" fill="#102b46"/>
+<path d="M-27 -77 L-14 -85 L67 -57 L54 -49 Z" fill="#286f8d"/><path d="M-21 -58 L45 -35" stroke="#9deaff" stroke-width="2"/>
+<path d="M-14 -39 L0 -26 L-14 -22 M8 -16 L32 -8" stroke="#83eede" fill="none" stroke-width="4"/>
+</g>
+<text x="140" y="320" font-family="DejaVu Sans, Arial, sans-serif" font-size="29" font-weight="600" fill="#eef5ff" text-anchor="start">Native or restricted Docker mode</text>
+<text x="140" y="360" font-family="DejaVu Sans Mono, monospace" font-size="22" font-weight="400" fill="#5ee4be" text-anchor="start">bash ./setup.sh --lab-only</text>
+<text x="140" y="395" font-family="DejaVu Sans, Arial, sans-serif" font-size="19" font-weight="400" fill="#a2b6cf" text-anchor="start">make lab  →  Docker image pipelineproof:local</text>
+<text x="140" y="429" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="400" fill="#a2b6cf" text-anchor="start">Optional demo API: app/ on 127.0.0.1:8080</text>
+<text x="1100" y="279" font-family="DejaVu Sans, Arial, sans-serif" font-size="20" font-weight="650" fill="#55d7f0" text-anchor="start">TRUSTED EXERCISE ROUTER</text>
+<g transform="translate(1850 355) scale(0.75)" aria-hidden="true">
+<path d="M-64 25 L5 -2 L90 25 L20 55 Z" fill="#12374e" stroke="#55d7f0" stroke-width="1.7"/>
+<path d="M-64 25 L20 55 L20 63 L-64 33 Z" fill="#10293e"/><path d="M20 55 L90 25 L90 33 L20 63 Z" fill="#0c2032"/>
+<path d="M-23 -74 L31 -55 V30 L-23 11 Z" fill="#1b4b6a" stroke="#74e8ef" stroke-width="2"/><path d="M31 -55 L49 -65 V20 L31 30 Z" fill="#123047"/><path d="M-23 -74 L-5 -84 L49 -65 L31 -55 Z" fill="#32718c"/>
+<path d="M-15 -47 L23 -34" stroke="#8ce4ec" stroke-width="3"/>
+<circle cx="-12" cy="-54" r="2.6" fill="#5ee4be"/>
+<path d="M-15 -22 L23 -9" stroke="#8ce4ec" stroke-width="3"/>
+<circle cx="-12" cy="-29" r="2.6" fill="#5ee4be"/>
+<path d="M-15 3 L23 16" stroke="#8ce4ec" stroke-width="3"/>
+<circle cx="-12" cy="-4" r="2.6" fill="#5ee4be"/>
+</g>
+<text x="1100" y="320" font-family="DejaVu Sans, Arial, sans-serif" font-size="29" font-weight="600" fill="#eef5ff" text-anchor="start">Replay controlled proof inputs</text>
+<text x="1100" y="360" font-family="DejaVu Sans Mono, monospace" font-size="21" font-weight="400" fill="#5ee4be" text-anchor="start">lab/scenarios.py  +  labs/catalog.json</text>
+<text x="1100" y="395" font-family="DejaVu Sans, Arial, sans-serif" font-size="18.5" font-weight="400" fill="#a2b6cf" text-anchor="start">Vulnerable effect  →  fixed retest  →  legitimate result</text>
+<text x="1100" y="429" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="400" fill="#a2b6cf" text-anchor="start">Temporary working directories; synthetic data only</text>
+<text x="2060" y="279" font-family="DejaVu Sans, Arial, sans-serif" font-size="20" font-weight="650" fill="#55d7f0" text-anchor="start">GITHUB REPOSITORY / CI</text>
+<g transform="translate(2800 355) scale(0.75)" aria-hidden="true">
+<path d="M-64 25 L5 -2 L90 25 L20 55 Z" fill="#12374e" stroke="#55d7f0" stroke-width="1.7"/>
+<path d="M-64 25 L20 55 L20 63 L-64 33 Z" fill="#10293e"/><path d="M20 55 L90 25 L90 33 L20 63 Z" fill="#0c2032"/>
+<path d="M-27 -77 L54 -49 V28 L-27 0 Z" fill="#194569" stroke="#68e7f5" stroke-width="2"/><path d="M54 -49 L67 -57 V20 L54 28 Z" fill="#102b46"/>
+<path d="M-27 -77 L-14 -85 L67 -57 L54 -49 Z" fill="#286f8d"/><path d="M-21 -58 L45 -35" stroke="#9deaff" stroke-width="2"/>
+<path d="M-5 -31 L-16 -23 L-5 -8 M25 -20 L38 -6 L25 0 M18 -35 L6 2" stroke="#83eede" fill="none" stroke-width="4"/>
+</g>
+<text x="2060" y="320" font-family="DejaVu Sans, Arial, sans-serif" font-size="29" font-weight="600" fill="#eef5ff" text-anchor="start">Read-only validation workflows</text>
+<text x="2060" y="360" font-family="DejaVu Sans Mono, monospace" font-size="22" font-weight="400" fill="#5ee4be" text-anchor="start">.github/workflows/</text>
+<text x="2060" y="395" font-family="DejaVu Sans, Arial, sans-serif" font-size="20" font-weight="400" fill="#a2b6cf" text-anchor="start">Native · Docker · browser · SAST</text>
+<text x="2060" y="429" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="400" fill="#a2b6cf" text-anchor="start">Manual kind and live-security-tool jobs are separate</text>
+<path d="M990 348 H1060" fill="none" stroke="#55d7f0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-cyan)"/>
+<path d="M2030 348 H1960" fill="none" stroke="#55d7f0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-cyan)"/>
+<rect x="50" y="535" width="2900" height="1280" rx="22" fill="#0d1a2d" stroke="#29435e" stroke-width="2" stroke-dasharray="12 8"/>
+<text x="110" y="579" font-family="DejaVu Sans, Arial, sans-serif" font-size="25" font-weight="700" fill="#55d7f0" text-anchor="start">24 LOCAL EXERCISES</text>
+<text x="110" y="613" font-family="DejaVu Sans, Arial, sans-serif" font-size="19" font-weight="400" fill="#a2b6cf" text-anchor="start">The groups below locate code and fixtures; they are not 24 deployed network services.</text>
+<text x="2895" y="579" font-family="DejaVu Sans, Arial, sans-serif" font-size="19" font-weight="400" fill="#a2b6cf" text-anchor="end">Docker: non-root · read-only root · no Docker socket</text>
+<text x="2895" y="613" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="400" fill="#a2b6cf" text-anchor="end">Loopback mocks work inside the network-disabled container.</text>
+<path d="M1510 460 V645 H80 V1200 H2470" fill="none" stroke="#ff7888" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M80 645 H2470" fill="none" stroke="#ff7888" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M550 645 V681" fill="none" stroke="#ff7888" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-red)"/>
+<path d="M1510 645 V681" fill="none" stroke="#ff7888" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-red)"/>
+<path d="M2470 645 V681" fill="none" stroke="#ff7888" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-red)"/>
+<path d="M550 1200 V1231" fill="none" stroke="#ff7888" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-red)"/>
+<path d="M1510 1200 V1231" fill="none" stroke="#ff7888" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-red)"/>
+<path d="M2470 1200 V1231" fill="none" stroke="#ff7888" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-red)"/>
+<path d="M550 1770 H2470" fill="none" stroke="#5ee4be" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M970 1160 V1175 H1020 V1770 H550" fill="none" stroke="#5ee4be" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M1930 1160 V1175 H1980 V1770 H1510" fill="none" stroke="#5ee4be" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M2890 1160 V1175 H2935 V1770 H2470" fill="none" stroke="#5ee4be" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M550 1710 V1770" fill="none" stroke="#5ee4be" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M1510 1710 V1770" fill="none" stroke="#5ee4be" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M2470 1710 V1770" fill="none" stroke="#5ee4be" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M1510 1770 V1875" fill="none" stroke="#5ee4be" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-teal)"/>
+<path d="M2910 405 H2975 V2070 H2920" fill="none" stroke="#55d7f0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-cyan)" stroke-dasharray="10 8"/>
+<rect x="110" y="690" width="880" height="470" rx="16" fill="#102036" stroke="#29435e" stroke-width="2"/>
+<text x="136" y="724" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="700" fill="#55d7f0" text-anchor="start">CI / BUILD PIPELINE</text>
+<text x="136" y="763" font-family="DejaVu Sans, Arial, sans-serif" font-size="29" font-weight="600" fill="#eef5ff" text-anchor="start">Pipeline inputs and dependency sources</text>
+<text x="136" y="794" font-family="DejaVu Sans, Arial, sans-serif" font-size="15.2" font-weight="400" fill="#a2b6cf" text-anchor="start">pipelines/ + labs/dependency_confusion/ + labs/untrusted_build_dependency/</text>
+<g transform="translate(880 771) scale(0.65)" aria-hidden="true">
+<path d="M-64 25 L5 -2 L90 25 L20 55 Z" fill="#12374e" stroke="#55d7f0" stroke-width="1.7"/>
+<path d="M-64 25 L20 55 L20 63 L-64 33 Z" fill="#10293e"/><path d="M20 55 L90 25 L90 33 L20 63 Z" fill="#0c2032"/>
+<path d="M-23 -74 L31 -55 V30 L-23 11 Z" fill="#1b4b6a" stroke="#74e8ef" stroke-width="2"/><path d="M31 -55 L49 -65 V20 L31 30 Z" fill="#123047"/><path d="M-23 -74 L-5 -84 L49 -65 L31 -55 Z" fill="#32718c"/>
+<path d="M-15 -47 L23 -34" stroke="#8ce4ec" stroke-width="3"/>
+<circle cx="-12" cy="-54" r="2.6" fill="#5ee4be"/>
+<path d="M-15 -22 L23 -9" stroke="#8ce4ec" stroke-width="3"/>
+<circle cx="-12" cy="-29" r="2.6" fill="#5ee4be"/>
+<path d="M-15 3 L23 16" stroke="#8ce4ec" stroke-width="3"/>
+<circle cx="-12" cy="-4" r="2.6" fill="#5ee4be"/>
+</g>
+<path d="M136 810 H964" fill="none" stroke="#29435e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<g id="scenario-01" data-scenario-id="01">
+<title>01: pipeline-injection — CWE-78</title>
+<rect x="136" y="829" width="43" height="28" rx="7" fill="#3a2434" stroke="#674050" stroke-width="2"/>
+<text x="157.5" y="849" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="650" fill="#ff7888" text-anchor="middle">01</text>
+<text x="195" y="849" font-family="DejaVu Sans, Arial, sans-serif" font-size="21.5" font-weight="550" fill="#eef5ff" text-anchor="start">Pipeline metadata injection</text>
+<text x="962" y="848" font-family="DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="400" fill="#bdabff" text-anchor="end">CWE-78</text>
+<text x="195" y="872" font-family="DejaVu Sans Mono, monospace" font-size="15.5" font-weight="400" fill="#a2b6cf" text-anchor="start">pipelines/vulnerable/metadata.py</text>
+<text x="962" y="872" font-family="DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="400" fill="#5ee4be" text-anchor="end">Fix: Arguments; no shell</text>
+</g>
+<g id="scenario-02" data-scenario-id="02">
+<title>02: secret-exposure — CWE-532</title>
+<rect x="136" y="890" width="43" height="28" rx="7" fill="#3a2434" stroke="#674050" stroke-width="2"/>
+<text x="157.5" y="910" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="650" fill="#ff7888" text-anchor="middle">02</text>
+<text x="195" y="910" font-family="DejaVu Sans, Arial, sans-serif" font-size="21.5" font-weight="550" fill="#eef5ff" text-anchor="start">Secrets exposed in build logs</text>
+<text x="962" y="909" font-family="DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="400" fill="#bdabff" text-anchor="end">CWE-532</text>
+<text x="195" y="933" font-family="DejaVu Sans Mono, monospace" font-size="15.5" font-weight="400" fill="#a2b6cf" text-anchor="start">pipelines/vulnerable/secrets.py</text>
+<text x="962" y="933" font-family="DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="400" fill="#5ee4be" text-anchor="end">Fix: Omit credential values</text>
+</g>
+<g id="scenario-04" data-scenario-id="04">
+<title>04: security-gate-bypass — CWE-693</title>
+<rect x="136" y="951" width="43" height="28" rx="7" fill="#3a2434" stroke="#674050" stroke-width="2"/>
+<text x="157.5" y="971" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="650" fill="#ff7888" text-anchor="middle">04</text>
+<text x="195" y="971" font-family="DejaVu Sans, Arial, sans-serif" font-size="21.5" font-weight="550" fill="#eef5ff" text-anchor="start">Advisory scan bypasses release gate</text>
+<text x="962" y="970" font-family="DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="400" fill="#bdabff" text-anchor="end">CWE-693</text>
+<text x="195" y="994" font-family="DejaVu Sans Mono, monospace" font-size="15.5" font-weight="400" fill="#a2b6cf" text-anchor="start">pipelines/vulnerable/gate.py</text>
+<text x="962" y="994" font-family="DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="400" fill="#5ee4be" text-anchor="end">Fix: Enforced severity policy</text>
+</g>
+<g id="scenario-12" data-scenario-id="12">
+<title>12: dependency-confusion — CWE-427</title>
+<rect x="136" y="1012" width="43" height="28" rx="7" fill="#3a2434" stroke="#674050" stroke-width="2"/>
+<text x="157.5" y="1032" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="650" fill="#ff7888" text-anchor="middle">12</text>
+<text x="195" y="1032" font-family="DejaVu Sans, Arial, sans-serif" font-size="21.5" font-weight="550" fill="#eef5ff" text-anchor="start">Dependency confusion</text>
+<text x="962" y="1031" font-family="DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="400" fill="#bdabff" text-anchor="end">CWE-427</text>
+<text x="195" y="1055" font-family="DejaVu Sans Mono, monospace" font-size="15.5" font-weight="400" fill="#a2b6cf" text-anchor="start">labs/dependency_confusion/</text>
+<text x="962" y="1055" font-family="DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="400" fill="#5ee4be" text-anchor="end">Fix: Private source + pinned digest</text>
+</g>
+<g id="scenario-13" data-scenario-id="13">
+<title>13: untrusted-build-dependency — CWE-829</title>
+<rect x="136" y="1073" width="43" height="28" rx="7" fill="#3a2434" stroke="#674050" stroke-width="2"/>
+<text x="157.5" y="1093" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="650" fill="#ff7888" text-anchor="middle">13</text>
+<text x="195" y="1093" font-family="DejaVu Sans, Arial, sans-serif" font-size="21.5" font-weight="550" fill="#eef5ff" text-anchor="start">Untrusted dependency build hook</text>
+<text x="962" y="1092" font-family="DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="400" fill="#bdabff" text-anchor="end">CWE-829</text>
+<text x="195" y="1116" font-family="DejaVu Sans Mono, monospace" font-size="15.5" font-weight="400" fill="#a2b6cf" text-anchor="start">labs/untrusted_build_dependency/</text>
+<text x="962" y="1116" font-family="DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="400" fill="#5ee4be" text-anchor="end">Fix: No hooks; validate metadata</text>
+</g>
+<text x="136" y="1139" font-family="DejaVu Sans, Arial, sans-serif" font-size="15.5" font-weight="400" fill="#a2b6cf" text-anchor="start">Synthetic build steps and a loopback JSON package index.</text>
+<circle cx="550" cy="690" r="5" fill="#ff7888"/>
+<circle cx="970" cy="1160" r="5" fill="#5ee4be"/>
+<rect x="1070" y="690" width="880" height="470" rx="16" fill="#102036" stroke="#29435e" stroke-width="2"/>
+<text x="1096" y="724" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="700" fill="#55d7f0" text-anchor="start">API / BUSINESS POLICY</text>
+<text x="1096" y="763" font-family="DejaVu Sans, Arial, sans-serif" font-size="29" font-weight="600" fill="#eef5ff" text-anchor="start">Objects, roles and application invariants</text>
+<text x="1096" y="794" font-family="DejaVu Sans, Arial, sans-serif" font-size="15.2" font-weight="400" fill="#a2b6cf" text-anchor="start">labs/idor_bola/ · mass_assignment/ · business_logic_bypass/ · ...</text>
+<g transform="translate(1840 771) scale(0.65)" aria-hidden="true">
+<path d="M-64 25 L5 -2 L90 25 L20 55 Z" fill="#12374e" stroke="#55d7f0" stroke-width="1.7"/>
+<path d="M-64 25 L20 55 L20 63 L-64 33 Z" fill="#10293e"/><path d="M20 55 L90 25 L90 33 L20 63 Z" fill="#0c2032"/>
+<path d="M-27 -77 L54 -49 V28 L-27 0 Z" fill="#194569" stroke="#68e7f5" stroke-width="2"/><path d="M54 -49 L67 -57 V20 L54 28 Z" fill="#102b46"/>
+<path d="M-27 -77 L-14 -85 L67 -57 L54 -49 Z" fill="#286f8d"/><path d="M-21 -58 L45 -35" stroke="#9deaff" stroke-width="2"/>
+<path d="M-5 -31 L-16 -23 L-5 -8 M25 -20 L38 -6 L25 0 M18 -35 L6 2" stroke="#83eede" fill="none" stroke-width="4"/>
+</g>
+<path d="M1096 810 H1924" fill="none" stroke="#29435e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<g id="scenario-06" data-scenario-id="06">
+<title>06: idor-bola — CWE-639</title>
+<rect x="1096" y="829" width="43" height="28" rx="7" fill="#3a2434" stroke="#674050" stroke-width="2"/>
+<text x="1117.5" y="849" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="650" fill="#ff7888" text-anchor="middle">06</text>
+<text x="1155" y="849" font-family="DejaVu Sans, Arial, sans-serif" font-size="21.5" font-weight="550" fill="#eef5ff" text-anchor="start">IDOR / broken object authorization</text>
+<text x="1922" y="848" font-family="DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="400" fill="#bdabff" text-anchor="end">CWE-639</text>
+<text x="1155" y="872" font-family="DejaVu Sans Mono, monospace" font-size="15.5" font-weight="400" fill="#a2b6cf" text-anchor="start">labs/idor_bola/</text>
+<text x="1922" y="872" font-family="DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="400" fill="#5ee4be" text-anchor="end">Fix: Verify object ownership</text>
+</g>
+<g id="scenario-07" data-scenario-id="07">
+<title>07: broken-function-level-authorization — CWE-862</title>
+<rect x="1096" y="890" width="43" height="28" rx="7" fill="#3a2434" stroke="#674050" stroke-width="2"/>
+<text x="1117.5" y="910" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="650" fill="#ff7888" text-anchor="middle">07</text>
+<text x="1155" y="910" font-family="DejaVu Sans, Arial, sans-serif" font-size="21.5" font-weight="550" fill="#eef5ff" text-anchor="start">Administrative function abuse</text>
+<text x="1922" y="909" font-family="DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="400" fill="#bdabff" text-anchor="end">CWE-862</text>
+<text x="1155" y="933" font-family="DejaVu Sans Mono, monospace" font-size="15.5" font-weight="400" fill="#a2b6cf" text-anchor="start">labs/broken_function_level_authorization/</text>
+<text x="1922" y="933" font-family="DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="400" fill="#5ee4be" text-anchor="end">Fix: Server-side role check</text>
+</g>
+<g id="scenario-08" data-scenario-id="08">
+<title>08: mass-assignment — CWE-915</title>
+<rect x="1096" y="951" width="43" height="28" rx="7" fill="#3a2434" stroke="#674050" stroke-width="2"/>
+<text x="1117.5" y="971" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="650" fill="#ff7888" text-anchor="middle">08</text>
+<text x="1155" y="971" font-family="DejaVu Sans, Arial, sans-serif" font-size="21.5" font-weight="550" fill="#eef5ff" text-anchor="start">Mass assignment of protected fields</text>
+<text x="1922" y="970" font-family="DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="400" fill="#bdabff" text-anchor="end">CWE-915</text>
+<text x="1155" y="994" font-family="DejaVu Sans Mono, monospace" font-size="15.5" font-weight="400" fill="#a2b6cf" text-anchor="start">labs/mass_assignment/</text>
+<text x="1922" y="994" font-family="DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="400" fill="#5ee4be" text-anchor="end">Fix: Writable-field allowlist</text>
+</g>
+<g id="scenario-19" data-scenario-id="19">
+<title>19: business-logic-bypass — CWE-841</title>
+<rect x="1096" y="1012" width="43" height="28" rx="7" fill="#3a2434" stroke="#674050" stroke-width="2"/>
+<text x="1117.5" y="1032" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="650" fill="#ff7888" text-anchor="middle">19</text>
+<text x="1155" y="1032" font-family="DejaVu Sans, Arial, sans-serif" font-size="21.5" font-weight="550" fill="#eef5ff" text-anchor="start">Coupon replay / business logic bypass</text>
+<text x="1922" y="1031" font-family="DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="400" fill="#bdabff" text-anchor="end">CWE-841</text>
+<text x="1155" y="1055" font-family="DejaVu Sans Mono, monospace" font-size="15.5" font-weight="400" fill="#a2b6cf" text-anchor="start">labs/business_logic_bypass/</text>
+<text x="1922" y="1055" font-family="DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="400" fill="#5ee4be" text-anchor="end">Fix: Principal + atomic ledger</text>
+</g>
+<g id="scenario-25" data-scenario-id="25">
+<title>25: fail-open-error-handling — CWE-636</title>
+<rect x="1096" y="1073" width="43" height="28" rx="7" fill="#3a2434" stroke="#674050" stroke-width="2"/>
+<text x="1117.5" y="1093" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="650" fill="#ff7888" text-anchor="middle">25</text>
+<text x="1155" y="1093" font-family="DejaVu Sans, Arial, sans-serif" font-size="21.5" font-weight="550" fill="#eef5ff" text-anchor="start">Authorization fails open on error</text>
+<text x="1922" y="1092" font-family="DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="400" fill="#bdabff" text-anchor="end">CWE-636</text>
+<text x="1155" y="1116" font-family="DejaVu Sans Mono, monospace" font-size="15.5" font-weight="400" fill="#a2b6cf" text-anchor="start">labs/fail_open_error_handling/</text>
+<text x="1922" y="1116" font-family="DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="400" fill="#5ee4be" text-anchor="end">Fix: Explicit allow; deny on error</text>
+</g>
+<text x="1096" y="1139" font-family="DejaVu Sans, Arial, sans-serif" font-size="15.5" font-weight="400" fill="#a2b6cf" text-anchor="start">Module-local state; optional labs/web.py on 127.0.0.1:8081 (fixed by default).</text>
+<circle cx="1510" cy="690" r="5" fill="#ff7888"/>
+<circle cx="1930" cy="1160" r="5" fill="#5ee4be"/>
+<rect x="2030" y="690" width="880" height="470" rx="16" fill="#102036" stroke="#29435e" stroke-width="2"/>
+<text x="2056" y="724" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="700" fill="#55d7f0" text-anchor="start">DATA / CODE EXECUTION</text>
+<text x="2056" y="763" font-family="DejaVu Sans, Arial, sans-serif" font-size="29" font-weight="600" fill="#eef5ff" text-anchor="start">Data crossing interpreter boundaries</text>
+<text x="2056" y="794" font-family="DejaVu Sans, Arial, sans-serif" font-size="15.2" font-weight="400" fill="#a2b6cf" text-anchor="start">labs/sql_injection/ · stored_xss/ · path_traversal/ · ...</text>
+<g transform="translate(2800 771) scale(0.65)" aria-hidden="true">
+<path d="M-64 25 L5 -2 L90 25 L20 55 Z" fill="#12374e" stroke="#55d7f0" stroke-width="1.7"/>
+<path d="M-64 25 L20 55 L20 63 L-64 33 Z" fill="#10293e"/><path d="M20 55 L90 25 L90 33 L20 63 Z" fill="#0c2032"/>
+<path d="M-21 -55 C-21 -75 53 -75 53 -55 V12 C53 32 -21 32 -21 12 Z" fill="#19486a" stroke="#55d7f0" stroke-width="2"/>
+<ellipse cx="16" cy="-55" rx="37" ry="12" fill="#1c5d80" stroke="#73e5ef" stroke-width="2"/>
+<ellipse cx="16" cy="-27" rx="37" ry="12" fill="#1c5d80" stroke="#73e5ef" stroke-width="2"/>
+<ellipse cx="16" cy="1" rx="37" ry="12" fill="#1c5d80" stroke="#73e5ef" stroke-width="2"/>
+<path d="M-21 -54 V12 M53 -54 V12" stroke="#55d7f0" stroke-width="2"/>
+</g>
+<path d="M2056 810 H2884" fill="none" stroke="#29435e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<g id="scenario-15" data-scenario-id="15">
+<title>15: sql-injection — CWE-89</title>
+<rect x="2056" y="829" width="43" height="28" rx="7" fill="#3a2434" stroke="#674050" stroke-width="2"/>
+<text x="2077.5" y="849" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="650" fill="#ff7888" text-anchor="middle">15</text>
+<text x="2115" y="849" font-family="DejaVu Sans, Arial, sans-serif" font-size="21.5" font-weight="550" fill="#eef5ff" text-anchor="start">SQL injection</text>
+<text x="2882" y="848" font-family="DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="400" fill="#bdabff" text-anchor="end">CWE-89</text>
+<text x="2115" y="872" font-family="DejaVu Sans Mono, monospace" font-size="15.5" font-weight="400" fill="#a2b6cf" text-anchor="start">labs/sql_injection/</text>
+<text x="2882" y="872" font-family="DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="400" fill="#5ee4be" text-anchor="end">Fix: Bound query parameters</text>
+</g>
+<g id="scenario-16" data-scenario-id="16">
+<title>16: stored-xss — CWE-79</title>
+<rect x="2056" y="890" width="43" height="28" rx="7" fill="#3a2434" stroke="#674050" stroke-width="2"/>
+<text x="2077.5" y="910" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="650" fill="#ff7888" text-anchor="middle">16</text>
+<text x="2115" y="910" font-family="DejaVu Sans, Arial, sans-serif" font-size="21.5" font-weight="550" fill="#eef5ff" text-anchor="start">Stored cross-site scripting</text>
+<text x="2882" y="909" font-family="DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="400" fill="#bdabff" text-anchor="end">CWE-79</text>
+<text x="2115" y="933" font-family="DejaVu Sans Mono, monospace" font-size="15.5" font-weight="400" fill="#a2b6cf" text-anchor="start">labs/stored_xss/</text>
+<text x="2882" y="933" font-family="DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="400" fill="#5ee4be" text-anchor="end">Fix: HTML encoding + browser CSP</text>
+</g>
+<g id="scenario-17" data-scenario-id="17">
+<title>17: os-command-injection-rce — CWE-78</title>
+<rect x="2056" y="951" width="43" height="28" rx="7" fill="#3a2434" stroke="#674050" stroke-width="2"/>
+<text x="2077.5" y="971" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="650" fill="#ff7888" text-anchor="middle">17</text>
+<text x="2115" y="971" font-family="DejaVu Sans, Arial, sans-serif" font-size="21.5" font-weight="550" fill="#eef5ff" text-anchor="start">OS command injection / local RCE</text>
+<text x="2882" y="970" font-family="DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="400" fill="#bdabff" text-anchor="end">CWE-78</text>
+<text x="2115" y="994" font-family="DejaVu Sans Mono, monospace" font-size="15.5" font-weight="400" fill="#a2b6cf" text-anchor="start">labs/os_command_injection_rce/</text>
+<text x="2882" y="994" font-family="DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="400" fill="#5ee4be" text-anchor="end">Fix: Argument array + validation</text>
+</g>
+<g id="scenario-18" data-scenario-id="18">
+<title>18: path-traversal — CWE-22</title>
+<rect x="2056" y="1012" width="43" height="28" rx="7" fill="#3a2434" stroke="#674050" stroke-width="2"/>
+<text x="2077.5" y="1032" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="650" fill="#ff7888" text-anchor="middle">18</text>
+<text x="2115" y="1032" font-family="DejaVu Sans, Arial, sans-serif" font-size="21.5" font-weight="550" fill="#eef5ff" text-anchor="start">Path traversal to private fixtures</text>
+<text x="2882" y="1031" font-family="DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="400" fill="#bdabff" text-anchor="end">CWE-22</text>
+<text x="2115" y="1055" font-family="DejaVu Sans Mono, monospace" font-size="15.5" font-weight="400" fill="#a2b6cf" text-anchor="start">labs/path_traversal/</text>
+<text x="2882" y="1055" font-family="DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="400" fill="#5ee4be" text-anchor="end">Fix: Resolved public-root check</text>
+</g>
+<g id="scenario-22" data-scenario-id="22">
+<title>22: unsafe-deserialization — CWE-502</title>
+<rect x="2056" y="1073" width="43" height="28" rx="7" fill="#3a2434" stroke="#674050" stroke-width="2"/>
+<text x="2077.5" y="1093" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="650" fill="#ff7888" text-anchor="middle">22</text>
+<text x="2115" y="1093" font-family="DejaVu Sans, Arial, sans-serif" font-size="21.5" font-weight="550" fill="#eef5ff" text-anchor="start">Unsafe Python deserialization</text>
+<text x="2882" y="1092" font-family="DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="400" fill="#bdabff" text-anchor="end">CWE-502</text>
+<text x="2115" y="1116" font-family="DejaVu Sans Mono, monospace" font-size="15.5" font-weight="400" fill="#a2b6cf" text-anchor="start">labs/unsafe_deserialization/</text>
+<text x="2882" y="1116" font-family="DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="400" fill="#5ee4be" text-anchor="end">Fix: Schema-validated JSON</text>
+</g>
+<text x="2056" y="1139" font-family="DejaVu Sans, Arial, sans-serif" font-size="15.5" font-weight="400" fill="#a2b6cf" text-anchor="start">In-memory SQLite + temporary files; high-risk proofs are CLI-only.</text>
+<circle cx="2470" cy="690" r="5" fill="#ff7888"/>
+<circle cx="2890" cy="1160" r="5" fill="#5ee4be"/>
+<rect x="110" y="1240" width="880" height="470" rx="16" fill="#102036" stroke="#29435e" stroke-width="2"/>
+<text x="136" y="1274" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="700" fill="#55d7f0" text-anchor="start">IDENTITY / BROWSER TRUST</text>
+<text x="136" y="1313" font-family="DejaVu Sans, Arial, sans-serif" font-size="29" font-weight="600" fill="#eef5ff" text-anchor="start">Credentials, origins and session state</text>
+<text x="136" y="1344" font-family="DejaVu Sans, Arial, sans-serif" font-size="15.2" font-weight="400" fill="#a2b6cf" text-anchor="start">labs/cors_misconfiguration/ · weak_password_storage/ · ...</text>
+<g transform="translate(880 1321) scale(0.65)" aria-hidden="true">
+<path d="M-64 25 L5 -2 L90 25 L20 55 Z" fill="#12374e" stroke="#55d7f0" stroke-width="1.7"/>
+<path d="M-64 25 L20 55 L20 63 L-64 33 Z" fill="#10293e"/><path d="M20 55 L90 25 L90 33 L20 63 Z" fill="#0c2032"/>
+<path d="M-27 -77 L54 -49 V28 L-27 0 Z" fill="#194569" stroke="#68e7f5" stroke-width="2"/><path d="M54 -49 L67 -57 V20 L54 28 Z" fill="#102b46"/>
+<path d="M-27 -77 L-14 -85 L67 -57 L54 -49 Z" fill="#286f8d"/><path d="M-21 -58 L45 -35" stroke="#9deaff" stroke-width="2"/>
+<path d="M-14 -39 L0 -26 L-14 -22 M8 -16 L32 -8" stroke="#83eede" fill="none" stroke-width="4"/>
+</g>
+<path d="M136 1360 H964" fill="none" stroke="#29435e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<g id="scenario-10" data-scenario-id="10">
+<title>10: cors-misconfiguration — CWE-942</title>
+<rect x="136" y="1379" width="43" height="28" rx="7" fill="#3a2434" stroke="#674050" stroke-width="2"/>
+<text x="157.5" y="1399" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="650" fill="#ff7888" text-anchor="middle">10</text>
+<text x="195" y="1399" font-family="DejaVu Sans, Arial, sans-serif" font-size="21.5" font-weight="550" fill="#eef5ff" text-anchor="start">Credentialed CORS misconfiguration</text>
+<text x="962" y="1398" font-family="DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="400" fill="#bdabff" text-anchor="end">CWE-942</text>
+<text x="195" y="1422" font-family="DejaVu Sans Mono, monospace" font-size="15.5" font-weight="400" fill="#a2b6cf" text-anchor="start">labs/cors_misconfiguration/</text>
+<text x="962" y="1422" font-family="DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="400" fill="#5ee4be" text-anchor="end">Fix: Exact trusted origins</text>
+</g>
+<g id="scenario-14" data-scenario-id="14">
+<title>14: weak-password-storage — CWE-916</title>
+<rect x="136" y="1440" width="43" height="28" rx="7" fill="#3a2434" stroke="#674050" stroke-width="2"/>
+<text x="157.5" y="1460" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="650" fill="#ff7888" text-anchor="middle">14</text>
+<text x="195" y="1460" font-family="DejaVu Sans, Arial, sans-serif" font-size="21.5" font-weight="550" fill="#eef5ff" text-anchor="start">Weak password storage</text>
+<text x="962" y="1459" font-family="DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="400" fill="#bdabff" text-anchor="end">CWE-916</text>
+<text x="195" y="1483" font-family="DejaVu Sans Mono, monospace" font-size="15.5" font-weight="400" fill="#a2b6cf" text-anchor="start">labs/weak_password_storage/</text>
+<text x="962" y="1483" font-family="DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="400" fill="#5ee4be" text-anchor="end">Fix: Salted scrypt; standalone KDF</text>
+</g>
+<g id="scenario-20" data-scenario-id="20">
+<title>20: missing-login-rate-limiting — CWE-307</title>
+<rect x="136" y="1501" width="43" height="28" rx="7" fill="#3a2434" stroke="#674050" stroke-width="2"/>
+<text x="157.5" y="1521" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="650" fill="#ff7888" text-anchor="middle">20</text>
+<text x="195" y="1521" font-family="DejaVu Sans, Arial, sans-serif" font-size="21.5" font-weight="550" fill="#eef5ff" text-anchor="start">Missing login rate limiting</text>
+<text x="962" y="1520" font-family="DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="400" fill="#bdabff" text-anchor="end">CWE-307</text>
+<text x="195" y="1544" font-family="DejaVu Sans Mono, monospace" font-size="15.5" font-weight="400" fill="#a2b6cf" text-anchor="start">labs/missing_login_rate_limiting/</text>
+<text x="962" y="1544" font-family="DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="400" fill="#5ee4be" text-anchor="end">Fix: Bounded account attempts</text>
+</g>
+<g id="scenario-21" data-scenario-id="21">
+<title>21: session-fixation — CWE-384</title>
+<rect x="136" y="1562" width="43" height="28" rx="7" fill="#3a2434" stroke="#674050" stroke-width="2"/>
+<text x="157.5" y="1582" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="650" fill="#ff7888" text-anchor="middle">21</text>
+<text x="195" y="1582" font-family="DejaVu Sans, Arial, sans-serif" font-size="21.5" font-weight="550" fill="#eef5ff" text-anchor="start">Session fixation</text>
+<text x="962" y="1581" font-family="DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="400" fill="#bdabff" text-anchor="end">CWE-384</text>
+<text x="195" y="1605" font-family="DejaVu Sans Mono, monospace" font-size="15.5" font-weight="400" fill="#a2b6cf" text-anchor="start">labs/session_fixation/</text>
+<text x="962" y="1605" font-family="DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="400" fill="#5ee4be" text-anchor="end">Fix: Rotate and invalidate session</text>
+</g>
+<text x="136" y="1645" font-family="DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="400" fill="#a2b6cf" text-anchor="start">HTTP vulnerable mode requires both explicit flags:</text>
+<text x="136" y="1668" font-family="DejaVu Sans Mono, monospace" font-size="16" font-weight="400" fill="#5ee4be" text-anchor="start">--vulnerable --enable-vulnerable-labs</text>
+<text x="136" y="1689" font-family="DejaVu Sans, Arial, sans-serif" font-size="15.5" font-weight="400" fill="#a2b6cf" text-anchor="start">HTTP adapter uses synthetic login; the password-storage lab is separate.</text>
+<circle cx="550" cy="1240" r="5" fill="#ff7888"/>
+<circle cx="550" cy="1710" r="5" fill="#5ee4be"/>
+<rect x="1070" y="1240" width="880" height="470" rx="16" fill="#102036" stroke="#29435e" stroke-width="2"/>
+<text x="1096" y="1274" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="700" fill="#55d7f0" text-anchor="start">ARTIFACTS / OBSERVABILITY</text>
+<text x="1096" y="1313" font-family="DejaVu Sans, Arial, sans-serif" font-size="29" font-weight="600" fill="#eef5ff" text-anchor="start">Integrity, diagnostics and audit records</text>
+<text x="1096" y="1344" font-family="DejaVu Sans, Arial, sans-serif" font-size="15.2" font-weight="400" fill="#a2b6cf" text-anchor="start">lab/controls.py + labs/unsigned_artifact_acceptance/ + ...</text>
+<g transform="translate(1840 1321) scale(0.65)" aria-hidden="true">
+<path d="M-64 25 L5 -2 L90 25 L20 55 Z" fill="#12374e" stroke="#55d7f0" stroke-width="1.7"/>
+<path d="M-64 25 L20 55 L20 63 L-64 33 Z" fill="#10293e"/><path d="M20 55 L90 25 L90 33 L20 63 Z" fill="#0c2032"/>
+<path d="M-23 -44 L19 -62 L60 -43 L18 -25 Z" fill="#2b6d7f" stroke="#74ead7" stroke-width="2"/><path d="M-23 -44 L18 -25 V21 L-23 2 Z" fill="#19485d" stroke="#74ead7" stroke-width="2"/><path d="M18 -25 L60 -43 V2 L18 21 Z" fill="#133248" stroke="#74ead7" stroke-width="2"/>
+<path d="M-5 -20 L-5 0 M28 -21 L49 -30" stroke="#9bf4dd" stroke-width="4"/>
+</g>
+<path d="M1096 1360 H1924" fill="none" stroke="#29435e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<g id="scenario-03" data-scenario-id="03">
+<title>03: artifact-tampering — CWE-353</title>
+<rect x="1096" y="1379" width="43" height="28" rx="7" fill="#3a2434" stroke="#674050" stroke-width="2"/>
+<text x="1117.5" y="1399" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="650" fill="#ff7888" text-anchor="middle">03</text>
+<text x="1155" y="1399" font-family="DejaVu Sans, Arial, sans-serif" font-size="21.5" font-weight="550" fill="#eef5ff" text-anchor="start">Artifact bytes modified in storage</text>
+<text x="1922" y="1398" font-family="DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="400" fill="#bdabff" text-anchor="end">CWE-353</text>
+<text x="1155" y="1422" font-family="DejaVu Sans Mono, monospace" font-size="15.5" font-weight="400" fill="#a2b6cf" text-anchor="start">lab/scenarios.py</text>
+<text x="1922" y="1422" font-family="DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="400" fill="#5ee4be" text-anchor="end">Fix: Trusted SHA256 digest</text>
+</g>
+<g id="scenario-11" data-scenario-id="11">
+<title>11: debug-information-disclosure — CWE-209</title>
+<rect x="1096" y="1440" width="43" height="28" rx="7" fill="#3a2434" stroke="#674050" stroke-width="2"/>
+<text x="1117.5" y="1460" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="650" fill="#ff7888" text-anchor="middle">11</text>
+<text x="1155" y="1460" font-family="DejaVu Sans, Arial, sans-serif" font-size="21.5" font-weight="550" fill="#eef5ff" text-anchor="start">Debug / exception information leak</text>
+<text x="1922" y="1459" font-family="DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="400" fill="#bdabff" text-anchor="end">CWE-209</text>
+<text x="1155" y="1483" font-family="DejaVu Sans Mono, monospace" font-size="15.5" font-weight="400" fill="#a2b6cf" text-anchor="start">labs/debug_information_disclosure/</text>
+<text x="1922" y="1483" font-family="DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="400" fill="#5ee4be" text-anchor="end">Fix: Generic error + request ID</text>
+</g>
+<g id="scenario-23" data-scenario-id="23">
+<title>23: unsigned-artifact-acceptance — CWE-345</title>
+<rect x="1096" y="1501" width="43" height="28" rx="7" fill="#3a2434" stroke="#674050" stroke-width="2"/>
+<text x="1117.5" y="1521" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="650" fill="#ff7888" text-anchor="middle">23</text>
+<text x="1155" y="1521" font-family="DejaVu Sans, Arial, sans-serif" font-size="21.5" font-weight="550" fill="#eef5ff" text-anchor="start">Unauthenticated artifact accepted</text>
+<text x="1922" y="1520" font-family="DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="400" fill="#bdabff" text-anchor="end">CWE-345</text>
+<text x="1155" y="1544" font-family="DejaVu Sans Mono, monospace" font-size="15.5" font-weight="400" fill="#a2b6cf" text-anchor="start">labs/unsigned_artifact_acceptance/</text>
+<text x="1922" y="1544" font-family="DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="400" fill="#5ee4be" text-anchor="end">Fix: Protected-key HMAC check</text>
+</g>
+<g id="scenario-24" data-scenario-id="24">
+<title>24: missing-security-audit-logs — CWE-778</title>
+<rect x="1096" y="1562" width="43" height="28" rx="7" fill="#3a2434" stroke="#674050" stroke-width="2"/>
+<text x="1117.5" y="1582" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="650" fill="#ff7888" text-anchor="middle">24</text>
+<text x="1155" y="1582" font-family="DejaVu Sans, Arial, sans-serif" font-size="21.5" font-weight="550" fill="#eef5ff" text-anchor="start">Missing security audit events</text>
+<text x="1922" y="1581" font-family="DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="400" fill="#bdabff" text-anchor="end">CWE-778</text>
+<text x="1155" y="1605" font-family="DejaVu Sans Mono, monospace" font-size="15.5" font-weight="400" fill="#a2b6cf" text-anchor="start">labs/missing_security_audit_logs/</text>
+<text x="1922" y="1605" font-family="DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="400" fill="#5ee4be" text-anchor="end">Fix: Structured allow / deny log</text>
+</g>
+<text x="1096" y="1689" font-family="DejaVu Sans, Arial, sans-serif" font-size="15.5" font-weight="400" fill="#a2b6cf" text-anchor="start">HMAC is a shared-key MAC; local JSONL is not a deployed SIEM.</text>
+<circle cx="1510" cy="1240" r="5" fill="#ff7888"/>
+<circle cx="1510" cy="1710" r="5" fill="#5ee4be"/>
+<rect x="2030" y="1240" width="880" height="470" rx="16" fill="#102036" stroke="#29435e" stroke-width="2"/>
+<text x="2056" y="1274" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="700" fill="#55d7f0" text-anchor="start">LOOPBACK MOCK SERVICES</text>
+<text x="2056" y="1313" font-family="DejaVu Sans, Arial, sans-serif" font-size="29" font-weight="600" fill="#eef5ff" text-anchor="start">Temporary HTTP fixtures</text>
+<text x="2056" y="1344" font-family="DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="400" fill="#a2b6cf" text-anchor="start">labs/ssrf/ + labs/support.py:json_service</text>
+<path d="M2056 1360 H2884" fill="none" stroke="#29435e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<g id="scenario-09" data-scenario-id="09">
+<title>09: ssrf — CWE-918</title>
+<rect x="2056" y="1379" width="43" height="28" rx="7" fill="#3a2434" stroke="#674050" stroke-width="2"/>
+<text x="2077.5" y="1399" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="650" fill="#ff7888" text-anchor="middle">09</text>
+<text x="2115" y="1399" font-family="DejaVu Sans, Arial, sans-serif" font-size="21.5" font-weight="550" fill="#eef5ff" text-anchor="start">SSRF to internal mock metadata</text>
+<text x="2882" y="1398" font-family="DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="400" fill="#bdabff" text-anchor="end">CWE-918</text>
+<text x="2115" y="1422" font-family="DejaVu Sans Mono, monospace" font-size="15.5" font-weight="400" fill="#a2b6cf" text-anchor="start">labs/ssrf/</text>
+<text x="2882" y="1422" font-family="DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="400" fill="#5ee4be" text-anchor="end">Fix: Exact public destination</text>
+</g>
+<g transform="translate(2235 1530) scale(0.72)" aria-hidden="true">
+<path d="M-64 25 L5 -2 L90 25 L20 55 Z" fill="#12374e" stroke="#55d7f0" stroke-width="1.7"/>
+<path d="M-64 25 L20 55 L20 63 L-64 33 Z" fill="#10293e"/><path d="M20 55 L90 25 L90 33 L20 63 Z" fill="#0c2032"/>
+<path d="M-23 -74 L31 -55 V30 L-23 11 Z" fill="#1b4b6a" stroke="#74e8ef" stroke-width="2"/><path d="M31 -55 L49 -65 V20 L31 30 Z" fill="#123047"/><path d="M-23 -74 L-5 -84 L49 -65 L31 -55 Z" fill="#32718c"/>
+<path d="M-15 -47 L23 -34" stroke="#8ce4ec" stroke-width="3"/>
+<circle cx="-12" cy="-54" r="2.6" fill="#5ee4be"/>
+<path d="M-15 -22 L23 -9" stroke="#8ce4ec" stroke-width="3"/>
+<circle cx="-12" cy="-29" r="2.6" fill="#5ee4be"/>
+<path d="M-15 3 L23 16" stroke="#8ce4ec" stroke-width="3"/>
+<circle cx="-12" cy="-4" r="2.6" fill="#5ee4be"/>
+</g>
+<g transform="translate(2650 1530) scale(0.72)" aria-hidden="true">
+<path d="M-64 25 L5 -2 L90 25 L20 55 Z" fill="#12374e" stroke="#55d7f0" stroke-width="1.7"/>
+<path d="M-64 25 L20 55 L20 63 L-64 33 Z" fill="#10293e"/><path d="M20 55 L90 25 L90 33 L20 63 Z" fill="#0c2032"/>
+<path d="M-23 -74 L31 -55 V30 L-23 11 Z" fill="#1b4b6a" stroke="#74e8ef" stroke-width="2"/><path d="M31 -55 L49 -65 V20 L31 30 Z" fill="#123047"/><path d="M-23 -74 L-5 -84 L49 -65 L31 -55 Z" fill="#32718c"/>
+<path d="M-15 -47 L23 -34" stroke="#8ce4ec" stroke-width="3"/>
+<circle cx="-12" cy="-54" r="2.6" fill="#5ee4be"/>
+<path d="M-15 -22 L23 -9" stroke="#8ce4ec" stroke-width="3"/>
+<circle cx="-12" cy="-29" r="2.6" fill="#5ee4be"/>
+<path d="M-15 3 L23 16" stroke="#8ce4ec" stroke-width="3"/>
+<circle cx="-12" cy="-4" r="2.6" fill="#5ee4be"/>
+</g>
+<text x="2250" y="1592" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" font-weight="650" fill="#55d7f0" text-anchor="middle">PUBLIC PREVIEW MOCK</text>
+<text x="2250" y="1619" font-family="DejaVu Sans Mono, monospace" font-size="18" font-weight="400" fill="#a2b6cf" text-anchor="middle">/public/info</text>
+<text x="2665" y="1592" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" font-weight="650" fill="#ff7888" text-anchor="middle">INTERNAL METADATA MOCK</text>
+<text x="2665" y="1619" font-family="DejaVu Sans Mono, monospace" font-size="18" font-weight="400" fill="#a2b6cf" text-anchor="middle">/internal/metadata</text>
+<rect x="2365" y="1445" width="190" height="34" rx="8" fill="#0d1a2d" stroke="#29435e" stroke-width="2"/>
+<text x="2460" y="1468" font-family="DejaVu Sans Mono, monospace" font-size="15" font-weight="400" fill="#eef5ff" text-anchor="middle">fetch_preview(url)</text>
+<path d="M2365 1462 V1515 H2315" fill="none" stroke="#5ee4be" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-teal)"/>
+<path d="M2555 1462 V1515 H2590" fill="none" stroke="#ff7888" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-red)"/>
+<text x="2460" y="1565" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#ff7888" text-anchor="middle">internal read only in V</text>
+<text x="2056" y="1659" font-family="DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="400" fill="#a2b6cf" text-anchor="start">Both: 127.0.0.1, allocated ports; no external destinations or redirects.</text>
+<text x="2056" y="1689" font-family="DejaVu Sans, Arial, sans-serif" font-size="15.5" font-weight="400" fill="#a2b6cf" text-anchor="start">12 uses a separate loopback JSON package index; no public package installs.</text>
+<circle cx="2470" cy="1240" r="5" fill="#ff7888"/>
+<circle cx="2470" cy="1710" r="5" fill="#5ee4be"/>
+<rect x="110" y="1885" width="880" height="360" rx="16" fill="#102036" stroke="#f2c476" stroke-width="2" stroke-dasharray="12 6"/>
+<g id="scenario-05" data-scenario-id="05"><title>05: excessive-permissions — real Kubernetes API</title>
+<rect x="134" y="1910" width="48" height="34" rx="8" fill="#3b3024" stroke="#f2c476" stroke-width="2"/>
+<text x="158" y="1934" font-family="DejaVu Sans, Arial, sans-serif" font-size="22" font-weight="700" fill="#f2c476" text-anchor="middle">05</text>
+<text x="200" y="1936" font-family="DejaVu Sans, Arial, sans-serif" font-size="29" font-weight="600" fill="#eef5ff" text-anchor="start">Separate kind / Kubernetes lab</text>
+<text x="960" y="1934" font-family="DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="400" fill="#bdabff" text-anchor="end">CWE-250</text>
+<text x="136" y="1974" font-family="DejaVu Sans Mono, monospace" font-size="19" font-weight="400" fill="#a2b6cf" text-anchor="start">kind-pipelineproof  /  namespace: pipelineproof</text>
+<g transform="translate(870 2072) scale(0.85)" aria-hidden="true">
+<path d="M-64 25 L5 -2 L90 25 L20 55 Z" fill="#12374e" stroke="#55d7f0" stroke-width="1.7"/>
+<path d="M-64 25 L20 55 L20 63 L-64 33 Z" fill="#10293e"/><path d="M20 55 L90 25 L90 33 L20 63 Z" fill="#0c2032"/>
+<polygon points="16.0,-63.0 43.4,-49.8 50.1,-20.2 31.2,3.5 0.8,3.5 -18.1,-20.2 -11.4,-49.8" fill="#174a70" stroke="#61def1" stroke-width="2.5"/>
+<circle cx="16" cy="-28" r="15" fill="none" stroke="#d8f9ff" stroke-width="3"/>
+<path d="M16.0 -43.0 L16.0 -57.0" stroke="#d8f9ff" stroke-width="3"/>
+<path d="M27.7 -37.4 L38.7 -46.1" stroke="#d8f9ff" stroke-width="3"/>
+<path d="M30.6 -24.7 L44.3 -21.5" stroke="#d8f9ff" stroke-width="3"/>
+<path d="M22.5 -14.5 L28.6 -1.9" stroke="#d8f9ff" stroke-width="3"/>
+<path d="M9.5 -14.5 L3.4 -1.9" stroke="#d8f9ff" stroke-width="3"/>
+<path d="M1.4 -24.7 L-12.3 -21.5" stroke="#d8f9ff" stroke-width="3"/>
+<path d="M4.3 -37.4 L-6.7 -46.1" stroke="#d8f9ff" stroke-width="3"/>
+</g>
+<text x="136" y="2020" font-family="DejaVu Sans, Arial, sans-serif" font-size="21" font-weight="400" fill="#ff7888" text-anchor="start">Vulnerable: wildcard Role permits fake Secret read</text>
+<text x="136" y="2061" font-family="DejaVu Sans, Arial, sans-serif" font-size="21" font-weight="400" fill="#5ee4be" text-anchor="start">Fixed: Secret read forbidden; Deployment patch allowed</text>
+<text x="136" y="2102" font-family="DejaVu Sans Mono, monospace" font-size="18" font-weight="400" fill="#a2b6cf" text-anchor="start">infra/kubernetes/{vulnerable,hardened}-rbac.yaml</text>
+<text x="136" y="2140" font-family="DejaVu Sans Mono, monospace" font-size="22" font-weight="400" fill="#f2c476" text-anchor="start">make k8s-up k8s-test</text>
+<text x="136" y="2179" font-family="DejaVu Sans, Arial, sans-serif" font-size="16.8" font-weight="400" fill="#a2b6cf" text-anchor="start">Real API requests via CI-identity impersonation; requires kind + Docker.</text>
+<text x="136" y="2216" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" font-weight="400" fill="#a2b6cf" text-anchor="start">Not started by native setup or make lab. No cloud accounts involved.</text>
+</g>
+<path d="M990 2070 H1060" fill="none" stroke="#5ee4be" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-teal)"/>
+<rect x="1070" y="1885" width="880" height="360" rx="16" fill="#102036" stroke="#5ee4be" stroke-width="2"/>
+<text x="1096" y="1936" font-family="DejaVu Sans, Arial, sans-serif" font-size="30" font-weight="600" fill="#eef5ff" text-anchor="start">Evidence and complete audit</text>
+<g transform="translate(1830 2047) scale(0.8)" aria-hidden="true">
+<path d="M-64 25 L5 -2 L90 25 L20 55 Z" fill="#12374e" stroke="#55d7f0" stroke-width="1.7"/>
+<path d="M-64 25 L20 55 L20 63 L-64 33 Z" fill="#10293e"/><path d="M20 55 L90 25 L90 33 L20 63 Z" fill="#0c2032"/>
+<path d="M-23 -44 L19 -62 L60 -43 L18 -25 Z" fill="#2b6d7f" stroke="#74ead7" stroke-width="2"/><path d="M-23 -44 L18 -25 V21 L-23 2 Z" fill="#19485d" stroke="#74ead7" stroke-width="2"/><path d="M18 -25 L60 -43 V2 L18 21 Z" fill="#133248" stroke="#74ead7" stroke-width="2"/>
+<path d="M-5 -20 L-5 0 M28 -21 L49 -30" stroke="#9bf4dd" stroke-width="4"/>
+</g>
+<text x="1096" y="1981" font-family="DejaVu Sans Mono, monospace" font-size="21" font-weight="400" fill="#5ee4be" text-anchor="start">reports/assessment.json + assessment.md</text>
+<text x="1096" y="2024" font-family="DejaVu Sans Mono, monospace" font-size="20" font-weight="400" fill="#a2b6cf" text-anchor="start">reports/rbac.json  ←  real kind/API proof</text>
+<text x="1096" y="2067" font-family="DejaVu Sans Mono, monospace" font-size="21" font-weight="400" fill="#5ee4be" text-anchor="start">reports/scenario-audit/audit.json</text>
+<text x="1096" y="2111" font-family="DejaVu Sans, Arial, sans-serif" font-size="19" font-weight="400" fill="#a2b6cf" text-anchor="start">24 local proofs + fresh scenario 05 evidence = full audit</text>
+<text x="1096" y="2157" font-family="DejaVu Sans, Arial, sans-serif" font-size="20" font-weight="400" fill="#eef5ff" text-anchor="start">Each proof: exploit observed · fixed attack blocked</text>
+<text x="1096" y="2190" font-family="DejaVu Sans, Arial, sans-serif" font-size="19" font-weight="400" fill="#a2b6cf" text-anchor="start">Positive checks preserve the intended legitimate behavior.</text>
+<text x="1096" y="2220" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" font-weight="400" fill="#a2b6cf" text-anchor="start">docs/evidence/ stores reviewed snapshots; results are not assumed.</text>
+<rect x="2030" y="1885" width="880" height="360" rx="16" fill="#102036" stroke="#55d7f0" stroke-width="2"/>
+<text x="2056" y="1936" font-family="DejaVu Sans, Arial, sans-serif" font-size="30" font-weight="600" fill="#eef5ff" text-anchor="start">Security quality gates</text>
+<text x="2056" y="1981" font-family="DejaVu Sans, Arial, sans-serif" font-size="22" font-weight="400" fill="#eef5ff" text-anchor="start">Semgrep SAST  /  Gitleaks history</text>
+<text x="2056" y="2024" font-family="DejaVu Sans, Arial, sans-serif" font-size="21" font-weight="400" fill="#eef5ff" text-anchor="start">Trivy filesystem, dependencies and actual image</text>
+<text x="2056" y="2067" font-family="DejaVu Sans, Arial, sans-serif" font-size="21" font-weight="400" fill="#eef5ff" text-anchor="start">ZAP baseline → new loopback secure app</text>
+<text x="2056" y="2110" font-family="DejaVu Sans, Arial, sans-serif" font-size="21" font-weight="400" fill="#eef5ff" text-anchor="start">Syft SBOM → Cosign original / tamper verification</text>
+<text x="2056" y="2156" font-family="DejaVu Sans, Arial, sans-serif" font-size="19" font-weight="400" fill="#5ee4be" text-anchor="start">Fixed-code findings block; teaching findings are separate.</text>
+<text x="2056" y="2194" font-family="DejaVu Sans, Arial, sans-serif" font-size="19" font-weight="400" fill="#f2c476" text-anchor="start">Release policy blocks HIGH / CRITICAL image findings.</text>
+<text x="2056" y="2223" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" font-weight="400" fill="#a2b6cf" text-anchor="start">Outputs: JSON · SARIF where supported · SBOM · HTML</text>
+<path d="M2470 2245 V2284 H1510 V2254" fill="none" stroke="#55d7f0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-cyan)"/>
+<text x="1990" y="2274" font-family="DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="400" fill="#55d7f0" text-anchor="middle">security-report artifacts</text>
+<rect x="110" y="2330" width="2800" height="315" rx="16" fill="#102036" stroke="#29435e" stroke-width="2"/>
+<text x="140" y="2375" font-family="DejaVu Sans, Arial, sans-serif" font-size="24" font-weight="700" fill="#55d7f0" text-anchor="start">WHERE THE CODE LIVES</text>
+<text x="2875" y="2375" font-family="DejaVu Sans, Arial, sans-serif" font-size="21" font-weight="400" fill="#a2b6cf" text-anchor="end">DevOps-Learning / PipelineProof</text>
+<path d="M140 2418 v-13 h22 l8 7 h24 v34 h-54 z" fill="none" stroke="#55d7f0" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="208" y="2433" font-family="DejaVu Sans Mono, monospace" font-size="23" font-weight="600" fill="#eef5ff" text-anchor="start">lab/</text>
+<text x="140" y="2470" font-family="DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="400" fill="#a2b6cf" text-anchor="start">Runner, controls and 25-scenario inventory</text>
+<path d="M834 2418 v-13 h22 l8 7 h24 v34 h-54 z" fill="none" stroke="#55d7f0" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="902" y="2433" font-family="DejaVu Sans Mono, monospace" font-size="23" font-weight="600" fill="#eef5ff" text-anchor="start">labs/&lt;scenario&gt;/</text>
+<text x="834" y="2470" font-family="DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="400" fill="#a2b6cf" text-anchor="start">vulnerable.py · secure.py · attack.py · test_lab.py</text>
+<path d="M1528 2418 v-13 h22 l8 7 h24 v34 h-54 z" fill="none" stroke="#55d7f0" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="1596" y="2433" font-family="DejaVu Sans Mono, monospace" font-size="23" font-weight="600" fill="#eef5ff" text-anchor="start">pipelines/</text>
+<text x="1528" y="2470" font-family="DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="400" fill="#a2b6cf" text-anchor="start">Original vulnerable / hardened build steps</text>
+<path d="M2222 2418 v-13 h22 l8 7 h24 v34 h-54 z" fill="none" stroke="#55d7f0" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="2290" y="2433" font-family="DejaVu Sans Mono, monospace" font-size="23" font-weight="600" fill="#eef5ff" text-anchor="start">infra/</text>
+<text x="2222" y="2470" font-family="DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="400" fill="#a2b6cf" text-anchor="start">kind configuration, deployment and RBAC manifests</text>
+<path d="M140 2530 v-13 h22 l8 7 h24 v34 h-54 z" fill="none" stroke="#55d7f0" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="208" y="2545" font-family="DejaVu Sans Mono, monospace" font-size="23" font-weight="600" fill="#eef5ff" text-anchor="start">scenarios/</text>
+<text x="140" y="2582" font-family="DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="400" fill="#a2b6cf" text-anchor="start">25 walkthroughs with technical knowledge checks</text>
+<path d="M834 2530 v-13 h22 l8 7 h24 v34 h-54 z" fill="none" stroke="#55d7f0" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="902" y="2545" font-family="DejaVu Sans Mono, monospace" font-size="23" font-weight="600" fill="#eef5ff" text-anchor="start">tests/</text>
+<text x="834" y="2582" font-family="DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="400" fill="#a2b6cf" text-anchor="start">Unit · HTTP · edge cases · browser regressions</text>
+<path d="M1528 2530 v-13 h22 l8 7 h24 v34 h-54 z" fill="none" stroke="#55d7f0" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="1596" y="2545" font-family="DejaVu Sans Mono, monospace" font-size="23" font-weight="600" fill="#eef5ff" text-anchor="start">.github/workflows/</text>
+<text x="1528" y="2582" font-family="DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="400" fill="#a2b6cf" text-anchor="start">Validation · real Kubernetes · live security tools</text>
+<path d="M2222 2530 v-13 h22 l8 7 h24 v34 h-54 z" fill="none" stroke="#55d7f0" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="2290" y="2545" font-family="DejaVu Sans Mono, monospace" font-size="23" font-weight="600" fill="#eef5ff" text-anchor="start">docs/ + reports/</text>
+<text x="2222" y="2582" font-family="DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="400" fill="#a2b6cf" text-anchor="start">Guides and saved evidence / generated assessments</text>
+<path d="M130 2700 h46" fill="none" stroke="#ff7888" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-red)"/>
+<text x="190" y="2707" font-family="DejaVu Sans, Arial, sans-serif" font-size="19" font-weight="400" fill="#a2b6cf" text-anchor="start">Controlled proof input</text>
+<path d="M790 2700 h46" fill="none" stroke="#5ee4be" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-teal)"/>
+<text x="850" y="2707" font-family="DejaVu Sans, Arial, sans-serif" font-size="19" font-weight="400" fill="#a2b6cf" text-anchor="start">Fixed control / observed result</text>
+<path d="M1650 2700 h46" fill="none" stroke="#55d7f0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-cyan)"/>
+<text x="1710" y="2707" font-family="DejaVu Sans, Arial, sans-serif" font-size="19" font-weight="400" fill="#a2b6cf" text-anchor="start">Execution / CI report flow</text>
+<path d="M2360 2700 h46" fill="none" stroke="#f2c476" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-gold)"/>
+<text x="2420" y="2707" font-family="DejaVu Sans, Arial, sans-serif" font-size="19" font-weight="400" fill="#a2b6cf" text-anchor="start">Separate real API boundary</text>
+<text x="1500" y="2757" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="400" fill="#a2b6cf" text-anchor="middle">Synthetic data only. Native mode has no sandbox. Diagram groups locate implementations and fixtures, not extra deployed infrastructure.</text>
+</svg>

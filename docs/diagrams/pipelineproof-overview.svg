@@ -1,0 +1,228 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2400" height="1350" viewBox="0 0 2400 1350" role="img" aria-labelledby="title description">
+<title id="title">PipelineProof — architecture overview</title>
+<desc id="description">A compact overview of native or Docker execution, 24 local attack exercises, the separate real kind lab, evidence and security quality gates.</desc>
+<defs><marker id="arrow-red" markerWidth="9" markerHeight="9" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0 0 L8 4 L0 8 Z" fill="#ff7888"/></marker><marker id="arrow-teal" markerWidth="9" markerHeight="9" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0 0 L8 4 L0 8 Z" fill="#5ee4be"/></marker><marker id="arrow-cyan" markerWidth="9" markerHeight="9" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0 0 L8 4 L0 8 Z" fill="#55d7f0"/></marker><marker id="arrow-gold" markerWidth="9" markerHeight="9" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0 0 L8 4 L0 8 Z" fill="#f2c476"/></marker></defs>
+<rect width="2400" height="1350" rx="24" fill="#0a1322"/>
+<path d="M35 0 V1350" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M105 0 V1350" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M175 0 V1350" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M245 0 V1350" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M315 0 V1350" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M385 0 V1350" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M455 0 V1350" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M525 0 V1350" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M595 0 V1350" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M665 0 V1350" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M735 0 V1350" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M805 0 V1350" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M875 0 V1350" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M945 0 V1350" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M1015 0 V1350" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M1085 0 V1350" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M1155 0 V1350" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M1225 0 V1350" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M1295 0 V1350" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M1365 0 V1350" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M1435 0 V1350" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M1505 0 V1350" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M1575 0 V1350" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M1645 0 V1350" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M1715 0 V1350" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M1785 0 V1350" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M1855 0 V1350" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M1925 0 V1350" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M1995 0 V1350" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M2065 0 V1350" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M2135 0 V1350" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M2205 0 V1350" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M2275 0 V1350" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M2345 0 V1350" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M0 35 H2400" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M0 105 H2400" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M0 175 H2400" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M0 245 H2400" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M0 315 H2400" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M0 385 H2400" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M0 455 H2400" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M0 525 H2400" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M0 595 H2400" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M0 665 H2400" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M0 735 H2400" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M0 805 H2400" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M0 875 H2400" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M0 945 H2400" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M0 1015 H2400" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M0 1085 H2400" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M0 1155 H2400" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M0 1225 H2400" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<path d="M0 1295 H2400" stroke="#16243a" stroke-width="0.6" opacity="0.35"/>
+<g transform="translate(95 99) scale(0.72)" aria-hidden="true">
+<path d="M-64 25 L5 -2 L90 25 L20 55 Z" fill="#12374e" stroke="#55d7f0" stroke-width="1.7"/>
+<path d="M-64 25 L20 55 L20 63 L-64 33 Z" fill="#10293e"/><path d="M20 55 L90 25 L90 33 L20 63 Z" fill="#0c2032"/>
+<path d="M-23 -44 L19 -62 L60 -43 L18 -25 Z" fill="#2b6d7f" stroke="#74ead7" stroke-width="2"/><path d="M-23 -44 L18 -25 V21 L-23 2 Z" fill="#19485d" stroke="#74ead7" stroke-width="2"/><path d="M18 -25 L60 -43 V2 L18 21 Z" fill="#133248" stroke="#74ead7" stroke-width="2"/>
+<path d="M-5 -20 L-5 0 M28 -21 L49 -30" stroke="#9bf4dd" stroke-width="4"/>
+</g>
+<text x="210" y="98" font-family="DejaVu Sans, Arial, sans-serif" font-size="58" font-weight="750" fill="#eef5ff" text-anchor="start">PipelineProof</text>
+<text x="210" y="145" font-family="DejaVu Sans, Arial, sans-serif" font-size="28" font-weight="400" fill="#a2b6cf" text-anchor="start">Attack paths, runtime boundaries and lab structure</text>
+<text x="210" y="182" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="600" fill="#5ee4be" text-anchor="start">ATTACK  /  OBSERVE  /  HARDEN  /  RETEST</text>
+<rect x="60" y="220" width="1660" height="850" rx="22" fill="#0d1a2d" stroke="#29435e" stroke-width="2" stroke-dasharray="12 8"/>
+<text x="100" y="269" font-family="DejaVu Sans, Arial, sans-serif" font-size="25" font-weight="700" fill="#55d7f0" text-anchor="start">LOCAL LEARNING BOUNDARY  /  24 EXERCISES</text>
+<rect x="100" y="320" width="450" height="205" rx="16" fill="#102036" stroke="#29435e" stroke-width="2"/>
+<rect x="650" y="320" width="450" height="205" rx="16" fill="#102036" stroke="#29435e" stroke-width="2"/>
+<rect x="1200" y="320" width="450" height="205" rx="16" fill="#102036" stroke="#29435e" stroke-width="2"/>
+<text x="125" y="365" font-family="DejaVu Sans, Arial, sans-serif" font-size="29" font-weight="650" fill="#eef5ff" text-anchor="start">Start locally</text>
+<g transform="translate(450 441) scale(0.64)" aria-hidden="true">
+<path d="M-64 25 L5 -2 L90 25 L20 55 Z" fill="#12374e" stroke="#55d7f0" stroke-width="1.7"/>
+<path d="M-64 25 L20 55 L20 63 L-64 33 Z" fill="#10293e"/><path d="M20 55 L90 25 L90 33 L20 63 Z" fill="#0c2032"/>
+<path d="M-27 -77 L54 -49 V28 L-27 0 Z" fill="#194569" stroke="#68e7f5" stroke-width="2"/><path d="M54 -49 L67 -57 V20 L54 28 Z" fill="#102b46"/>
+<path d="M-27 -77 L-14 -85 L67 -57 L54 -49 Z" fill="#286f8d"/><path d="M-21 -58 L45 -35" stroke="#9deaff" stroke-width="2"/>
+<path d="M-14 -39 L0 -26 L-14 -22 M8 -16 L32 -8" stroke="#83eede" fill="none" stroke-width="4"/>
+</g>
+<text x="125" y="407" font-family="DejaVu Sans, Arial, sans-serif" font-size="22" font-weight="400" fill="#eef5ff" text-anchor="start">Native Python + Bash</text>
+<text x="125" y="443" font-family="DejaVu Sans, Arial, sans-serif" font-size="22" font-weight="400" fill="#eef5ff" text-anchor="start">or restricted Docker</text>
+<text x="125" y="489" font-family="DejaVu Sans Mono, monospace" font-size="20" font-weight="400" fill="#5ee4be" text-anchor="start">setup.sh  /  make lab</text>
+<text x="675" y="365" font-family="DejaVu Sans, Arial, sans-serif" font-size="29" font-weight="650" fill="#eef5ff" text-anchor="start">Exercise router</text>
+<g transform="translate(1000 440) scale(0.64)" aria-hidden="true">
+<path d="M-64 25 L5 -2 L90 25 L20 55 Z" fill="#12374e" stroke="#55d7f0" stroke-width="1.7"/>
+<path d="M-64 25 L20 55 L20 63 L-64 33 Z" fill="#10293e"/><path d="M20 55 L90 25 L90 33 L20 63 Z" fill="#0c2032"/>
+<path d="M-23 -74 L31 -55 V30 L-23 11 Z" fill="#1b4b6a" stroke="#74e8ef" stroke-width="2"/><path d="M31 -55 L49 -65 V20 L31 30 Z" fill="#123047"/><path d="M-23 -74 L-5 -84 L49 -65 L31 -55 Z" fill="#32718c"/>
+<path d="M-15 -47 L23 -34" stroke="#8ce4ec" stroke-width="3"/>
+<circle cx="-12" cy="-54" r="2.6" fill="#5ee4be"/>
+<path d="M-15 -22 L23 -9" stroke="#8ce4ec" stroke-width="3"/>
+<circle cx="-12" cy="-29" r="2.6" fill="#5ee4be"/>
+<path d="M-15 3 L23 16" stroke="#8ce4ec" stroke-width="3"/>
+<circle cx="-12" cy="-4" r="2.6" fill="#5ee4be"/>
+</g>
+<text x="675" y="407" font-family="DejaVu Sans Mono, monospace" font-size="22" font-weight="400" fill="#eef5ff" text-anchor="start">lab/scenarios.py</text>
+<text x="675" y="443" font-family="DejaVu Sans Mono, monospace" font-size="22" font-weight="400" fill="#eef5ff" text-anchor="start">labs/catalog.json</text>
+<text x="675" y="489" font-family="DejaVu Sans, Arial, sans-serif" font-size="19" font-weight="400" fill="#a2b6cf" text-anchor="start">Temporary synthetic fixtures</text>
+<text x="1225" y="365" font-family="DejaVu Sans, Arial, sans-serif" font-size="28" font-weight="650" fill="#eef5ff" text-anchor="start">Attack → fixed retest</text>
+<text x="1225" y="411" font-family="DejaVu Sans, Arial, sans-serif" font-size="21" font-weight="400" fill="#ff7888" text-anchor="start">Vulnerable implementation</text>
+<text x="1225" y="450" font-family="DejaVu Sans, Arial, sans-serif" font-size="21" font-weight="400" fill="#5ee4be" text-anchor="start">Separate fixed counterpart</text>
+<text x="1225" y="489" font-family="DejaVu Sans, Arial, sans-serif" font-size="19" font-weight="400" fill="#a2b6cf" text-anchor="start">Legitimate behavior checked</text>
+<path d="M550 425 H638" fill="none" stroke="#55d7f0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-cyan)"/>
+<path d="M1100 425 H1188" fill="none" stroke="#55d7f0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-cyan)"/>
+<path d="M875 525 V575" fill="none" stroke="#ff7888" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-red)"/>
+<text x="875" y="608" font-family="DejaVu Sans, Arial, sans-serif" font-size="21" font-weight="650" fill="#ff7888" text-anchor="middle">CONTROLLED ATTACK DOMAINS</text>
+<rect x="100" y="650" width="450" height="150" rx="16" fill="#102036" stroke="#29435e" stroke-width="2"/>
+<g transform="translate(470 753) scale(0.4)" aria-hidden="true">
+<path d="M-64 25 L5 -2 L90 25 L20 55 Z" fill="#12374e" stroke="#55d7f0" stroke-width="1.7"/>
+<path d="M-64 25 L20 55 L20 63 L-64 33 Z" fill="#10293e"/><path d="M20 55 L90 25 L90 33 L20 63 Z" fill="#0c2032"/>
+<path d="M-23 -74 L31 -55 V30 L-23 11 Z" fill="#1b4b6a" stroke="#74e8ef" stroke-width="2"/><path d="M31 -55 L49 -65 V20 L31 30 Z" fill="#123047"/><path d="M-23 -74 L-5 -84 L49 -65 L31 -55 Z" fill="#32718c"/>
+<path d="M-15 -47 L23 -34" stroke="#8ce4ec" stroke-width="3"/>
+<circle cx="-12" cy="-54" r="2.6" fill="#5ee4be"/>
+<path d="M-15 -22 L23 -9" stroke="#8ce4ec" stroke-width="3"/>
+<circle cx="-12" cy="-29" r="2.6" fill="#5ee4be"/>
+<path d="M-15 3 L23 16" stroke="#8ce4ec" stroke-width="3"/>
+<circle cx="-12" cy="-4" r="2.6" fill="#5ee4be"/>
+</g>
+<text x="123" y="696" font-family="DejaVu Sans, Arial, sans-serif" font-size="25" font-weight="600" fill="#eef5ff" text-anchor="start">CI and build pipeline</text>
+<text x="123" y="742" font-family="DejaVu Sans, Arial, sans-serif" font-size="21" font-weight="400" fill="#a2b6cf" text-anchor="start">01 · 02 · 04 · 12 · 13</text>
+<path d="M123 769 h55" fill="none" stroke="#ff7888" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M190 769 h55" fill="none" stroke="#5ee4be" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="650" y="650" width="450" height="150" rx="16" fill="#102036" stroke="#29435e" stroke-width="2"/>
+<g transform="translate(1020 753) scale(0.4)" aria-hidden="true">
+<path d="M-64 25 L5 -2 L90 25 L20 55 Z" fill="#12374e" stroke="#55d7f0" stroke-width="1.7"/>
+<path d="M-64 25 L20 55 L20 63 L-64 33 Z" fill="#10293e"/><path d="M20 55 L90 25 L90 33 L20 63 Z" fill="#0c2032"/>
+<path d="M-27 -77 L54 -49 V28 L-27 0 Z" fill="#194569" stroke="#68e7f5" stroke-width="2"/><path d="M54 -49 L67 -57 V20 L54 28 Z" fill="#102b46"/>
+<path d="M-27 -77 L-14 -85 L67 -57 L54 -49 Z" fill="#286f8d"/><path d="M-21 -58 L45 -35" stroke="#9deaff" stroke-width="2"/>
+<path d="M-5 -31 L-16 -23 L-5 -8 M25 -20 L38 -6 L25 0 M18 -35 L6 2" stroke="#83eede" fill="none" stroke-width="4"/>
+</g>
+<text x="673" y="696" font-family="DejaVu Sans, Arial, sans-serif" font-size="25" font-weight="600" fill="#eef5ff" text-anchor="start">API and business policy</text>
+<text x="673" y="742" font-family="DejaVu Sans, Arial, sans-serif" font-size="21" font-weight="400" fill="#a2b6cf" text-anchor="start">06 · 07 · 08 · 19 · 25</text>
+<path d="M673 769 h55" fill="none" stroke="#ff7888" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M740 769 h55" fill="none" stroke="#5ee4be" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="1200" y="650" width="450" height="150" rx="16" fill="#102036" stroke="#29435e" stroke-width="2"/>
+<g transform="translate(1570 753) scale(0.4)" aria-hidden="true">
+<path d="M-64 25 L5 -2 L90 25 L20 55 Z" fill="#12374e" stroke="#55d7f0" stroke-width="1.7"/>
+<path d="M-64 25 L20 55 L20 63 L-64 33 Z" fill="#10293e"/><path d="M20 55 L90 25 L90 33 L20 63 Z" fill="#0c2032"/>
+<path d="M-21 -55 C-21 -75 53 -75 53 -55 V12 C53 32 -21 32 -21 12 Z" fill="#19486a" stroke="#55d7f0" stroke-width="2"/>
+<ellipse cx="16" cy="-55" rx="37" ry="12" fill="#1c5d80" stroke="#73e5ef" stroke-width="2"/>
+<ellipse cx="16" cy="-27" rx="37" ry="12" fill="#1c5d80" stroke="#73e5ef" stroke-width="2"/>
+<ellipse cx="16" cy="1" rx="37" ry="12" fill="#1c5d80" stroke="#73e5ef" stroke-width="2"/>
+<path d="M-21 -54 V12 M53 -54 V12" stroke="#55d7f0" stroke-width="2"/>
+</g>
+<text x="1223" y="696" font-family="DejaVu Sans, Arial, sans-serif" font-size="25" font-weight="600" fill="#eef5ff" text-anchor="start">Data and code execution</text>
+<text x="1223" y="742" font-family="DejaVu Sans, Arial, sans-serif" font-size="21" font-weight="400" fill="#a2b6cf" text-anchor="start">15 · 16 · 17 · 18 · 22</text>
+<path d="M1223 769 h55" fill="none" stroke="#ff7888" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M1290 769 h55" fill="none" stroke="#5ee4be" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="100" y="835" width="450" height="150" rx="16" fill="#102036" stroke="#29435e" stroke-width="2"/>
+<g transform="translate(470 938) scale(0.4)" aria-hidden="true">
+<path d="M-64 25 L5 -2 L90 25 L20 55 Z" fill="#12374e" stroke="#55d7f0" stroke-width="1.7"/>
+<path d="M-64 25 L20 55 L20 63 L-64 33 Z" fill="#10293e"/><path d="M20 55 L90 25 L90 33 L20 63 Z" fill="#0c2032"/>
+<path d="M-27 -77 L54 -49 V28 L-27 0 Z" fill="#194569" stroke="#68e7f5" stroke-width="2"/><path d="M54 -49 L67 -57 V20 L54 28 Z" fill="#102b46"/>
+<path d="M-27 -77 L-14 -85 L67 -57 L54 -49 Z" fill="#286f8d"/><path d="M-21 -58 L45 -35" stroke="#9deaff" stroke-width="2"/>
+<path d="M-14 -39 L0 -26 L-14 -22 M8 -16 L32 -8" stroke="#83eede" fill="none" stroke-width="4"/>
+</g>
+<text x="123" y="881" font-family="DejaVu Sans, Arial, sans-serif" font-size="25" font-weight="600" fill="#eef5ff" text-anchor="start">Identity and browser</text>
+<text x="123" y="927" font-family="DejaVu Sans, Arial, sans-serif" font-size="21" font-weight="400" fill="#a2b6cf" text-anchor="start">10 · 14 · 20 · 21</text>
+<path d="M123 954 h55" fill="none" stroke="#ff7888" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M190 954 h55" fill="none" stroke="#5ee4be" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="650" y="835" width="450" height="150" rx="16" fill="#102036" stroke="#29435e" stroke-width="2"/>
+<g transform="translate(1020 938) scale(0.4)" aria-hidden="true">
+<path d="M-64 25 L5 -2 L90 25 L20 55 Z" fill="#12374e" stroke="#55d7f0" stroke-width="1.7"/>
+<path d="M-64 25 L20 55 L20 63 L-64 33 Z" fill="#10293e"/><path d="M20 55 L90 25 L90 33 L20 63 Z" fill="#0c2032"/>
+<path d="M-23 -44 L19 -62 L60 -43 L18 -25 Z" fill="#2b6d7f" stroke="#74ead7" stroke-width="2"/><path d="M-23 -44 L18 -25 V21 L-23 2 Z" fill="#19485d" stroke="#74ead7" stroke-width="2"/><path d="M18 -25 L60 -43 V2 L18 21 Z" fill="#133248" stroke="#74ead7" stroke-width="2"/>
+<path d="M-5 -20 L-5 0 M28 -21 L49 -30" stroke="#9bf4dd" stroke-width="4"/>
+</g>
+<text x="673" y="881" font-family="DejaVu Sans, Arial, sans-serif" font-size="25" font-weight="600" fill="#eef5ff" text-anchor="start">Artifacts and telemetry</text>
+<text x="673" y="927" font-family="DejaVu Sans, Arial, sans-serif" font-size="21" font-weight="400" fill="#a2b6cf" text-anchor="start">03 · 11 · 23 · 24</text>
+<path d="M673 954 h55" fill="none" stroke="#ff7888" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M740 954 h55" fill="none" stroke="#5ee4be" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="1200" y="835" width="450" height="150" rx="16" fill="#102036" stroke="#29435e" stroke-width="2"/>
+<g transform="translate(1570 938) scale(0.4)" aria-hidden="true">
+<path d="M-64 25 L5 -2 L90 25 L20 55 Z" fill="#12374e" stroke="#55d7f0" stroke-width="1.7"/>
+<path d="M-64 25 L20 55 L20 63 L-64 33 Z" fill="#10293e"/><path d="M20 55 L90 25 L90 33 L20 63 Z" fill="#0c2032"/>
+<path d="M-23 -74 L31 -55 V30 L-23 11 Z" fill="#1b4b6a" stroke="#74e8ef" stroke-width="2"/><path d="M31 -55 L49 -65 V20 L31 30 Z" fill="#123047"/><path d="M-23 -74 L-5 -84 L49 -65 L31 -55 Z" fill="#32718c"/>
+<path d="M-15 -47 L23 -34" stroke="#8ce4ec" stroke-width="3"/>
+<circle cx="-12" cy="-54" r="2.6" fill="#5ee4be"/>
+<path d="M-15 -22 L23 -9" stroke="#8ce4ec" stroke-width="3"/>
+<circle cx="-12" cy="-29" r="2.6" fill="#5ee4be"/>
+<path d="M-15 3 L23 16" stroke="#8ce4ec" stroke-width="3"/>
+<circle cx="-12" cy="-4" r="2.6" fill="#5ee4be"/>
+</g>
+<text x="1223" y="881" font-family="DejaVu Sans, Arial, sans-serif" font-size="25" font-weight="600" fill="#eef5ff" text-anchor="start">Loopback mock services</text>
+<text x="1223" y="927" font-family="DejaVu Sans, Arial, sans-serif" font-size="21" font-weight="400" fill="#a2b6cf" text-anchor="start">09 · temporary HTTP fixtures</text>
+<path d="M1223 954 h55" fill="none" stroke="#ff7888" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M1290 954 h55" fill="none" stroke="#5ee4be" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="100" y="1034" font-family="DejaVu Sans, Arial, sans-serif" font-size="20" font-weight="400" fill="#a2b6cf" text-anchor="start">Docker: non-root, read-only, no external network. Native: no sandbox. HTTP endpoints bind to loopback.</text>
+<rect x="1780" y="220" width="560" height="430" rx="16" fill="#102036" stroke="#f2c476" stroke-width="2" stroke-dasharray="12 6"/>
+<text x="1805" y="270" font-family="DejaVu Sans, Arial, sans-serif" font-size="29" font-weight="650" fill="#f2c476" text-anchor="start">05  /  Separate real kind lab</text>
+<g transform="translate(2201 382) scale(0.9)" aria-hidden="true">
+<path d="M-64 25 L5 -2 L90 25 L20 55 Z" fill="#12374e" stroke="#55d7f0" stroke-width="1.7"/>
+<path d="M-64 25 L20 55 L20 63 L-64 33 Z" fill="#10293e"/><path d="M20 55 L90 25 L90 33 L20 63 Z" fill="#0c2032"/>
+<polygon points="16.0,-63.0 43.4,-49.8 50.1,-20.2 31.2,3.5 0.8,3.5 -18.1,-20.2 -11.4,-49.8" fill="#174a70" stroke="#61def1" stroke-width="2.5"/>
+<circle cx="16" cy="-28" r="15" fill="none" stroke="#d8f9ff" stroke-width="3"/>
+<path d="M16.0 -43.0 L16.0 -57.0" stroke="#d8f9ff" stroke-width="3"/>
+<path d="M27.7 -37.4 L38.7 -46.1" stroke="#d8f9ff" stroke-width="3"/>
+<path d="M30.6 -24.7 L44.3 -21.5" stroke="#d8f9ff" stroke-width="3"/>
+<path d="M22.5 -14.5 L28.6 -1.9" stroke="#d8f9ff" stroke-width="3"/>
+<path d="M9.5 -14.5 L3.4 -1.9" stroke="#d8f9ff" stroke-width="3"/>
+<path d="M1.4 -24.7 L-12.3 -21.5" stroke="#d8f9ff" stroke-width="3"/>
+<path d="M4.3 -37.4 L-6.7 -46.1" stroke="#d8f9ff" stroke-width="3"/>
+</g>
+<text x="1805" y="320" font-family="DejaVu Sans, Arial, sans-serif" font-size="23" font-weight="400" fill="#eef5ff" text-anchor="start">Kubernetes API + scoped RBAC</text>
+<text x="1805" y="363" font-family="DejaVu Sans Mono, monospace" font-size="22" font-weight="400" fill="#a2b6cf" text-anchor="start">kind-pipelineproof</text>
+<text x="1805" y="438" font-family="DejaVu Sans, Arial, sans-serif" font-size="22" font-weight="400" fill="#ff7888" text-anchor="start">V: CI identity reads dummy Secret</text>
+<text x="1805" y="480" font-family="DejaVu Sans, Arial, sans-serif" font-size="21" font-weight="400" fill="#5ee4be" text-anchor="start">S: read denied; intended patch allowed</text>
+<text x="1805" y="534" font-family="DejaVu Sans Mono, monospace" font-size="22" font-weight="400" fill="#f2c476" text-anchor="start">make k8s-up k8s-test</text>
+<text x="1805" y="586" font-family="DejaVu Sans, Arial, sans-serif" font-size="20" font-weight="400" fill="#a2b6cf" text-anchor="start">Requires Docker + kind; not run by setup.sh.</text>
+<path d="M2060 650 V715" fill="none" stroke="#5ee4be" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-teal)"/>
+<rect x="1780" y="730" width="560" height="340" rx="16" fill="#102036" stroke="#5ee4be" stroke-width="2"/>
+<text x="1805" y="781" font-family="DejaVu Sans, Arial, sans-serif" font-size="30" font-weight="650" fill="#eef5ff" text-anchor="start">Auditable evidence</text>
+<text x="1805" y="835" font-family="DejaVu Sans Mono, monospace" font-size="21" font-weight="400" fill="#5ee4be" text-anchor="start">reports/assessment.*</text>
+<text x="1805" y="881" font-family="DejaVu Sans Mono, monospace" font-size="21" font-weight="400" fill="#5ee4be" text-anchor="start">reports/rbac.json</text>
+<text x="1805" y="927" font-family="DejaVu Sans Mono, monospace" font-size="20" font-weight="400" fill="#5ee4be" text-anchor="start">reports/scenario-audit/audit.json</text>
+<text x="1805" y="983" font-family="DejaVu Sans, Arial, sans-serif" font-size="21" font-weight="400" fill="#eef5ff" text-anchor="start">24 local + fresh 05 = complete audit</text>
+<text x="1805" y="1030" font-family="DejaVu Sans, Arial, sans-serif" font-size="20" font-weight="400" fill="#a2b6cf" text-anchor="start">Observed results, never assumed passes.</text>
+<path d="M1650 425 H1745 V900 H1768" fill="none" stroke="#5ee4be" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-teal)"/>
+<rect x="60" y="1120" width="2280" height="150" rx="16" fill="#102036" stroke="#29435e" stroke-width="2"/>
+<text x="90" y="1166" font-family="DejaVu Sans, Arial, sans-serif" font-size="23" font-weight="700" fill="#55d7f0" text-anchor="start">GITHUB CI / SECURITY GATES</text>
+<text x="90" y="1210" font-family="DejaVu Sans, Arial, sans-serif" font-size="22" font-weight="400" fill="#a2b6cf" text-anchor="start">Read-only validation workflows</text>
+<text x="680" y="1166" font-family="DejaVu Sans, Arial, sans-serif" font-size="26" font-weight="400" fill="#eef5ff" text-anchor="start">Unit · browser · Semgrep · Trivy · Gitleaks</text>
+<text x="680" y="1210" font-family="DejaVu Sans, Arial, sans-serif" font-size="23" font-weight="400" fill="#a2b6cf" text-anchor="start">ZAP baseline · Syft SBOM · Cosign integrity checks</text>
+<text x="1830" y="1166" font-family="DejaVu Sans, Arial, sans-serif" font-size="23" font-weight="600" fill="#f2c476" text-anchor="start">Release decision is separate</text>
+<text x="1830" y="1210" font-family="DejaVu Sans, Arial, sans-serif" font-size="21" font-weight="400" fill="#a2b6cf" text-anchor="start">HIGH / CRITICAL findings block</text>
+<path d="M900 1120 V1080" fill="none" stroke="#55d7f0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-cyan)"/>
+<text x="1200" y="1315" font-family="DejaVu Sans, Arial, sans-serif" font-size="20" font-weight="400" fill="#a2b6cf" text-anchor="middle">lab/  ·  labs/  ·  pipelines/  ·  infra/  ·  scenarios/  ·  tests/  ·  docs/  ·  reports/</text>
+</svg>
