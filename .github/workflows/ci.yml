@@ -21,7 +21,7 @@ jobs:
         run: python3 -m unittest discover -s tests -v
       - name: Generate native evidence without Docker
         run: bash ./setup.sh --lab-only --output reports/native
-      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: pipelineproof-native-evidence
           path: reports/native/assessment.*
@@ -45,7 +45,7 @@ jobs:
           curl --fail --retry 5 --retry-delay 2 http://127.0.0.1:8080/health
       - name: Upload evidence
         if: always()
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: pipelineproof-evidence
           path: reports/assessment.*
@@ -74,7 +74,7 @@ jobs:
           persist-credentials: false
       - run: pipx install semgrep==1.185.0
       - run: python3 -m scripts.sast
-      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         if: always()
         with:
           name: sast-evidence

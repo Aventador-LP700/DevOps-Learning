@@ -14,7 +14,7 @@ jobs:
       - run: bash scripts/install_tools.sh trivy
       - name: Scan actual image and enforce release policy
         run: PATH="$PWD/.work/bin:$PATH" make scan
-      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: always()
         with:
           name: live-trivy-report
@@ -31,7 +31,7 @@ jobs:
       - run: bash scripts/install_tools.sh syft cosign
       - run: make build
       - run: PATH="$PWD/.work/bin:$PATH" bash scripts/supply_chain.sh
-      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         with:
           name: signed-sbom-evidence
           path: |
@@ -65,7 +65,7 @@ jobs:
           persist-credentials: false
       - run: bash scripts/install_tools.sh trivy
       - run: PATH="$PWD/.work/bin:$PATH" python3 -m scripts.fs_scan
-      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         if: always()
         with:
           name: filesystem-dependency-evidence
@@ -78,7 +78,7 @@ jobs:
         with:
           persist-credentials: false
       - run: python3 -m scripts.zap
-      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         if: always()
         with:
           name: secure-app-zap-evidence
